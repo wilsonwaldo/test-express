@@ -11,7 +11,8 @@ router.get('/', function(req, res, next) {
         {
             'a':'b',
             'date':today,
-            'c':'confirm changes on Friday'
+            'c':'confirm changes on Friday',
+            'creator':'@wilsonwaldo'
         }
     );
 });
