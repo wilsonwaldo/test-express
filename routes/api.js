@@ -10,7 +10,8 @@ router.get('/', function(req, res, next) {
     res.json(
         {
             'a':'b',
-            'date':today
+            'date':today,
+            'c':'confirm changes on Friday'
         }
     );
 });
