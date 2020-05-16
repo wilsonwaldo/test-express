@@ -1,0 +1,1081 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>bd_sisep Database</title>
+        <!-- Tell the browser to be responsive to screen width -->
+        <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+        <link rel="icon" type="image/png" sizes="16x16" href="favicon.png">
+        <!-- Bootstrap 3.3.5 -->
+        <link rel="stylesheet" href="bower/admin-lte/bootstrap/css/bootstrap.min.css">
+        <!-- Font Awesome -->
+        <link rel="stylesheet" href="bower/font-awesome/css/font-awesome.min.css">
+        <!-- Ionicons -->
+        <link rel="stylesheet" href="bower/ionicons/css/ionicons.min.css">
+        <!-- DataTables -->
+        <link rel="stylesheet" href="bower/datatables.net-bs/css/dataTables.bootstrap.min.css">
+        <link rel="stylesheet" href="bower/datatables.net-buttons-bs/css/buttons.bootstrap.min.css">
+        <!-- Code Mirror -->
+        <link rel="stylesheet" href="bower/codemirror/codemirror.css">
+        <!-- Fonts -->
+        <link href='fonts/indieflower/indie-flower.css' rel='stylesheet' type='text/css'>
+        <link href='fonts/source-sans-pro/source-sans-pro.css' rel='stylesheet' type='text/css'>
+
+        <!-- Theme style -->
+        <link rel="stylesheet" href="bower/admin-lte/dist/css/AdminLTE.min.css">
+        <!-- Salvattore -->
+        <link rel="stylesheet" href="bower/salvattore/salvattore.css">
+        <!-- AdminLTE Skins. Choose a skin from the css/skins
+           folder instead of downloading all of them to reduce the load. -->
+        <link rel="stylesheet" href="bower/admin-lte/dist/css/skins/_all-skins.min.css">
+        <!-- SchemaSpy -->
+        <link rel="stylesheet" href="schemaSpy.css">
+
+        <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+        <!--[if lt IE 9]>
+        <script src="bower/html5shiv/html5shiv.min.js"></script>
+        <script src="bower/respond/respond.min.js"></script>
+        <![endif]-->
+    </head>
+    <!-- ADD THE CLASS layout-top-nav TO REMOVE THE SIDEBAR. -->
+    <body class="hold-transition skin-blue layout-top-nav">
+        <div class="wrapper">
+            <header class="main-header">
+                <nav class="navbar navbar-static-top">
+                    <div class="container">
+                        <div class="navbar-header">
+                            <a href="index.html" class="navbar-brand"><b>bd_sisep</b> Database</a>
+                            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse"><i class="fa fa-bars"></i></button>
+                        </div>
+
+                        <!-- Collect the nav links, forms, and other content for toggling -->
+                        <div class="collapse navbar-collapse pull-left" id="navbar-collapse">
+                            <ul class="nav navbar-nav">
+                                <li><a href="index.html">Tables <span class="sr-only">(current)</span></a></li>
+                                <li><a href="columns.html" title="All of the columns in the schema">Columns</a></li>
+                                <li><a href="constraints.html" title="Useful for diagnosing error messages that just give constraint name or number">Constraints</a></li>
+                                <li><a href="relationships.html" title="Diagram of table relationships">Relationships</a></li>
+                                <li><a href="orphans.html" title="View of tables with neither parents nor children">Orphan&nbsp;Tables</a></li>
+                                <li><a href="anomalies.html" title="Things that might not be quite right">Anomalies</a></li>
+                                <li><a href="routines.html" title="Procedures and functions">Routines</a></li>
+                            </ul>
+                        </div>
+                        <!-- /.navbar-collapse -->
+                        <!-- Navbar Right Menu -->
+                    </div>
+                    <!-- /.container-fluid -->
+                </nav>
+            </header>
+            <!-- Main content -->
+            <!-- Full Width Column -->
+            <div class="content-wrapper">
+                <!-- Content Header (Page header) -->
+                <section class="content-header">
+                    <h1>Utility Tables</h1>
+                </section>
+                <!-- Main content -->
+                <section class="content">
+                    <div class="box box-primary">
+                        <div class="box-header with-border">
+                            <i class="fa fa-code-fork"></i>
+                            <h3 class="box-title">Orphan Tables</h3>
+                        </div>
+                        <div class="box-body">
+                            <div id="grid" data-columns>
+                                <div class="item">
+                                    <img id="codigo_rda_aperturaDegreeImg" src="diagrams/orphans/codigo_rda_apertura.1degree.png" usemap="#codigo_rda_apertura" style="max-width:100%;" border="0" align="top">
+                                </div>
+                                <div class="item">
+                                    <img id="migrationsDegreeImg" src="diagrams/orphans/migrations.1degree.png" usemap="#migrations" style="max-width:100%;" border="0" align="top">
+                                </div>
+                                <div class="item">
+                                    <img id="oauth_personal_access_clientsDegreeImg" src="diagrams/orphans/oauth_personal_access_clients.1degree.png" usemap="#oauth_personal_access_clients" style="max-width:100%;" border="0" align="top">
+                                </div>
+                                <div class="item">
+                                    <img id="oauth_refresh_tokensDegreeImg" src="diagrams/orphans/oauth_refresh_tokens.1degree.png" usemap="#oauth_refresh_tokens" style="max-width:100%;" border="0" align="top">
+                                </div>
+                                <div class="item">
+                                    <img id="password_resetsDegreeImg" src="diagrams/orphans/password_resets.1degree.png" usemap="#password_resets" style="max-width:100%;" border="0" align="top">
+                                </div>
+                                <div class="item">
+                                    <img id="catalogo_apellidosDegreeImg" src="diagrams/orphans/catalogo_apellidos.1degree.png" usemap="#catalogo_apellidos" style="max-width:100%;" border="0" align="top">
+                                </div>
+                                <div class="item">
+                                    <img id="catalogo_cargo_casDegreeImg" src="diagrams/orphans/catalogo_cargo_cas.1degree.png" usemap="#catalogo_cargo_cas" style="max-width:100%;" border="0" align="top">
+                                </div>
+                                <div class="item">
+                                    <img id="catalogo_carnet_discapacidadDegreeImg" src="diagrams/orphans/catalogo_carnet_discapacidad.1degree.png" usemap="#catalogo_carnet_discapacidad" style="max-width:100%;" border="0" align="top">
+                                </div>
+                                <div class="item">
+                                    <img id="catalogo_casDegreeImg" src="diagrams/orphans/catalogo_cas.1degree.png" usemap="#catalogo_cas" style="max-width:100%;" border="0" align="top">
+                                </div>
+                                <div class="item">
+                                    <img id="catalogo_cas_provinciaDegreeImg" src="diagrams/orphans/catalogo_cas_provincia.1degree.png" usemap="#catalogo_cas_provincia" style="max-width:100%;" border="0" align="top">
+                                </div>
+                                <div class="item">
+                                    <img id="catalogo_categoria_grupo_categoriaDegreeImg" src="diagrams/orphans/catalogo_categoria_grupo_categoria.1degree.png" usemap="#catalogo_categoria_grupo_categoria" style="max-width:100%;" border="0" align="top">
+                                </div>
+                                <div class="item">
+                                    <img id="catalogo_categoria_tipo_categoriaDegreeImg" src="diagrams/orphans/catalogo_categoria_tipo_categoria.1degree.png" usemap="#catalogo_categoria_tipo_categoria" style="max-width:100%;" border="0" align="top">
+                                </div>
+                                <div class="item">
+                                    <img id="catalogo_categoria_tipo_documentoDegreeImg" src="diagrams/orphans/catalogo_categoria_tipo_documento.1degree.png" usemap="#catalogo_categoria_tipo_documento" style="max-width:100%;" border="0" align="top">
+                                </div>
+                                <div class="item">
+                                    <img id="catalogo_departamento_boliviaDegreeImg" src="diagrams/orphans/catalogo_departamento_bolivia.1degree.png" usemap="#catalogo_departamento_bolivia" style="max-width:100%;" border="0" align="top">
+                                </div>
+                                <div class="item">
+                                    <img id="catalogo_desde_mesDegreeImg" src="diagrams/orphans/catalogo_desde_mes.1degree.png" usemap="#catalogo_desde_mes" style="max-width:100%;" border="0" align="top">
+                                </div>
+                                <div class="item">
+                                    <img id="catalogo_estado_civilDegreeImg" src="diagrams/orphans/catalogo_estado_civil.1degree.png" usemap="#catalogo_estado_civil" style="max-width:100%;" border="0" align="top">
+                                </div>
+                                <div class="item">
+                                    <img id="catalogo_grado_discapacidadDegreeImg" src="diagrams/orphans/catalogo_grado_discapacidad.1degree.png" usemap="#catalogo_grado_discapacidad" style="max-width:100%;" border="0" align="top">
+                                </div>
+                                <div class="item">
+                                    <img id="catalogo_hasta_mesDegreeImg" src="diagrams/orphans/catalogo_hasta_mes.1degree.png" usemap="#catalogo_hasta_mes" style="max-width:100%;" border="0" align="top">
+                                </div>
+                                <div class="item">
+                                    <img id="catalogo_idiomaDegreeImg" src="diagrams/orphans/catalogo_idioma.1degree.png" usemap="#catalogo_idioma" style="max-width:100%;" border="0" align="top">
+                                </div>
+                                <div class="item">
+                                    <img id="catalogo_nivel_escolarDegreeImg" src="diagrams/orphans/catalogo_nivel_escolar.1degree.png" usemap="#catalogo_nivel_escolar" style="max-width:100%;" border="0" align="top">
+                                </div>
+                                <div class="item">
+                                    <img id="catalogo_nombresDegreeImg" src="diagrams/orphans/catalogo_nombres.1degree.png" usemap="#catalogo_nombres" style="max-width:100%;" border="0" align="top">
+                                </div>
+                                <div class="item">
+                                    <img id="catalogo_parentescoDegreeImg" src="diagrams/orphans/catalogo_parentesco.1degree.png" usemap="#catalogo_parentesco" style="max-width:100%;" border="0" align="top">
+                                </div>
+                                <div class="item">
+                                    <img id="catalogo_personal_administrativoDegreeImg" src="diagrams/orphans/catalogo_personal_administrativo.1degree.png" usemap="#catalogo_personal_administrativo" style="max-width:100%;" border="0" align="top">
+                                </div>
+                                <div class="item">
+                                    <img id="catalogo_profesionDegreeImg" src="diagrams/orphans/catalogo_profesion.1degree.png" usemap="#catalogo_profesion" style="max-width:100%;" border="0" align="top">
+                                </div>
+                                <div class="item">
+                                    <img id="catalogo_tipo_cargo_categoriaDegreeImg" src="diagrams/orphans/catalogo_tipo_cargo_categoria.1degree.png" usemap="#catalogo_tipo_cargo_categoria" style="max-width:100%;" border="0" align="top">
+                                </div>
+                                <div class="item">
+                                    <img id="catalogo_tipo_discapacidadDegreeImg" src="diagrams/orphans/catalogo_tipo_discapacidad.1degree.png" usemap="#catalogo_tipo_discapacidad" style="max-width:100%;" border="0" align="top">
+                                </div>
+                                <div class="item">
+                                    <img id="catalogo_tipo_documento_identificacionDegreeImg" src="diagrams/orphans/catalogo_tipo_documento_identificacion.1degree.png" usemap="#catalogo_tipo_documento_identificacion" style="max-width:100%;" border="0" align="top">
+                                </div>
+                                <div class="item">
+                                    <img id="catalogo_tipo_documento_idiomaDegreeImg" src="diagrams/orphans/catalogo_tipo_documento_idioma.1degree.png" usemap="#catalogo_tipo_documento_idioma" style="max-width:100%;" border="0" align="top">
+                                </div>
+                                <div class="item">
+                                    <img id="catalogo_tipo_documento_libreta_militarDegreeImg" src="diagrams/orphans/catalogo_tipo_documento_libreta_militar.1degree.png" usemap="#catalogo_tipo_documento_libreta_militar" style="max-width:100%;" border="0" align="top">
+                                </div>
+                                <div class="item">
+                                    <img id="catalogo_tipo_formacionDegreeImg" src="diagrams/orphans/catalogo_tipo_formacion.1degree.png" usemap="#catalogo_tipo_formacion" style="max-width:100%;" border="0" align="top">
+                                </div>
+                                <div class="item">
+                                    <img id="catalogo_tipo_libreta_militarDegreeImg" src="diagrams/orphans/catalogo_tipo_libreta_militar.1degree.png" usemap="#catalogo_tipo_libreta_militar" style="max-width:100%;" border="0" align="top">
+                                </div>
+                                <div class="item">
+                                    <img id="catalogo_turnoDegreeImg" src="diagrams/orphans/catalogo_turno.1degree.png" usemap="#catalogo_turno" style="max-width:100%;" border="0" align="top">
+                                </div>
+                                <div class="item">
+                                    <img id="catalogo_unidad_educativaDegreeImg" src="diagrams/orphans/catalogo_unidad_educativa.1degree.png" usemap="#catalogo_unidad_educativa" style="max-width:100%;" border="0" align="top">
+                                </div>
+                                <div class="item">
+                                    <img id="tipo_cargo_rdaDegreeImg" src="diagrams/orphans/tipo_cargo_rda.1degree.png" usemap="#tipo_cargo_rda" style="max-width:100%;" border="0" align="top">
+                                </div>
+                                <div class="item">
+                                    <img id="cargoDegreeImg" src="diagrams/orphans/cargo.1degree.png" usemap="#cargo" style="max-width:100%;" border="0" align="top">
+                                </div>
+                                <div class="item">
+                                    <img id="catalogo_entidad_afpDegreeImg" src="diagrams/orphans/catalogo_entidad_afp.1degree.png" usemap="#catalogo_entidad_afp" style="max-width:100%;" border="0" align="top">
+                                </div>
+                                <div class="item">
+                                    <img id="catalogo_entidad_emisorDegreeImg" src="diagrams/orphans/catalogo_entidad_emisor.1degree.png" usemap="#catalogo_entidad_emisor" style="max-width:100%;" border="0" align="top">
+                                </div>
+                                <div class="item">
+                                    <img id="catalogo_grado_escolaridadDegreeImg" src="diagrams/orphans/catalogo_grado_escolaridad.1degree.png" usemap="#catalogo_grado_escolaridad" style="max-width:100%;" border="0" align="top">
+                                </div>
+                                <div class="item">
+                                    <img id="catalogo_grado_normalistaDegreeImg" src="diagrams/orphans/catalogo_grado_normalista.1degree.png" usemap="#catalogo_grado_normalista" style="max-width:100%;" border="0" align="top">
+                                </div>
+                                <div class="item">
+                                    <img id="catalogo_modalidadDegreeImg" src="diagrams/orphans/catalogo_modalidad.1degree.png" usemap="#catalogo_modalidad" style="max-width:100%;" border="0" align="top">
+                                </div>
+                                <div class="item">
+                                    <img id="catalogo_nivelDegreeImg" src="diagrams/orphans/catalogo_nivel.1degree.png" usemap="#catalogo_nivel" style="max-width:100%;" border="0" align="top">
+                                </div>
+                                <div class="item">
+                                    <img id="catalogo_nivel_idiomaDegreeImg" src="diagrams/orphans/catalogo_nivel_idioma.1degree.png" usemap="#catalogo_nivel_idioma" style="max-width:100%;" border="0" align="top">
+                                </div>
+                                <div class="item">
+                                    <img id="catalogo_normalista_nivelDegreeImg" src="diagrams/orphans/catalogo_normalista_nivel.1degree.png" usemap="#catalogo_normalista_nivel" style="max-width:100%;" border="0" align="top">
+                                </div>
+                                <div class="item">
+                                    <img id="catalogo_r_grado_administrativoDegreeImg" src="diagrams/orphans/catalogo_r_grado_administrativo.1degree.png" usemap="#catalogo_r_grado_administrativo" style="max-width:100%;" border="0" align="top">
+                                </div>
+                                <div class="item">
+                                    <img id="catalogo_tipo_documento_categoriaDegreeImg" src="diagrams/orphans/catalogo_tipo_documento_categoria.1degree.png" usemap="#catalogo_tipo_documento_categoria" style="max-width:100%;" border="0" align="top">
+                                </div>
+                                <div class="item">
+                                    <img id="oauth_auth_codesDegreeImg" src="diagrams/orphans/oauth_auth_codes.1degree.png" usemap="#oauth_auth_codes" style="max-width:100%;" border="0" align="top">
+                                </div>
+                                <div class="item">
+                                    <img id="catalogo_grado_categoriaDegreeImg" src="diagrams/orphans/catalogo_grado_categoria.1degree.png" usemap="#catalogo_grado_categoria" style="max-width:100%;" border="0" align="top">
+                                </div>
+                                <div class="item">
+                                    <img id="catalogo_nacionDegreeImg" src="diagrams/orphans/catalogo_nacion.1degree.png" usemap="#catalogo_nacion" style="max-width:100%;" border="0" align="top">
+                                </div>
+                                <div class="item">
+                                    <img id="catalogo_normalista_modalidadDegreeImg" src="diagrams/orphans/catalogo_normalista_modalidad.1degree.png" usemap="#catalogo_normalista_modalidad" style="max-width:100%;" border="0" align="top">
+                                </div>
+                                <div class="item">
+                                    <img id="catalogo_otro_tipo_documentoDegreeImg" src="diagrams/orphans/catalogo_otro_tipo_documento.1degree.png" usemap="#catalogo_otro_tipo_documento" style="max-width:100%;" border="0" align="top">
+                                </div>
+                                <div class="item">
+                                    <img id="catalogo_otro_tituloDegreeImg" src="diagrams/orphans/catalogo_otro_titulo.1degree.png" usemap="#catalogo_otro_titulo" style="max-width:100%;" border="0" align="top">
+                                </div>
+                                <div class="item">
+                                    <img id="changesDegreeImg" src="diagrams/orphans/changes.1degree.png" usemap="#changes" style="max-width:100%;" border="0" align="top">
+                                </div>
+                                <div class="item">
+                                    <img id="menu_rolDegreeImg" src="diagrams/orphans/menu_rol.1degree.png" usemap="#menu_rol" style="max-width:100%;" border="0" align="top">
+                                </div>
+                                <div class="item">
+                                    <img id="proceso_rdaDegreeImg" src="diagrams/orphans/proceso_rda.1degree.png" usemap="#proceso_rda" style="max-width:100%;" border="0" align="top">
+                                </div>
+                                <div class="item">
+                                    <img id="catalogo_departamentoDegreeImg" src="diagrams/orphans/catalogo_departamento.1degree.png" usemap="#catalogo_departamento" style="max-width:100%;" border="0" align="top">
+                                </div>
+                                <div class="item">
+                                    <img id="catalogo_provinciaDegreeImg" src="diagrams/orphans/catalogo_provincia.1degree.png" usemap="#catalogo_provincia" style="max-width:100%;" border="0" align="top">
+                                </div>
+                                <div class="item">
+                                    <img id="catalogo_ramoDegreeImg" src="diagrams/orphans/catalogo_ramo.1degree.png" usemap="#catalogo_ramo" style="max-width:100%;" border="0" align="top">
+                                </div>
+                                <div class="item">
+                                    <img id="menuDegreeImg" src="diagrams/orphans/menu.1degree.png" usemap="#menu" style="max-width:100%;" border="0" align="top">
+                                </div>
+                                <div class="item">
+                                    <img id="relacion_form_prof_nivelDegreeImg" src="diagrams/orphans/relacion_form_prof_nivel.1degree.png" usemap="#relacion_form_prof_nivel" style="max-width:100%;" border="0" align="top">
+                                </div>
+                                <div class="item">
+                                    <img id="catalogo_cer_unefco_tipo_documentoDegreeImg" src="diagrams/orphans/catalogo_cer_unefco_tipo_documento.1degree.png" usemap="#catalogo_cer_unefco_tipo_documento" style="max-width:100%;" border="0" align="top">
+                                </div>
+                                <div class="item">
+                                    <img id="catalogo_declaracion_tipo_documentoDegreeImg" src="diagrams/orphans/catalogo_declaracion_tipo_documento.1degree.png" usemap="#catalogo_declaracion_tipo_documento" style="max-width:100%;" border="0" align="top">
+                                </div>
+                                <div class="item">
+                                    <img id="catalogo_dip_bach_tipo_documentoDegreeImg" src="diagrams/orphans/catalogo_dip_bach_tipo_documento.1degree.png" usemap="#catalogo_dip_bach_tipo_documento" style="max-width:100%;" border="0" align="top">
+                                </div>
+                                <div class="item">
+                                    <img id="catalogo_esp_iser_tipo_documentoDegreeImg" src="diagrams/orphans/catalogo_esp_iser_tipo_documento.1degree.png" usemap="#catalogo_esp_iser_tipo_documento" style="max-width:100%;" border="0" align="top">
+                                </div>
+                                <div class="item">
+                                    <img id="catalogo_esp_peams_tipo_documentoDegreeImg" src="diagrams/orphans/catalogo_esp_peams_tipo_documento.1degree.png" usemap="#catalogo_esp_peams_tipo_documento" style="max-width:100%;" border="0" align="top">
+                                </div>
+                                <div class="item">
+                                    <img id="catalogo_ext_rev_univ_tipo_documentoDegreeImg" src="diagrams/orphans/catalogo_ext_rev_univ_tipo_documento.1degree.png" usemap="#catalogo_ext_rev_univ_tipo_documento" style="max-width:100%;" border="0" align="top">
+                                </div>
+                                <div class="item">
+                                    <img id="catalogo_grupo_categoriaDegreeImg" src="diagrams/orphans/catalogo_grupo_categoria.1degree.png" usemap="#catalogo_grupo_categoria" style="max-width:100%;" border="0" align="top">
+                                </div>
+                                <div class="item">
+                                    <img id="catalogo_institutos_tipo_documentoDegreeImg" src="diagrams/orphans/catalogo_institutos_tipo_documento.1degree.png" usemap="#catalogo_institutos_tipo_documento" style="max-width:100%;" border="0" align="top">
+                                </div>
+                                <div class="item">
+                                    <img id="catalogo_normalista_rev_tipo_documentoDegreeImg" src="diagrams/orphans/catalogo_normalista_rev_tipo_documento.1degree.png" usemap="#catalogo_normalista_rev_tipo_documento" style="max-width:100%;" border="0" align="top">
+                                </div>
+                                <div class="item">
+                                    <img id="catalogo_normalista_tipo_documentoDegreeImg" src="diagrams/orphans/catalogo_normalista_tipo_documento.1degree.png" usemap="#catalogo_normalista_tipo_documento" style="max-width:100%;" border="0" align="top">
+                                </div>
+                                <div class="item">
+                                    <img id="catalogo_postgrado_tipo_documentoDegreeImg" src="diagrams/orphans/catalogo_postgrado_tipo_documento.1degree.png" usemap="#catalogo_postgrado_tipo_documento" style="max-width:100%;" border="0" align="top">
+                                </div>
+                                <div class="item">
+                                    <img id="catalogo_seccionDegreeImg" src="diagrams/orphans/catalogo_seccion.1degree.png" usemap="#catalogo_seccion" style="max-width:100%;" border="0" align="top">
+                                </div>
+                                <div class="item">
+                                    <img id="catalogo_tec_calificado_tipo_documentoDegreeImg" src="diagrams/orphans/catalogo_tec_calificado_tipo_documento.1degree.png" usemap="#catalogo_tec_calificado_tipo_documento" style="max-width:100%;" border="0" align="top">
+                                </div>
+                                <div class="item">
+                                    <img id="catalogo_universitario_tipo_documentoDegreeImg" src="diagrams/orphans/catalogo_universitario_tipo_documento.1degree.png" usemap="#catalogo_universitario_tipo_documento" style="max-width:100%;" border="0" align="top">
+                                </div>
+                                <div class="item">
+                                    <img id="oauth_access_tokensDegreeImg" src="diagrams/orphans/oauth_access_tokens.1degree.png" usemap="#oauth_access_tokens" style="max-width:100%;" border="0" align="top">
+                                </div>
+                                <div class="item">
+                                    <img id="relacion_form_prof_entiDegreeImg" src="diagrams/orphans/relacion_form_prof_enti.1degree.png" usemap="#relacion_form_prof_enti" style="max-width:100%;" border="0" align="top">
+                                </div>
+                                <div class="item">
+                                    <img id="catalogo_cantonDegreeImg" src="diagrams/orphans/catalogo_canton.1degree.png" usemap="#catalogo_canton" style="max-width:100%;" border="0" align="top">
+                                </div>
+                                <div class="item">
+                                    <img id="catalogo_distritoDegreeImg" src="diagrams/orphans/catalogo_distrito.1degree.png" usemap="#catalogo_distrito" style="max-width:100%;" border="0" align="top">
+                                </div>
+                                <div class="item">
+                                    <img id="catalogo_tipo_documentoDegreeImg" src="diagrams/orphans/catalogo_tipo_documento.1degree.png" usemap="#catalogo_tipo_documento" style="max-width:100%;" border="0" align="top">
+                                </div>
+                                <div class="item">
+                                    <img id="loteDegreeImg" src="diagrams/orphans/lote.1degree.png" usemap="#lote" style="max-width:100%;" border="0" align="top">
+                                </div>
+                                <div class="item">
+                                    <img id="oauth_clientsDegreeImg" src="diagrams/orphans/oauth_clients.1degree.png" usemap="#oauth_clients" style="max-width:100%;" border="0" align="top">
+                                </div>
+                                <div class="item">
+                                    <img id="relacion_form_prof_espeDegreeImg" src="diagrams/orphans/relacion_form_prof_espe.1degree.png" usemap="#relacion_form_prof_espe" style="max-width:100%;" border="0" align="top">
+                                </div>
+                                <div class="item">
+                                    <img id="catalogo_localidadDegreeImg" src="diagrams/orphans/catalogo_localidad.1degree.png" usemap="#catalogo_localidad" style="max-width:100%;" border="0" align="top">
+                                </div>
+                                <div class="item">
+                                    <img id="r_observado_definitivoDegreeImg" src="diagrams/orphans/r_observado_definitivo.1degree.png" usemap="#r_observado_definitivo" style="max-width:100%;" border="0" align="top">
+                                </div>
+                                <div class="item">
+                                    <img id="r_observado_preventivoDegreeImg" src="diagrams/orphans/r_observado_preventivo.1degree.png" usemap="#r_observado_preventivo" style="max-width:100%;" border="0" align="top">
+                                </div>
+                                <div class="item">
+                                    <img id="r_observado_preventivo_mcDegreeImg" src="diagrams/orphans/r_observado_preventivo_mc.1degree.png" usemap="#r_observado_preventivo_mc" style="max-width:100%;" border="0" align="top">
+                                </div>
+                                <div class="item">
+                                    <img id="sisep_doc_benef_ds_exencion_anios_provDegreeImg" src="diagrams/orphans/sisep_doc_benef_ds_exencion_anios_prov.1degree.png" usemap="#sisep_doc_benef_ds_exencion_anios_prov" style="max-width:100%;" border="0" align="top">
+                                </div>
+                                <div class="item">
+                                    <img id="sisep_doc_calificacion_resolucionDegreeImg" src="diagrams/orphans/sisep_doc_calificacion_resolucion.1degree.png" usemap="#sisep_doc_calificacion_resolucion" style="max-width:100%;" border="0" align="top">
+                                </div>
+                                <div class="item">
+                                    <img id="sisep_doc_cert_corte_dtal_modif_datos_persDegreeImg" src="diagrams/orphans/sisep_doc_cert_corte_dtal_modif_datos_pers.1degree.png" usemap="#sisep_doc_cert_corte_dtal_modif_datos_pers" style="max-width:100%;" border="0" align="top">
+                                </div>
+                                <div class="item">
+                                    <img id="sisep_doc_cert_post_alfb_provDegreeImg" src="diagrams/orphans/sisep_doc_cert_post_alfb_prov.1degree.png" usemap="#sisep_doc_cert_post_alfb_prov" style="max-width:100%;" border="0" align="top">
+                                </div>
+                                <div class="item">
+                                    <img id="sisep_doc_ra_modif_datos_persDegreeImg" src="diagrams/orphans/sisep_doc_ra_modif_datos_pers.1degree.png" usemap="#sisep_doc_ra_modif_datos_pers" style="max-width:100%;" border="0" align="top">
+                                </div>
+                                <div class="item">
+                                    <img id="sisep_doc_rm_exencion_anios_provinciaDegreeImg" src="diagrams/orphans/sisep_doc_rm_exencion_anios_provincia.1degree.png" usemap="#sisep_doc_rm_exencion_anios_provincia" style="max-width:100%;" border="0" align="top">
+                                </div>
+                                <div class="item">
+                                    <img id="sisep_doc_sentencia_modif_datos_persDegreeImg" src="diagrams/orphans/sisep_doc_sentencia_modif_datos_pers.1degree.png" usemap="#sisep_doc_sentencia_modif_datos_pers" style="max-width:100%;" border="0" align="top">
+                                </div>
+                                <div class="item">
+                                    <img id="catalogo_especialidadDegreeImg" src="diagrams/orphans/catalogo_especialidad.1degree.png" usemap="#catalogo_especialidad" style="max-width:100%;" border="0" align="top">
+                                </div>
+                                <div class="item">
+                                    <img id="catalogo_normalista_especialidadDegreeImg" src="diagrams/orphans/catalogo_normalista_especialidad.1degree.png" usemap="#catalogo_normalista_especialidad" style="max-width:100%;" border="0" align="top">
+                                </div>
+                                <div class="item">
+                                    <img id="catalogo_normalista_formacion_profesionalDegreeImg" src="diagrams/orphans/catalogo_normalista_formacion_profesional.1degree.png" usemap="#catalogo_normalista_formacion_profesional" style="max-width:100%;" border="0" align="top">
+                                </div>
+                                <div class="item">
+                                    <img id="r_encregDegreeImg" src="diagrams/orphans/r_encreg.1degree.png" usemap="#r_encreg" style="max-width:100%;" border="0" align="top">
+                                </div>
+                                <div class="item">
+                                    <img id="r_observado_sin_leyendaDegreeImg" src="diagrams/orphans/r_observado_sin_leyenda.1degree.png" usemap="#r_observado_sin_leyenda" style="max-width:100%;" border="0" align="top">
+                                </div>
+                                <div class="item">
+                                    <img id="sisep_doc_calificacion_anios_servicioDegreeImg" src="diagrams/orphans/sisep_doc_calificacion_anios_servicio.1degree.png" usemap="#sisep_doc_calificacion_anios_servicio" style="max-width:100%;" border="0" align="top">
+                                </div>
+                                <div class="item">
+                                    <img id="sisep_doc_carnet_ibcDegreeImg" src="diagrams/orphans/sisep_doc_carnet_ibc.1degree.png" usemap="#sisep_doc_carnet_ibc" style="max-width:100%;" border="0" align="top">
+                                </div>
+                                <div class="item">
+                                    <img id="sisep_doc_copia_legalizada_libreta_militarDegreeImg" src="diagrams/orphans/sisep_doc_copia_legalizada_libreta_militar.1degree.png" usemap="#sisep_doc_copia_legalizada_libreta_militar" style="max-width:100%;" border="0" align="top">
+                                </div>
+                                <div class="item">
+                                    <img id="sisep_doc_resolucionDegreeImg" src="diagrams/orphans/sisep_doc_resolucion.1degree.png" usemap="#sisep_doc_resolucion" style="max-width:100%;" border="0" align="top">
+                                </div>
+                                <div class="item">
+                                    <img id="users_backupDegreeImg" src="diagrams/orphans/users_backup.1degree.png" usemap="#users_backup" style="max-width:100%;" border="0" align="top">
+                                </div>
+                                <div class="item">
+                                    <img id="catalogo_formacion_profesionalDegreeImg" src="diagrams/orphans/catalogo_formacion_profesional.1degree.png" usemap="#catalogo_formacion_profesional" style="max-width:100%;" border="0" align="top">
+                                </div>
+                                <div class="item">
+                                    <img id="relacion_form_prof_tipo_docuDegreeImg" src="diagrams/orphans/relacion_form_prof_tipo_docu.1degree.png" usemap="#relacion_form_prof_tipo_docu" style="max-width:100%;" border="0" align="top">
+                                </div>
+                                <div class="item">
+                                    <img id="sisep_doc_afpDegreeImg" src="diagrams/orphans/sisep_doc_afp.1degree.png" usemap="#sisep_doc_afp" style="max-width:100%;" border="0" align="top">
+                                </div>
+                                <div class="item">
+                                    <img id="sisep_doc_libreta_militarDegreeImg" src="diagrams/orphans/sisep_doc_libreta_militar.1degree.png" usemap="#sisep_doc_libreta_militar" style="max-width:100%;" border="0" align="top">
+                                </div>
+                                <div class="item">
+                                    <img id="sisep_doc_tecnico_calificadoDegreeImg" src="diagrams/orphans/sisep_doc_tecnico_calificado.1degree.png" usemap="#sisep_doc_tecnico_calificado" style="max-width:100%;" border="0" align="top">
+                                </div>
+                                <div class="item">
+                                    <img id="detalle_sisep_doc_calificacion_anios_servicioDegreeImg" src="diagrams/orphans/detalle_sisep_doc_calificacion_anios_servicio.1degree.png" usemap="#detalle_sisep_doc_calificacion_anios_servicio" style="max-width:100%;" border="0" align="top">
+                                </div>
+                                <div class="item">
+                                    <img id="detalle_sisep_doc_resolucionDegreeImg" src="diagrams/orphans/detalle_sisep_doc_resolucion.1degree.png" usemap="#detalle_sisep_doc_resolucion" style="max-width:100%;" border="0" align="top">
+                                </div>
+                                <div class="item">
+                                    <img id="sisep_doc_carnet_conalpedisDegreeImg" src="diagrams/orphans/sisep_doc_carnet_conalpedis.1degree.png" usemap="#sisep_doc_carnet_conalpedis" style="max-width:100%;" border="0" align="top">
+                                </div>
+                                <div class="item">
+                                    <img id="sisep_doc_certificado_unefcoDegreeImg" src="diagrams/orphans/sisep_doc_certificado_unefco.1degree.png" usemap="#sisep_doc_certificado_unefco" style="max-width:100%;" border="0" align="top">
+                                </div>
+                                <div class="item">
+                                    <img id="sisep_doc_consolidado_maestriaDegreeImg" src="diagrams/orphans/sisep_doc_consolidado_maestria.1degree.png" usemap="#sisep_doc_consolidado_maestria" style="max-width:100%;" border="0" align="top">
+                                </div>
+                                <div class="item">
+                                    <img id="r_formrdaDegreeImg" src="diagrams/orphans/r_formrda.1degree.png" usemap="#r_formrda" style="max-width:100%;" border="0" align="top">
+                                </div>
+                                <div class="item">
+                                    <img id="sisep_doc_certificado_cursosDegreeImg" src="diagrams/orphans/sisep_doc_certificado_cursos.1degree.png" usemap="#sisep_doc_certificado_cursos" style="max-width:100%;" border="0" align="top">
+                                </div>
+                                <div class="item">
+                                    <img id="sisep_doc_consolidado_titulo_provision_nacionalDegreeImg" src="diagrams/orphans/sisep_doc_consolidado_titulo_provision_nacional.1degree.png" usemap="#sisep_doc_consolidado_titulo_provision_nacional" style="max-width:100%;" border="0" align="top">
+                                </div>
+                                <div class="item">
+                                    <img id="sisep_doc_diploma_academicoDegreeImg" src="diagrams/orphans/sisep_doc_diploma_academico.1degree.png" usemap="#sisep_doc_diploma_academico" style="max-width:100%;" border="0" align="top">
+                                </div>
+                                <div class="item">
+                                    <img id="sisep_doc_especializacion_iserDegreeImg" src="diagrams/orphans/sisep_doc_especializacion_iser.1degree.png" usemap="#sisep_doc_especializacion_iser" style="max-width:100%;" border="0" align="top">
+                                </div>
+                                <div class="item">
+                                    <img id="sisep_doc_especializacion_peamsDegreeImg" src="diagrams/orphans/sisep_doc_especializacion_peams.1degree.png" usemap="#sisep_doc_especializacion_peams" style="max-width:100%;" border="0" align="top">
+                                </div>
+                                <div class="item">
+                                    <img id="sisep_doc_ext_rev_univDegreeImg" src="diagrams/orphans/sisep_doc_ext_rev_univ.1degree.png" usemap="#sisep_doc_ext_rev_univ" style="max-width:100%;" border="0" align="top">
+                                </div>
+                                <div class="item">
+                                    <img id="sisep_doc_idiomaDegreeImg" src="diagrams/orphans/sisep_doc_idioma.1degree.png" usemap="#sisep_doc_idioma" style="max-width:100%;" border="0" align="top">
+                                </div>
+                                <div class="item">
+                                    <img id="sisep_doc_certificado_universitarioDegreeImg" src="diagrams/orphans/sisep_doc_certificado_universitario.1degree.png" usemap="#sisep_doc_certificado_universitario" style="max-width:100%;" border="0" align="top">
+                                </div>
+                                <div class="item">
+                                    <img id="sisep_doc_cursosDegreeImg" src="diagrams/orphans/sisep_doc_cursos.1degree.png" usemap="#sisep_doc_cursos" style="max-width:100%;" border="0" align="top">
+                                </div>
+                                <div class="item">
+                                    <img id="r_entidadDegreeImg" src="diagrams/orphans/r_entidad.1degree.png" usemap="#r_entidad" style="max-width:100%;" border="0" align="top">
+                                </div>
+                                <div class="item">
+                                    <img id="sisep_doc_carnet_discapacidadDegreeImg" src="diagrams/orphans/sisep_doc_carnet_discapacidad.1degree.png" usemap="#sisep_doc_carnet_discapacidad" style="max-width:100%;" border="0" align="top">
+                                </div>
+                                <div class="item">
+                                    <img id="sisep_doc_categoriaDegreeImg" src="diagrams/orphans/sisep_doc_categoria.1degree.png" usemap="#sisep_doc_categoria" style="max-width:100%;" border="0" align="top">
+                                </div>
+                                <div class="item">
+                                    <img id="sisep_doc_declaracionDegreeImg" src="diagrams/orphans/sisep_doc_declaracion.1degree.png" usemap="#sisep_doc_declaracion" style="max-width:100%;" border="0" align="top">
+                                </div>
+                                <div class="item">
+                                    <img id="sisep_doc_documento_identificacionDegreeImg" src="diagrams/orphans/sisep_doc_documento_identificacion.1degree.png" usemap="#sisep_doc_documento_identificacion" style="max-width:100%;" border="0" align="top">
+                                </div>
+                                <div class="item">
+                                    <img id="sisepdesc_documentoDegreeImg" src="diagrams/orphans/sisepdesc_documento.1degree.png" usemap="#sisepdesc_documento" style="max-width:100%;" border="0" align="top">
+                                </div>
+                                <div class="item">
+                                    <img id="sisep_doc_certificado_escolarDegreeImg" src="diagrams/orphans/sisep_doc_certificado_escolar.1degree.png" usemap="#sisep_doc_certificado_escolar" style="max-width:100%;" border="0" align="top">
+                                </div>
+                                <div class="item">
+                                    <img id="sisep_doc_certificado_normalistaDegreeImg" src="diagrams/orphans/sisep_doc_certificado_normalista.1degree.png" usemap="#sisep_doc_certificado_normalista" style="max-width:100%;" border="0" align="top">
+                                </div>
+                                <div class="item">
+                                    <img id="sisep_doc_consolidado_resolucionDegreeImg" src="diagrams/orphans/sisep_doc_consolidado_resolucion.1degree.png" usemap="#sisep_doc_consolidado_resolucion" style="max-width:100%;" border="0" align="top">
+                                </div>
+                                <div class="item">
+                                    <img id="sisep_doc_diploma_bachillerDegreeImg" src="diagrams/orphans/sisep_doc_diploma_bachiller.1degree.png" usemap="#sisep_doc_diploma_bachiller" style="max-width:100%;" border="0" align="top">
+                                </div>
+                                <div class="item">
+                                    <img id="sisep_doc_postgradoDegreeImg" src="diagrams/orphans/sisep_doc_postgrado.1degree.png" usemap="#sisep_doc_postgrado" style="max-width:100%;" border="0" align="top">
+                                </div>
+                                <div class="item">
+                                    <img id="catalogo_normalista_entidadDegreeImg" src="diagrams/orphans/catalogo_normalista_entidad.1degree.png" usemap="#catalogo_normalista_entidad" style="max-width:100%;" border="0" align="top">
+                                </div>
+                                <div class="item">
+                                    <img id="r_docpersonalDegreeImg" src="diagrams/orphans/r_docpersonal.1degree.png" usemap="#r_docpersonal" style="max-width:100%;" border="0" align="top">
+                                </div>
+                                <div class="item">
+                                    <img id="sisep_doc_categoriasDegreeImg" src="diagrams/orphans/sisep_doc_categorias.1degree.png" usemap="#sisep_doc_categorias" style="max-width:100%;" border="0" align="top">
+                                </div>
+                                <div class="item">
+                                    <img id="sisep_doc_consolidado_benef_ds_exencion_anios_provDegreeImg" src="diagrams/orphans/sisep_doc_consolidado_benef_ds_exencion_anios_prov.1degree.png" usemap="#sisep_doc_consolidado_benef_ds_exencion_anios_prov" style="max-width:100%;" border="0" align="top">
+                                </div>
+                                <div class="item">
+                                    <img id="sisep_doc_consolidado_calificacion_anios_servicioDegreeImg" src="diagrams/orphans/sisep_doc_consolidado_calificacion_anios_servicio.1degree.png" usemap="#sisep_doc_consolidado_calificacion_anios_servicio" style="max-width:100%;" border="0" align="top">
+                                </div>
+                                <div class="item">
+                                    <img id="sisep_doc_consolidado_categoriaDegreeImg" src="diagrams/orphans/sisep_doc_consolidado_categoria.1degree.png" usemap="#sisep_doc_consolidado_categoria" style="max-width:100%;" border="0" align="top">
+                                </div>
+                                <div class="item">
+                                    <img id="sisep_doc_consolidado_cert_corte_dtal_modif_datos_persDegreeImg" src="diagrams/orphans/sisep_doc_consolidado_cert_corte_dtal_modif_datos_pers.1degree.png" usemap="#sisep_doc_consolidado_cert_corte_dtal_modif_datos_pers" style="max-width:100%;" border="0" align="top">
+                                </div>
+                                <div class="item">
+                                    <img id="sisep_doc_consolidado_ra_modif_datos_persDegreeImg" src="diagrams/orphans/sisep_doc_consolidado_ra_modif_datos_pers.1degree.png" usemap="#sisep_doc_consolidado_ra_modif_datos_pers" style="max-width:100%;" border="0" align="top">
+                                </div>
+                                <div class="item">
+                                    <img id="sisep_doc_consolidado_rm_exencion_anios_provinciaDegreeImg" src="diagrams/orphans/sisep_doc_consolidado_rm_exencion_anios_provincia.1degree.png" usemap="#sisep_doc_consolidado_rm_exencion_anios_provincia" style="max-width:100%;" border="0" align="top">
+                                </div>
+                                <div class="item">
+                                    <img id="sisep_doc_consolidado_sentencia_modif_datos_persDegreeImg" src="diagrams/orphans/sisep_doc_consolidado_sentencia_modif_datos_pers.1degree.png" usemap="#sisep_doc_consolidado_sentencia_modif_datos_pers" style="max-width:100%;" border="0" align="top">
+                                </div>
+                                <div class="item">
+                                    <img id="catalogo_entidadDegreeImg" src="diagrams/orphans/catalogo_entidad.1degree.png" usemap="#catalogo_entidad" style="max-width:100%;" border="0" align="top">
+                                </div>
+                                <div class="item">
+                                    <img id="r_bachillerDegreeImg" src="diagrams/orphans/r_bachiller.1degree.png" usemap="#r_bachiller" style="max-width:100%;" border="0" align="top">
+                                </div>
+                                <div class="item">
+                                    <img id="sisep_doc_cert_cal_edu_regDegreeImg" src="diagrams/orphans/sisep_doc_cert_cal_edu_reg.1degree.png" usemap="#sisep_doc_cert_cal_edu_reg" style="max-width:100%;" border="0" align="top">
+                                </div>
+                                <div class="item">
+                                    <img id="sisep_doc_certificado_nacimientoDegreeImg" src="diagrams/orphans/sisep_doc_certificado_nacimiento.1degree.png" usemap="#sisep_doc_certificado_nacimiento" style="max-width:100%;" border="0" align="top">
+                                </div>
+                                <div class="item">
+                                    <img id="sisep_doc_consolidado_carnet_ibcDegreeImg" src="diagrams/orphans/sisep_doc_consolidado_carnet_ibc.1degree.png" usemap="#sisep_doc_consolidado_carnet_ibc" style="max-width:100%;" border="0" align="top">
+                                </div>
+                                <div class="item">
+                                    <img id="sisep_doc_consolidado_cert_post_alfb_provDegreeImg" src="diagrams/orphans/sisep_doc_consolidado_cert_post_alfb_prov.1degree.png" usemap="#sisep_doc_consolidado_cert_post_alfb_prov" style="max-width:100%;" border="0" align="top">
+                                </div>
+                                <div class="item">
+                                    <img id="sisep_doc_institutosDegreeImg" src="diagrams/orphans/sisep_doc_institutos.1degree.png" usemap="#sisep_doc_institutos" style="max-width:100%;" border="0" align="top">
+                                </div>
+                                <div class="item">
+                                    <img id="sisep_doc_normalistaDegreeImg" src="diagrams/orphans/sisep_doc_normalista.1degree.png" usemap="#sisep_doc_normalista" style="max-width:100%;" border="0" align="top">
+                                </div>
+                                <div class="item">
+                                    <img id="sisep_doc_normalista_revalidadoDegreeImg" src="diagrams/orphans/sisep_doc_normalista_revalidado.1degree.png" usemap="#sisep_doc_normalista_revalidado" style="max-width:100%;" border="0" align="top">
+                                </div>
+                                <div class="item">
+                                    <img id="sisep_doc_universitarioDegreeImg" src="diagrams/orphans/sisep_doc_universitario.1degree.png" usemap="#sisep_doc_universitario" style="max-width:100%;" border="0" align="top">
+                                </div>
+                                <div class="item">
+                                    <img id="r_catgesDegreeImg" src="diagrams/orphans/r_catges.1degree.png" usemap="#r_catges" style="max-width:100%;" border="0" align="top">
+                                </div>
+                                <div class="item">
+                                    <img id="sisep_doc_consolidado_carnet_discapacidadDegreeImg" src="diagrams/orphans/sisep_doc_consolidado_carnet_discapacidad.1degree.png" usemap="#sisep_doc_consolidado_carnet_discapacidad" style="max-width:100%;" border="0" align="top">
+                                </div>
+                                <div class="item">
+                                    <img id="sisep_doc_consolidado_carnet_conalpedisDegreeImg" src="diagrams/orphans/sisep_doc_consolidado_carnet_conalpedis.1degree.png" usemap="#sisep_doc_consolidado_carnet_conalpedis" style="max-width:100%;" border="0" align="top">
+                                </div>
+                                <div class="item">
+                                    <img id="sisep_doc_consolidado_idiomaDegreeImg" src="diagrams/orphans/sisep_doc_consolidado_idioma.1degree.png" usemap="#sisep_doc_consolidado_idioma" style="max-width:100%;" border="0" align="top">
+                                </div>
+                                <div class="item">
+                                    <img id="sisep_doc_consolidado_libreta_militarDegreeImg" src="diagrams/orphans/sisep_doc_consolidado_libreta_militar.1degree.png" usemap="#sisep_doc_consolidado_libreta_militar" style="max-width:100%;" border="0" align="top">
+                                </div>
+                                <div class="item">
+                                    <img id="sisep_doc_consolidado_afpDegreeImg" src="diagrams/orphans/sisep_doc_consolidado_afp.1degree.png" usemap="#sisep_doc_consolidado_afp" style="max-width:100%;" border="0" align="top">
+                                </div>
+                                <div class="item">
+                                    <img id="sisep_doc_consolidado_tecnico_calificadoDegreeImg" src="diagrams/orphans/sisep_doc_consolidado_tecnico_calificado.1degree.png" usemap="#sisep_doc_consolidado_tecnico_calificado" style="max-width:100%;" border="0" align="top">
+                                </div>
+                                <div class="item">
+                                    <img id="r_bachiller_pedagogicoDegreeImg" src="diagrams/orphans/r_bachiller_pedagogico.1degree.png" usemap="#r_bachiller_pedagogico" style="max-width:100%;" border="0" align="top">
+                                </div>
+                                <div class="item">
+                                    <img id="sisep_doc_consolidado_certificado_unefcoDegreeImg" src="diagrams/orphans/sisep_doc_consolidado_certificado_unefco.1degree.png" usemap="#sisep_doc_consolidado_certificado_unefco" style="max-width:100%;" border="0" align="top">
+                                </div>
+                                <div class="item">
+                                    <img id="sisep_doc_consolidado_bachiller_pedagogicoDegreeImg" src="diagrams/orphans/sisep_doc_consolidado_bachiller_pedagogico.1degree.png" usemap="#sisep_doc_consolidado_bachiller_pedagogico" style="max-width:100%;" border="0" align="top">
+                                </div>
+                                <div class="item">
+                                    <img id="sisep_doc_consolidado_diploma_distincionDegreeImg" src="diagrams/orphans/sisep_doc_consolidado_diploma_distincion.1degree.png" usemap="#sisep_doc_consolidado_diploma_distincion" style="max-width:100%;" border="0" align="top">
+                                </div>
+                                <div class="item">
+                                    <img id="r_egresadosDegreeImg" src="diagrams/orphans/r_egresados.1degree.png" usemap="#r_egresados" style="max-width:100%;" border="0" align="top">
+                                </div>
+                                <div class="item">
+                                    <img id="r_egresados_ppmiDegreeImg" src="diagrams/orphans/r_egresados_ppmi.1degree.png" usemap="#r_egresados_ppmi" style="max-width:100%;" border="0" align="top">
+                                </div>
+                                <div class="item">
+                                    <img id="sisep_doc_consolidado_censoDegreeImg" src="diagrams/orphans/sisep_doc_consolidado_censo.1degree.png" usemap="#sisep_doc_consolidado_censo" style="max-width:100%;" border="0" align="top">
+                                </div>
+                                <div class="item">
+                                    <img id="sisep_doc_consolidado_certificado_universitarioDegreeImg" src="diagrams/orphans/sisep_doc_consolidado_certificado_universitario.1degree.png" usemap="#sisep_doc_consolidado_certificado_universitario" style="max-width:100%;" border="0" align="top">
+                                </div>
+                                <div class="item">
+                                    <img id="sisep_doc_consolidado_cursosDegreeImg" src="diagrams/orphans/sisep_doc_consolidado_cursos.1degree.png" usemap="#sisep_doc_consolidado_cursos" style="max-width:100%;" border="0" align="top">
+                                </div>
+                                <div class="item">
+                                    <img id="sisep_doc_consolidado_especializacion_iserDegreeImg" src="diagrams/orphans/sisep_doc_consolidado_especializacion_iser.1degree.png" usemap="#sisep_doc_consolidado_especializacion_iser" style="max-width:100%;" border="0" align="top">
+                                </div>
+                                <div class="item">
+                                    <img id="sisep_doc_consolidado_especializacion_peamsDegreeImg" src="diagrams/orphans/sisep_doc_consolidado_especializacion_peams.1degree.png" usemap="#sisep_doc_consolidado_especializacion_peams" style="max-width:100%;" border="0" align="top">
+                                </div>
+                                <div class="item">
+                                    <img id="sisep_doc_consolidado_ext_rev_univDegreeImg" src="diagrams/orphans/sisep_doc_consolidado_ext_rev_univ.1degree.png" usemap="#sisep_doc_consolidado_ext_rev_univ" style="max-width:100%;" border="0" align="top">
+                                </div>
+                                <div class="item">
+                                    <img id="detalle_sisep_doc_consolidado_calificacion_anios_servicioDegreeImg" src="diagrams/orphans/detalle_sisep_doc_consolidado_calificacion_anios_servicio.1degree.png" usemap="#detalle_sisep_doc_consolidado_calificacion_anios_servicio" style="max-width:100%;" border="0" align="top">
+                                </div>
+                                <div class="item">
+                                    <img id="detalle_sisep_doc_consolidado_resolucionDegreeImg" src="diagrams/orphans/detalle_sisep_doc_consolidado_resolucion.1degree.png" usemap="#detalle_sisep_doc_consolidado_resolucion" style="max-width:100%;" border="0" align="top">
+                                </div>
+                                <div class="item">
+                                    <img id="r_programa_profesor_interinoDegreeImg" src="diagrams/orphans/r_programa_profesor_interino.1degree.png" usemap="#r_programa_profesor_interino" style="max-width:100%;" border="0" align="top">
+                                </div>
+                                <div class="item">
+                                    <img id="sisep_doc_consolidado_documento_identificacionDegreeImg" src="diagrams/orphans/sisep_doc_consolidado_documento_identificacion.1degree.png" usemap="#sisep_doc_consolidado_documento_identificacion" style="max-width:100%;" border="0" align="top">
+                                </div>
+                                <div class="item">
+                                    <img id="sisep_doc_consolidado_certificado_escolarDegreeImg" src="diagrams/orphans/sisep_doc_consolidado_certificado_escolar.1degree.png" usemap="#sisep_doc_consolidado_certificado_escolar" style="max-width:100%;" border="0" align="top">
+                                </div>
+                                <div class="item">
+                                    <img id="sisep_doc_consolidado_diploma_bachillerDegreeImg" src="diagrams/orphans/sisep_doc_consolidado_diploma_bachiller.1degree.png" usemap="#sisep_doc_consolidado_diploma_bachiller" style="max-width:100%;" border="0" align="top">
+                                </div>
+                                <div class="item">
+                                    <img id="sisep_doc_consolidado_postgradoDegreeImg" src="diagrams/orphans/sisep_doc_consolidado_postgrado.1degree.png" usemap="#sisep_doc_consolidado_postgrado" style="max-width:100%;" border="0" align="top">
+                                </div>
+                                <div class="item">
+                                    <img id="sisep_doc_consolidado_certificado_normalistaDegreeImg" src="diagrams/orphans/sisep_doc_consolidado_certificado_normalista.1degree.png" usemap="#sisep_doc_consolidado_certificado_normalista" style="max-width:100%;" border="0" align="top">
+                                </div>
+                                <div class="item">
+                                    <img id="sisep_doc_consolidado_institutosDegreeImg" src="diagrams/orphans/sisep_doc_consolidado_institutos.1degree.png" usemap="#sisep_doc_consolidado_institutos" style="max-width:100%;" border="0" align="top">
+                                </div>
+                                <div class="item">
+                                    <img id="sisep_doc_consolidado_declaracionDegreeImg" src="diagrams/orphans/sisep_doc_consolidado_declaracion.1degree.png" usemap="#sisep_doc_consolidado_declaracion" style="max-width:100%;" border="0" align="top">
+                                </div>
+                                <div class="item">
+                                    <img id="sisep_doc_consolidado_normalista_revalidadoDegreeImg" src="diagrams/orphans/sisep_doc_consolidado_normalista_revalidado.1degree.png" usemap="#sisep_doc_consolidado_normalista_revalidado" style="max-width:100%;" border="0" align="top">
+                                </div>
+                                <div class="item">
+                                    <img id="sisep_doc_consolidado_universitarioDegreeImg" src="diagrams/orphans/sisep_doc_consolidado_universitario.1degree.png" usemap="#sisep_doc_consolidado_universitario" style="max-width:100%;" border="0" align="top">
+                                </div>
+                                <div class="item">
+                                    <img id="sisep_doc_consolidado_normalistaDegreeImg" src="diagrams/orphans/sisep_doc_consolidado_normalista.1degree.png" usemap="#sisep_doc_consolidado_normalista" style="max-width:100%;" border="0" align="top">
+                                </div>
+                                <div class="item">
+                                    <img id="sisep_doc_consolidado_certificado_nacimientoDegreeImg" src="diagrams/orphans/sisep_doc_consolidado_certificado_nacimiento.1degree.png" usemap="#sisep_doc_consolidado_certificado_nacimiento" style="max-width:100%;" border="0" align="top">
+                                </div>
+                                <div class="item">
+                                    <img id="r_observadosDegreeImg" src="diagrams/orphans/r_observados.1degree.png" usemap="#r_observados" style="max-width:100%;" border="0" align="top">
+                                </div>
+                                <div class="item">
+                                    <img id="r_sancionDegreeImg" src="diagrams/orphans/r_sancion.1degree.png" usemap="#r_sancion" style="max-width:100%;" border="0" align="top">
+                                </div>
+                            </div>
+                            <map id="codigo_rda_apertura" name="codigo_rda_apertura">
+<area shape="rect" id="node1" href="tables/codigo_rda_apertura.html" target="_top" title="codigo_rda_apertura" alt="" coords="5,5,343,163">
+</map><map id="migrations" name="migrations">
+<area shape="rect" id="node1" href="tables/migrations.html" target="_top" title="migrations" alt="" coords="5,5,247,163">
+</map><map id="oauth_personal_access_clients" name="oauth_personal_access_clients">
+<area shape="rect" id="node1" href="tables/oauth_personal_access_clients.html" target="_top" title="oauth_personal_access_clients" alt="" coords="5,5,432,192">
+</map><map id="oauth_refresh_tokens" name="oauth_refresh_tokens">
+<area shape="rect" id="node1" href="tables/oauth_refresh_tokens.html" target="_top" title="oauth_refresh_tokens" alt="" coords="5,5,352,192">
+</map><map id="password_resets" name="password_resets">
+<area shape="rect" id="node1" href="tables/password_resets.html" target="_top" title="password_resets" alt="" coords="5,5,309,192">
+</map><map id="catalogo_apellidos" name="catalogo_apellidos">
+<area shape="rect" id="node1" href="tables/catalogo_apellidos.html" target="_top" title="catalogo_apellidos" alt="" coords="5,5,325,221">
+</map><map id="catalogo_cargo_cas" name="catalogo_cargo_cas">
+<area shape="rect" id="node1" href="tables/catalogo_cargo_cas.html" target="_top" title="catalogo_cargo_cas" alt="" coords="5,5,332,221">
+</map><map id="catalogo_carnet_discapacidad" name="catalogo_carnet_discapacidad">
+<area shape="rect" id="node1" href="tables/catalogo_carnet_discapacidad.html" target="_top" title="catalogo_carnet_discapacidad" alt="" coords="5,5,428,221">
+</map><map id="catalogo_cas" name="catalogo_cas">
+<area shape="rect" id="node1" href="tables/catalogo_cas.html" target="_top" title="catalogo_cas" alt="" coords="5,5,273,221">
+</map><map id="catalogo_cas_provincia" name="catalogo_cas_provincia">
+<area shape="rect" id="node1" href="tables/catalogo_cas_provincia.html" target="_top" title="catalogo_cas_provincia" alt="" coords="5,5,365,221">
+</map><map id="catalogo_categoria_grupo_categoria" name="catalogo_categoria_grupo_categoria">
+<area shape="rect" id="node1" href="tables/catalogo_categoria_grupo_categoria.html" target="_top" title="catalogo_categoria_grupo_categoria" alt="" coords="5,5,484,221">
+</map><map id="catalogo_categoria_tipo_categoria" name="catalogo_categoria_tipo_categoria">
+<area shape="rect" id="node1" href="tables/catalogo_categoria_tipo_categoria.html" target="_top" title="catalogo_categoria_tipo_categoria" alt="" coords="5,5,467,221">
+</map><map id="catalogo_categoria_tipo_documento" name="catalogo_categoria_tipo_documento">
+<area shape="rect" id="node1" href="tables/catalogo_categoria_tipo_documento.html" target="_top" title="catalogo_categoria_tipo_documento" alt="" coords="5,5,481,221">
+</map><map id="catalogo_departamento_bolivia" name="catalogo_departamento_bolivia">
+<area shape="rect" id="node1" href="tables/catalogo_departamento_bolivia.html" target="_top" title="catalogo_departamento_bolivia" alt="" coords="5,5,440,221">
+</map><map id="catalogo_desde_mes" name="catalogo_desde_mes">
+<area shape="rect" id="node1" href="tables/catalogo_desde_mes.html" target="_top" title="catalogo_desde_mes" alt="" coords="5,5,343,221">
+</map><map id="catalogo_estado_civil" name="catalogo_estado_civil">
+<area shape="rect" id="node1" href="tables/catalogo_estado_civil.html" target="_top" title="catalogo_estado_civil" alt="" coords="5,5,349,221">
+</map><map id="catalogo_grado_discapacidad" name="catalogo_grado_discapacidad">
+<area shape="rect" id="node1" href="tables/catalogo_grado_discapacidad.html" target="_top" title="catalogo_grado_discapacidad" alt="" coords="5,5,421,221">
+</map><map id="catalogo_hasta_mes" name="catalogo_hasta_mes">
+<area shape="rect" id="node1" href="tables/catalogo_hasta_mes.html" target="_top" title="catalogo_hasta_mes" alt="" coords="5,5,339,221">
+</map><map id="catalogo_idioma" name="catalogo_idioma">
+<area shape="rect" id="node1" href="tables/catalogo_idioma.html" target="_top" title="catalogo_idioma" alt="" coords="5,5,304,221">
+</map><map id="catalogo_nivel_escolar" name="catalogo_nivel_escolar">
+<area shape="rect" id="node1" href="tables/catalogo_nivel_escolar.html" target="_top" title="catalogo_nivel_escolar" alt="" coords="5,5,360,221">
+</map><map id="catalogo_nombres" name="catalogo_nombres">
+<area shape="rect" id="node1" href="tables/catalogo_nombres.html" target="_top" title="catalogo_nombres" alt="" coords="5,5,323,221">
+</map><map id="catalogo_parentesco" name="catalogo_parentesco">
+<area shape="rect" id="node1" href="tables/catalogo_parentesco.html" target="_top" title="catalogo_parentesco" alt="" coords="5,5,344,221">
+</map><map id="catalogo_personal_administrativo" name="catalogo_personal_administrativo">
+<area shape="rect" id="node1" href="tables/catalogo_personal_administrativo.html" target="_top" title="catalogo_personal_administrativo" alt="" coords="5,5,461,221">
+</map><map id="catalogo_profesion" name="catalogo_profesion">
+<area shape="rect" id="node1" href="tables/catalogo_profesion.html" target="_top" title="catalogo_profesion" alt="" coords="5,5,329,221">
+</map><map id="catalogo_tipo_cargo_categoria" name="catalogo_tipo_cargo_categoria">
+<area shape="rect" id="node1" href="tables/catalogo_tipo_cargo_categoria.html" target="_top" title="catalogo_tipo_cargo_categoria" alt="" coords="5,5,431,221">
+</map><map id="catalogo_tipo_discapacidad" name="catalogo_tipo_discapacidad">
+<area shape="rect" id="node1" href="tables/catalogo_tipo_discapacidad.html" target="_top" title="catalogo_tipo_discapacidad" alt="" coords="5,5,405,221">
+</map><map id="catalogo_tipo_documento_identificacion" name="catalogo_tipo_documento_identificacion">
+<area shape="rect" id="node1" href="tables/catalogo_tipo_documento_identificacion.html" target="_top" title="catalogo_tipo_documento_identificacion" alt="" coords="5,5,519,221">
+</map><map id="catalogo_tipo_documento_idioma" name="catalogo_tipo_documento_idioma">
+<area shape="rect" id="node1" href="tables/catalogo_tipo_documento_idioma.html" target="_top" title="catalogo_tipo_documento_idioma" alt="" coords="5,5,457,221">
+</map><map id="catalogo_tipo_documento_libreta_militar" name="catalogo_tipo_documento_libreta_militar">
+<area shape="rect" id="node1" href="tables/catalogo_tipo_documento_libreta_militar.html" target="_top" title="catalogo_tipo_documento_libreta_militar" alt="" coords="5,5,523,221">
+</map><map id="catalogo_tipo_formacion" name="catalogo_tipo_formacion">
+<area shape="rect" id="node1" href="tables/catalogo_tipo_formacion.html" target="_top" title="catalogo_tipo_formacion" alt="" coords="5,5,377,221">
+</map><map id="catalogo_tipo_libreta_militar" name="catalogo_tipo_libreta_militar">
+<area shape="rect" id="node1" href="tables/catalogo_tipo_libreta_militar.html" target="_top" title="catalogo_tipo_libreta_militar" alt="" coords="5,5,415,221">
+</map><map id="catalogo_turno" name="catalogo_turno">
+<area shape="rect" id="node1" href="tables/catalogo_turno.html" target="_top" title="catalogo_turno" alt="" coords="5,5,293,221">
+</map><map id="catalogo_unidad_educativa" name="catalogo_unidad_educativa">
+<area shape="rect" id="node1" href="tables/catalogo_unidad_educativa.html" target="_top" title="catalogo_unidad_educativa" alt="" coords="5,5,401,221">
+</map><map id="tipo_cargo_rda" name="tipo_cargo_rda">
+<area shape="rect" id="node1" href="tables/tipo_cargo_rda.html" target="_top" title="tipo_cargo_rda" alt="" coords="5,5,291,221">
+</map><map id="cargo" name="cargo">
+<area shape="rect" id="node1" href="tables/cargo.html" target="_top" title="cargo" alt="" coords="5,5,320,251">
+</map><map id="catalogo_entidad_afp" name="catalogo_entidad_afp">
+<area shape="rect" id="node1" href="tables/catalogo_entidad_afp.html" target="_top" title="catalogo_entidad_afp" alt="" coords="5,5,349,251">
+</map><map id="catalogo_entidad_emisor" name="catalogo_entidad_emisor">
+<area shape="rect" id="node1" href="tables/catalogo_entidad_emisor.html" target="_top" title="catalogo_entidad_emisor" alt="" coords="5,5,383,251">
+</map><map id="catalogo_grado_escolaridad" name="catalogo_grado_escolaridad">
+<area shape="rect" id="node1" href="tables/catalogo_grado_escolaridad.html" target="_top" title="catalogo_grado_escolaridad" alt="" coords="5,5,408,251">
+</map><map id="catalogo_grado_normalista" name="catalogo_grado_normalista">
+<area shape="rect" id="node1" href="tables/catalogo_grado_normalista.html" target="_top" title="catalogo_grado_normalista" alt="" coords="5,5,401,251">
+</map><map id="catalogo_modalidad" name="catalogo_modalidad">
+<area shape="rect" id="node1" href="tables/catalogo_modalidad.html" target="_top" title="catalogo_modalidad" alt="" coords="5,5,339,251">
+</map><map id="catalogo_nivel" name="catalogo_nivel">
+<area shape="rect" id="node1" href="tables/catalogo_nivel.html" target="_top" title="catalogo_nivel" alt="" coords="5,5,287,251">
+</map><map id="catalogo_nivel_idioma" name="catalogo_nivel_idioma">
+<area shape="rect" id="node1" href="tables/catalogo_nivel_idioma.html" target="_top" title="catalogo_nivel_idioma" alt="" coords="5,5,356,251">
+</map><map id="catalogo_normalista_nivel" name="catalogo_normalista_nivel">
+<area shape="rect" id="node1" href="tables/catalogo_normalista_nivel.html" target="_top" title="catalogo_normalista_nivel" alt="" coords="5,5,392,251">
+</map><map id="catalogo_r_grado_administrativo" name="catalogo_r_grado_administrativo">
+<area shape="rect" id="node1" href="tables/catalogo_r_grado_administrativo.html" target="_top" title="catalogo_r_grado_administrativo" alt="" coords="5,5,452,251">
+</map><map id="catalogo_tipo_documento_categoria" name="catalogo_tipo_documento_categoria">
+<area shape="rect" id="node1" href="tables/catalogo_tipo_documento_categoria.html" target="_top" title="catalogo_tipo_documento_categoria" alt="" coords="5,5,481,251">
+</map><map id="oauth_auth_codes" name="oauth_auth_codes">
+<area shape="rect" id="node1" href="tables/oauth_auth_codes.html" target="_top" title="oauth_auth_codes" alt="" coords="5,5,341,251">
+</map><map id="catalogo_grado_categoria" name="catalogo_grado_categoria">
+<area shape="rect" id="node1" href="tables/catalogo_grado_categoria.html" target="_top" title="catalogo_grado_categoria" alt="" coords="5,5,389,280">
+</map><map id="catalogo_nacion" name="catalogo_nacion">
+<area shape="rect" id="node1" href="tables/catalogo_nacion.html" target="_top" title="catalogo_nacion" alt="" coords="5,5,303,280">
+</map><map id="catalogo_normalista_modalidad" name="catalogo_normalista_modalidad">
+<area shape="rect" id="node1" href="tables/catalogo_normalista_modalidad.html" target="_top" title="catalogo_normalista_modalidad" alt="" coords="5,5,443,280">
+</map><map id="catalogo_otro_tipo_documento" name="catalogo_otro_tipo_documento">
+<area shape="rect" id="node1" href="tables/catalogo_otro_tipo_documento.html" target="_top" title="catalogo_otro_tipo_documento" alt="" coords="5,5,433,280">
+</map><map id="catalogo_otro_titulo" name="catalogo_otro_titulo">
+<area shape="rect" id="node1" href="tables/catalogo_otro_titulo.html" target="_top" title="catalogo_otro_titulo" alt="" coords="5,5,337,280">
+</map><map id="changes" name="changes">
+<area shape="rect" id="node1" href="tables/changes.html" target="_top" title="changes" alt="" coords="5,5,297,280">
+</map><map id="menu_rol" name="menu_rol">
+<area shape="rect" id="node1" href="tables/menu_rol.html" target="_top" title="menu_rol" alt="" coords="5,5,260,280">
+</map><map id="proceso_rda" name="proceso_rda">
+<area shape="rect" id="node1" href="tables/proceso_rda.html" target="_top" title="proceso_rda" alt="" coords="5,5,307,280">
+</map><map id="catalogo_departamento" name="catalogo_departamento">
+<area shape="rect" id="node1" href="tables/catalogo_departamento.html" target="_top" title="catalogo_departamento" alt="" coords="5,5,512,309">
+</map><map id="catalogo_provincia" name="catalogo_provincia">
+<area shape="rect" id="node1" href="tables/catalogo_provincia.html" target="_top" title="catalogo_provincia" alt="" coords="5,5,397,309">
+</map><map id="catalogo_ramo" name="catalogo_ramo">
+<area shape="rect" id="node1" href="tables/catalogo_ramo.html" target="_top" title="catalogo_ramo" alt="" coords="5,5,333,309">
+</map><map id="menu" name="menu">
+<area shape="rect" id="node1" href="tables/menu.html" target="_top" title="menu" alt="" coords="5,5,260,309">
+</map><map id="relacion_form_prof_nivel" name="relacion_form_prof_nivel">
+<area shape="rect" id="node1" href="tables/relacion_form_prof_nivel.html" target="_top" title="relacion_form_prof_nivel" alt="" coords="5,5,469,309">
+</map><map id="catalogo_cer_unefco_tipo_documento" name="catalogo_cer_unefco_tipo_documento">
+<area shape="rect" id="node1" href="tables/catalogo_cer_unefco_tipo_documento.html" target="_top" title="catalogo_cer_unefco_tipo_documento" alt="" coords="5,5,493,339">
+</map><map id="catalogo_declaracion_tipo_documento" name="catalogo_declaracion_tipo_documento">
+<area shape="rect" id="node1" href="tables/catalogo_declaracion_tipo_documento.html" target="_top" title="catalogo_declaracion_tipo_documento" alt="" coords="5,5,500,339">
+</map><map id="catalogo_dip_bach_tipo_documento" name="catalogo_dip_bach_tipo_documento">
+<area shape="rect" id="node1" href="tables/catalogo_dip_bach_tipo_documento.html" target="_top" title="catalogo_dip_bach_tipo_documento" alt="" coords="5,5,476,339">
+</map><map id="catalogo_esp_iser_tipo_documento" name="catalogo_esp_iser_tipo_documento">
+<area shape="rect" id="node1" href="tables/catalogo_esp_iser_tipo_documento.html" target="_top" title="catalogo_esp_iser_tipo_documento" alt="" coords="5,5,469,339">
+</map><map id="catalogo_esp_peams_tipo_documento" name="catalogo_esp_peams_tipo_documento">
+<area shape="rect" id="node1" href="tables/catalogo_esp_peams_tipo_documento.html" target="_top" title="catalogo_esp_peams_tipo_documento" alt="" coords="5,5,495,339">
+</map><map id="catalogo_ext_rev_univ_tipo_documento" name="catalogo_ext_rev_univ_tipo_documento">
+<area shape="rect" id="node1" href="tables/catalogo_ext_rev_univ_tipo_documento.html" target="_top" title="catalogo_ext_rev_univ_tipo_documento" alt="" coords="5,5,509,339">
+</map><map id="catalogo_grupo_categoria" name="catalogo_grupo_categoria">
+<area shape="rect" id="node1" href="tables/catalogo_grupo_categoria.html" target="_top" title="catalogo_grupo_categoria" alt="" coords="5,5,391,339">
+</map><map id="catalogo_institutos_tipo_documento" name="catalogo_institutos_tipo_documento">
+<area shape="rect" id="node1" href="tables/catalogo_institutos_tipo_documento.html" target="_top" title="catalogo_institutos_tipo_documento" alt="" coords="5,5,483,339">
+</map><map id="catalogo_normalista_rev_tipo_documento" name="catalogo_normalista_rev_tipo_documento">
+<area shape="rect" id="node1" href="tables/catalogo_normalista_rev_tipo_documento.html" target="_top" title="catalogo_normalista_rev_tipo_documento" alt="" coords="5,5,529,339">
+</map><map id="catalogo_normalista_tipo_documento" name="catalogo_normalista_tipo_documento">
+<area shape="rect" id="node1" href="tables/catalogo_normalista_tipo_documento.html" target="_top" title="catalogo_normalista_tipo_documento" alt="" coords="5,5,493,339">
+</map><map id="catalogo_postgrado_tipo_documento" name="catalogo_postgrado_tipo_documento">
+<area shape="rect" id="node1" href="tables/catalogo_postgrado_tipo_documento.html" target="_top" title="catalogo_postgrado_tipo_documento" alt="" coords="5,5,488,339">
+</map><map id="catalogo_seccion" name="catalogo_seccion">
+<area shape="rect" id="node1" href="tables/catalogo_seccion.html" target="_top" title="catalogo_seccion" alt="" coords="5,5,355,339">
+</map><map id="catalogo_tec_calificado_tipo_documento" name="catalogo_tec_calificado_tipo_documento">
+<area shape="rect" id="node1" href="tables/catalogo_tec_calificado_tipo_documento.html" target="_top" title="catalogo_tec_calificado_tipo_documento" alt="" coords="5,5,519,339">
+</map><map id="catalogo_universitario_tipo_documento" name="catalogo_universitario_tipo_documento">
+<area shape="rect" id="node1" href="tables/catalogo_universitario_tipo_documento.html" target="_top" title="catalogo_universitario_tipo_documento" alt="" coords="5,5,512,339">
+</map><map id="oauth_access_tokens" name="oauth_access_tokens">
+<area shape="rect" id="node1" href="tables/oauth_access_tokens.html" target="_top" title="oauth_access_tokens" alt="" coords="5,5,368,339">
+</map><map id="relacion_form_prof_enti" name="relacion_form_prof_enti">
+<area shape="rect" id="node1" href="tables/relacion_form_prof_enti.html" target="_top" title="relacion_form_prof_enti" alt="" coords="5,5,469,339">
+</map><map id="catalogo_canton" name="catalogo_canton">
+<area shape="rect" id="node1" href="tables/catalogo_canton.html" target="_top" title="catalogo_canton" alt="" coords="5,5,355,368">
+</map><map id="catalogo_distrito" name="catalogo_distrito">
+<area shape="rect" id="node1" href="tables/catalogo_distrito.html" target="_top" title="catalogo_distrito" alt="" coords="5,5,355,368">
+</map><map id="catalogo_tipo_documento" name="catalogo_tipo_documento">
+<area shape="rect" id="node1" href="tables/catalogo_tipo_documento.html" target="_top" title="catalogo_tipo_documento" alt="" coords="5,5,388,368">
+</map><map id="lote" name="lote">
+<area shape="rect" id="node1" href="tables/lote.html" target="_top" title="lote" alt="" coords="5,5,341,368">
+</map><map id="oauth_clients" name="oauth_clients">
+<area shape="rect" id="node1" href="tables/oauth_clients.html" target="_top" title="oauth_clients" alt="" coords="5,5,384,368">
+</map><map id="relacion_form_prof_espe" name="relacion_form_prof_espe">
+<area shape="rect" id="node1" href="tables/relacion_form_prof_espe.html" target="_top" title="relacion_form_prof_espe" alt="" coords="5,5,469,368">
+</map><map id="catalogo_localidad" name="catalogo_localidad">
+<area shape="rect" id="node1" href="tables/catalogo_localidad.html" target="_top" title="catalogo_localidad" alt="" coords="5,5,355,397">
+</map><map id="r_observado_definitivo" name="r_observado_definitivo">
+<area shape="rect" id="node1" href="tables/r_observado_definitivo.html" target="_top" title="r_observado_definitivo" alt="" coords="5,5,363,427">
+</map><map id="r_observado_preventivo" name="r_observado_preventivo">
+<area shape="rect" id="node1" href="tables/r_observado_preventivo.html" target="_top" title="r_observado_preventivo" alt="" coords="5,5,373,427">
+</map><map id="r_observado_preventivo_mc" name="r_observado_preventivo_mc">
+<area shape="rect" id="node1" href="tables/r_observado_preventivo_mc.html" target="_top" title="r_observado_preventivo_mc" alt="" coords="5,5,408,427">
+</map><map id="sisep_doc_benef_ds_exencion_anios_prov" name="sisep_doc_benef_ds_exencion_anios_prov">
+<area shape="rect" id="node1" href="tables/sisep_doc_benef_ds_exencion_anios_prov.html" target="_top" title="sisep_doc_benef_ds_exencion_anios_prov" alt="" coords="5,5,527,427">
+</map><map id="sisep_doc_calificacion_resolucion" name="sisep_doc_calificacion_resolucion">
+<area shape="rect" id="node1" href="tables/sisep_doc_calificacion_resolucion.html" target="_top" title="sisep_doc_calificacion_resolucion" alt="" coords="5,5,456,427">
+</map><map id="sisep_doc_cert_corte_dtal_modif_datos_pers" name="sisep_doc_cert_corte_dtal_modif_datos_pers">
+<area shape="rect" id="node1" href="tables/sisep_doc_cert_corte_dtal_modif_datos_pers.html" target="_top" title="sisep_doc_cert_corte_dtal_modif_datos_pers" alt="" coords="5,5,552,427">
+</map><map id="sisep_doc_cert_post_alfb_prov" name="sisep_doc_cert_post_alfb_prov">
+<area shape="rect" id="node1" href="tables/sisep_doc_cert_post_alfb_prov.html" target="_top" title="sisep_doc_cert_post_alfb_prov" alt="" coords="5,5,459,427">
+</map><map id="sisep_doc_ra_modif_datos_pers" name="sisep_doc_ra_modif_datos_pers">
+<area shape="rect" id="node1" href="tables/sisep_doc_ra_modif_datos_pers.html" target="_top" title="sisep_doc_ra_modif_datos_pers" alt="" coords="5,5,459,427">
+</map><map id="sisep_doc_rm_exencion_anios_provincia" name="sisep_doc_rm_exencion_anios_provincia">
+<area shape="rect" id="node1" href="tables/sisep_doc_rm_exencion_anios_provincia.html" target="_top" title="sisep_doc_rm_exencion_anios_provincia" alt="" coords="5,5,513,427">
+</map><map id="sisep_doc_sentencia_modif_datos_pers" name="sisep_doc_sentencia_modif_datos_pers">
+<area shape="rect" id="node1" href="tables/sisep_doc_sentencia_modif_datos_pers.html" target="_top" title="sisep_doc_sentencia_modif_datos_pers" alt="" coords="5,5,505,427">
+</map><map id="catalogo_especialidad" name="catalogo_especialidad">
+<area shape="rect" id="node1" href="tables/catalogo_especialidad.html" target="_top" title="catalogo_especialidad" alt="" coords="5,5,357,456">
+</map><map id="catalogo_normalista_especialidad" name="catalogo_normalista_especialidad">
+<area shape="rect" id="node1" href="tables/catalogo_normalista_especialidad.html" target="_top" title="catalogo_normalista_especialidad" alt="" coords="5,5,461,456">
+</map><map id="catalogo_normalista_formacion_profesional" name="catalogo_normalista_formacion_profesional">
+<area shape="rect" id="node1" href="tables/catalogo_normalista_formacion_profesional.html" target="_top" title="catalogo_normalista_formacion_profesional" alt="" coords="5,5,549,456">
+</map><map id="r_encreg" name="r_encreg">
+<area shape="rect" id="node1" href="tables/r_encreg.html" target="_top" title="r_encreg" alt="" coords="5,5,257,456">
+</map><map id="r_observado_sin_leyenda" name="r_observado_sin_leyenda">
+<area shape="rect" id="node1" href="tables/r_observado_sin_leyenda.html" target="_top" title="r_observado_sin_leyenda" alt="" coords="5,5,381,456">
+</map><map id="sisep_doc_calificacion_anios_servicio" name="sisep_doc_calificacion_anios_servicio">
+<area shape="rect" id="node1" href="tables/sisep_doc_calificacion_anios_servicio.html" target="_top" title="sisep_doc_calificacion_anios_servicio" alt="" coords="5,5,488,456">
+</map><map id="sisep_doc_carnet_ibc" name="sisep_doc_carnet_ibc">
+<area shape="rect" id="node1" href="tables/sisep_doc_carnet_ibc.html" target="_top" title="sisep_doc_carnet_ibc" alt="" coords="5,5,459,456">
+</map><map id="sisep_doc_copia_legalizada_libreta_militar" name="sisep_doc_copia_legalizada_libreta_militar">
+<area shape="rect" id="node1" href="tables/sisep_doc_copia_legalizada_libreta_militar.html" target="_top" title="sisep_doc_copia_legalizada_libreta_militar" alt="" coords="5,5,536,456">
+</map><map id="sisep_doc_resolucion" name="sisep_doc_resolucion">
+<area shape="rect" id="node1" href="tables/sisep_doc_resolucion.html" target="_top" title="sisep_doc_resolucion" alt="" coords="5,5,411,456">
+</map><map id="users_backup" name="users_backup">
+<area shape="rect" id="node1" href="tables/users_backup.html" target="_top" title="users_backup" alt="" coords="5,5,312,456">
+</map><map id="catalogo_formacion_profesional" name="catalogo_formacion_profesional">
+<area shape="rect" id="node1" href="tables/catalogo_formacion_profesional.html" target="_top" title="catalogo_formacion_profesional" alt="" coords="5,5,444,485">
+</map><map id="relacion_form_prof_tipo_docu" name="relacion_form_prof_tipo_docu">
+<area shape="rect" id="node1" href="tables/relacion_form_prof_tipo_docu.html" target="_top" title="relacion_form_prof_tipo_docu" alt="" coords="5,5,523,485">
+</map><map id="sisep_doc_afp" name="sisep_doc_afp">
+<area shape="rect" id="node1" href="tables/sisep_doc_afp.html" target="_top" title="sisep_doc_afp" alt="" coords="5,5,459,485">
+</map><map id="sisep_doc_libreta_militar" name="sisep_doc_libreta_militar">
+<area shape="rect" id="node1" href="tables/sisep_doc_libreta_militar.html" target="_top" title="sisep_doc_libreta_militar" alt="" coords="5,5,459,485">
+</map><map id="sisep_doc_tecnico_calificado" name="sisep_doc_tecnico_calificado">
+<area shape="rect" id="node1" href="tables/sisep_doc_tecnico_calificado.html" target="_top" title="sisep_doc_tecnico_calificado" alt="" coords="5,5,469,485">
+</map><map id="detalle_sisep_doc_calificacion_anios_servicio" name="detalle_sisep_doc_calificacion_anios_servicio">
+<area shape="rect" id="node1" href="tables/detalle_sisep_doc_calificacion_anios_servicio.html" target="_top" title="detalle_sisep_doc_calificacion_anios_servicio" alt="" coords="5,5,559,515">
+</map><map id="detalle_sisep_doc_resolucion" name="detalle_sisep_doc_resolucion">
+<area shape="rect" id="node1" href="tables/detalle_sisep_doc_resolucion.html" target="_top" title="detalle_sisep_doc_resolucion" alt="" coords="5,5,417,515">
+</map><map id="sisep_doc_carnet_conalpedis" name="sisep_doc_carnet_conalpedis">
+<area shape="rect" id="node1" href="tables/sisep_doc_carnet_conalpedis.html" target="_top" title="sisep_doc_carnet_conalpedis" alt="" coords="5,5,459,515">
+</map><map id="sisep_doc_certificado_unefco" name="sisep_doc_certificado_unefco">
+<area shape="rect" id="node1" href="tables/sisep_doc_certificado_unefco.html" target="_top" title="sisep_doc_certificado_unefco" alt="" coords="5,5,469,515">
+</map><map id="sisep_doc_consolidado_maestria" name="sisep_doc_consolidado_maestria">
+<area shape="rect" id="node1" href="tables/sisep_doc_consolidado_maestria.html" target="_top" title="sisep_doc_consolidado_maestria" alt="" coords="5,5,475,515">
+</map><map id="r_formrda" name="r_formrda">
+<area shape="rect" id="node1" href="tables/r_formrda.html" target="_top" title="r_formrda" alt="" coords="5,5,273,544">
+</map><map id="sisep_doc_certificado_cursos" name="sisep_doc_certificado_cursos">
+<area shape="rect" id="node1" href="tables/sisep_doc_certificado_cursos.html" target="_top" title="sisep_doc_certificado_cursos" alt="" coords="5,5,416,544">
+</map><map id="sisep_doc_consolidado_titulo_provision_nacional" name="sisep_doc_consolidado_titulo_provision_nacional">
+<area shape="rect" id="node1" href="tables/sisep_doc_consolidado_titulo_provision_nacional.html" target="_top" title="sisep_doc_consolidado_titulo_provision_nacional" alt="" coords="5,5,593,544">
+</map><map id="sisep_doc_diploma_academico" name="sisep_doc_diploma_academico">
+<area shape="rect" id="node1" href="tables/sisep_doc_diploma_academico.html" target="_top" title="sisep_doc_diploma_academico" alt="" coords="5,5,429,544">
+</map><map id="sisep_doc_especializacion_iser" name="sisep_doc_especializacion_iser">
+<area shape="rect" id="node1" href="tables/sisep_doc_especializacion_iser.html" target="_top" title="sisep_doc_especializacion_iser" alt="" coords="5,5,469,544">
+</map><map id="sisep_doc_especializacion_peams" name="sisep_doc_especializacion_peams">
+<area shape="rect" id="node1" href="tables/sisep_doc_especializacion_peams.html" target="_top" title="sisep_doc_especializacion_peams" alt="" coords="5,5,469,544">
+</map><map id="sisep_doc_ext_rev_univ" name="sisep_doc_ext_rev_univ">
+<area shape="rect" id="node1" href="tables/sisep_doc_ext_rev_univ.html" target="_top" title="sisep_doc_ext_rev_univ" alt="" coords="5,5,469,544">
+</map><map id="sisep_doc_idioma" name="sisep_doc_idioma">
+<area shape="rect" id="node1" href="tables/sisep_doc_idioma.html" target="_top" title="sisep_doc_idioma" alt="" coords="5,5,481,544">
+</map><map id="sisep_doc_certificado_universitario" name="sisep_doc_certificado_universitario">
+<area shape="rect" id="node1" href="tables/sisep_doc_certificado_universitario.html" target="_top" title="sisep_doc_certificado_universitario" alt="" coords="5,5,472,573">
+</map><map id="sisep_doc_cursos" name="sisep_doc_cursos">
+<area shape="rect" id="node1" href="tables/sisep_doc_cursos.html" target="_top" title="sisep_doc_cursos" alt="" coords="5,5,411,573">
+</map><map id="r_entidad" name="r_entidad">
+<area shape="rect" id="node1" href="tables/r_entidad.html" target="_top" title="r_entidad" alt="" coords="5,5,305,603">
+</map><map id="sisep_doc_carnet_discapacidad" name="sisep_doc_carnet_discapacidad">
+<area shape="rect" id="node1" href="tables/sisep_doc_carnet_discapacidad.html" target="_top" title="sisep_doc_carnet_discapacidad" alt="" coords="5,5,436,603">
+</map><map id="sisep_doc_categoria" name="sisep_doc_categoria">
+<area shape="rect" id="node1" href="tables/sisep_doc_categoria.html" target="_top" title="sisep_doc_categoria" alt="" coords="5,5,468,603">
+</map><map id="sisep_doc_declaracion" name="sisep_doc_declaracion">
+<area shape="rect" id="node1" href="tables/sisep_doc_declaracion.html" target="_top" title="sisep_doc_declaracion" alt="" coords="5,5,469,603">
+</map><map id="sisep_doc_documento_identificacion" name="sisep_doc_documento_identificacion">
+<area shape="rect" id="node1" href="tables/sisep_doc_documento_identificacion.html" target="_top" title="sisep_doc_documento_identificacion" alt="" coords="5,5,544,603">
+</map><map id="sisepdesc_documento" name="sisepdesc_documento">
+<area shape="rect" id="node1" href="tables/sisepdesc_documento.html" target="_top" title="sisepdesc_documento" alt="" coords="5,5,461,603">
+</map><map id="sisep_doc_certificado_escolar" name="sisep_doc_certificado_escolar">
+<area shape="rect" id="node1" href="tables/sisep_doc_certificado_escolar.html" target="_top" title="sisep_doc_certificado_escolar" alt="" coords="5,5,433,632">
+</map><map id="sisep_doc_certificado_normalista" name="sisep_doc_certificado_normalista">
+<area shape="rect" id="node1" href="tables/sisep_doc_certificado_normalista.html" target="_top" title="sisep_doc_certificado_normalista" alt="" coords="5,5,453,632">
+</map><map id="sisep_doc_consolidado_resolucion" name="sisep_doc_consolidado_resolucion">
+<area shape="rect" id="node1" href="tables/sisep_doc_consolidado_resolucion.html" target="_top" title="sisep_doc_consolidado_resolucion" alt="" coords="5,5,475,632">
+</map><map id="sisep_doc_diploma_bachiller" name="sisep_doc_diploma_bachiller">
+<area shape="rect" id="node1" href="tables/sisep_doc_diploma_bachiller.html" target="_top" title="sisep_doc_diploma_bachiller" alt="" coords="5,5,469,632">
+</map><map id="sisep_doc_postgrado" name="sisep_doc_postgrado">
+<area shape="rect" id="node1" href="tables/sisep_doc_postgrado.html" target="_top" title="sisep_doc_postgrado" alt="" coords="5,5,469,632">
+</map><map id="catalogo_normalista_entidad" name="catalogo_normalista_entidad">
+<area shape="rect" id="node1" href="tables/catalogo_normalista_entidad.html" target="_top" title="catalogo_normalista_entidad" alt="" coords="5,5,417,661">
+</map><map id="r_docpersonal" name="r_docpersonal">
+<area shape="rect" id="node1" href="tables/r_docpersonal.html" target="_top" title="r_docpersonal" alt="" coords="5,5,307,661">
+</map><map id="sisep_doc_categorias" name="sisep_doc_categorias">
+<area shape="rect" id="node1" href="tables/sisep_doc_categorias.html" target="_top" title="sisep_doc_categorias" alt="" coords="5,5,507,661">
+</map><map id="sisep_doc_consolidado_benef_ds_exencion_anios_prov" name="sisep_doc_consolidado_benef_ds_exencion_anios_prov">
+<area shape="rect" id="node1" href="tables/sisep_doc_consolidado_benef_ds_exencion_anios_prov.html" target="_top" title="sisep_doc_consolidado_benef_ds_exencion_anios_prov" alt="" coords="5,5,643,661">
+</map><map id="sisep_doc_consolidado_calificacion_anios_servicio" name="sisep_doc_consolidado_calificacion_anios_servicio">
+<area shape="rect" id="node1" href="tables/sisep_doc_consolidado_calificacion_anios_servicio.html" target="_top" title="sisep_doc_consolidado_calificacion_anios_servicio" alt="" coords="5,5,604,661">
+</map><map id="sisep_doc_consolidado_categoria" name="sisep_doc_consolidado_categoria">
+<area shape="rect" id="node1" href="tables/sisep_doc_consolidado_categoria.html" target="_top" title="sisep_doc_consolidado_categoria" alt="" coords="5,5,475,661">
+</map><map id="sisep_doc_consolidado_cert_corte_dtal_modif_datos_pers" name="sisep_doc_consolidado_cert_corte_dtal_modif_datos_pers">
+<area shape="rect" id="node1" href="tables/sisep_doc_consolidado_cert_corte_dtal_modif_datos_pers.html" target="_top" title="sisep_doc_consolidado_cert_corte_dtal_modif_datos_pers" alt="" coords="5,5,668,661">
+</map><map id="sisep_doc_consolidado_ra_modif_datos_pers" name="sisep_doc_consolidado_ra_modif_datos_pers">
+<area shape="rect" id="node1" href="tables/sisep_doc_consolidado_ra_modif_datos_pers.html" target="_top" title="sisep_doc_consolidado_ra_modif_datos_pers" alt="" coords="5,5,553,661">
+</map><map id="sisep_doc_consolidado_rm_exencion_anios_provincia" name="sisep_doc_consolidado_rm_exencion_anios_provincia">
+<area shape="rect" id="node1" href="tables/sisep_doc_consolidado_rm_exencion_anios_provincia.html" target="_top" title="sisep_doc_consolidado_rm_exencion_anios_provincia" alt="" coords="5,5,629,661">
+</map><map id="sisep_doc_consolidado_sentencia_modif_datos_pers" name="sisep_doc_consolidado_sentencia_modif_datos_pers">
+<area shape="rect" id="node1" href="tables/sisep_doc_consolidado_sentencia_modif_datos_pers.html" target="_top" title="sisep_doc_consolidado_sentencia_modif_datos_pers" alt="" coords="5,5,621,661">
+</map><map id="catalogo_entidad" name="catalogo_entidad">
+<area shape="rect" id="node1" href="tables/catalogo_entidad.html" target="_top" title="catalogo_entidad" alt="" coords="5,5,397,691">
+</map><map id="r_bachiller" name="r_bachiller">
+<area shape="rect" id="node1" href="tables/r_bachiller.html" target="_top" title="r_bachiller" alt="" coords="5,5,253,691">
+</map><map id="sisep_doc_cert_cal_edu_reg" name="sisep_doc_cert_cal_edu_reg">
+<area shape="rect" id="node1" href="tables/sisep_doc_cert_cal_edu_reg.html" target="_top" title="sisep_doc_cert_cal_edu_reg" alt="" coords="5,5,411,691">
+</map><map id="sisep_doc_certificado_nacimiento" name="sisep_doc_certificado_nacimiento">
+<area shape="rect" id="node1" href="tables/sisep_doc_certificado_nacimiento.html" target="_top" title="sisep_doc_certificado_nacimiento" alt="" coords="5,5,459,691">
+</map><map id="sisep_doc_consolidado_carnet_ibc" name="sisep_doc_consolidado_carnet_ibc">
+<area shape="rect" id="node1" href="tables/sisep_doc_consolidado_carnet_ibc.html" target="_top" title="sisep_doc_consolidado_carnet_ibc" alt="" coords="5,5,475,691">
+</map><map id="sisep_doc_consolidado_cert_post_alfb_prov" name="sisep_doc_consolidado_cert_post_alfb_prov">
+<area shape="rect" id="node1" href="tables/sisep_doc_consolidado_cert_post_alfb_prov.html" target="_top" title="sisep_doc_consolidado_cert_post_alfb_prov" alt="" coords="5,5,544,691">
+</map><map id="sisep_doc_institutos" name="sisep_doc_institutos">
+<area shape="rect" id="node1" href="tables/sisep_doc_institutos.html" target="_top" title="sisep_doc_institutos" alt="" coords="5,5,469,691">
+</map><map id="sisep_doc_normalista" name="sisep_doc_normalista">
+<area shape="rect" id="node1" href="tables/sisep_doc_normalista.html" target="_top" title="sisep_doc_normalista" alt="" coords="5,5,469,691">
+</map><map id="sisep_doc_normalista_revalidado" name="sisep_doc_normalista_revalidado">
+<area shape="rect" id="node1" href="tables/sisep_doc_normalista_revalidado.html" target="_top" title="sisep_doc_normalista_revalidado" alt="" coords="5,5,469,691">
+</map><map id="sisep_doc_universitario" name="sisep_doc_universitario">
+<area shape="rect" id="node1" href="tables/sisep_doc_universitario.html" target="_top" title="sisep_doc_universitario" alt="" coords="5,5,469,691">
+</map><map id="r_catges" name="r_catges">
+<area shape="rect" id="node1" href="tables/r_catges.html" target="_top" title="r_catges" alt="" coords="5,5,288,749">
+</map><map id="sisep_doc_consolidado_carnet_discapacidad" name="sisep_doc_consolidado_carnet_discapacidad">
+<area shape="rect" id="node1" href="tables/sisep_doc_consolidado_carnet_discapacidad.html" target="_top" title="sisep_doc_consolidado_carnet_discapacidad" alt="" coords="5,5,552,779">
+</map><map id="sisep_doc_consolidado_carnet_conalpedis" name="sisep_doc_consolidado_carnet_conalpedis">
+<area shape="rect" id="node1" href="tables/sisep_doc_consolidado_carnet_conalpedis.html" target="_top" title="sisep_doc_consolidado_carnet_conalpedis" alt="" coords="5,5,532,837">
+</map><map id="sisep_doc_consolidado_idioma" name="sisep_doc_consolidado_idioma">
+<area shape="rect" id="node1" href="tables/sisep_doc_consolidado_idioma.html" target="_top" title="sisep_doc_consolidado_idioma" alt="" coords="5,5,481,867">
+</map><map id="sisep_doc_consolidado_libreta_militar" name="sisep_doc_consolidado_libreta_militar">
+<area shape="rect" id="node1" href="tables/sisep_doc_consolidado_libreta_militar.html" target="_top" title="sisep_doc_consolidado_libreta_militar" alt="" coords="5,5,496,896">
+</map><map id="sisep_doc_consolidado_afp" name="sisep_doc_consolidado_afp">
+<area shape="rect" id="node1" href="tables/sisep_doc_consolidado_afp.html" target="_top" title="sisep_doc_consolidado_afp" alt="" coords="5,5,475,925">
+</map><map id="sisep_doc_consolidado_tecnico_calificado" name="sisep_doc_consolidado_tecnico_calificado">
+<area shape="rect" id="node1" href="tables/sisep_doc_consolidado_tecnico_calificado.html" target="_top" title="sisep_doc_consolidado_tecnico_calificado" alt="" coords="5,5,540,925">
+</map><map id="r_bachiller_pedagogico" name="r_bachiller_pedagogico">
+<area shape="rect" id="node1" href="tables/r_bachiller_pedagogico.html" target="_top" title="r_bachiller_pedagogico" alt="" coords="5,5,364,955">
+</map><map id="sisep_doc_consolidado_certificado_unefco" name="sisep_doc_consolidado_certificado_unefco">
+<area shape="rect" id="node1" href="tables/sisep_doc_consolidado_certificado_unefco.html" target="_top" title="sisep_doc_consolidado_certificado_unefco" alt="" coords="5,5,535,955">
+</map><map id="sisep_doc_consolidado_bachiller_pedagogico" name="sisep_doc_consolidado_bachiller_pedagogico">
+<area shape="rect" id="node1" href="tables/sisep_doc_consolidado_bachiller_pedagogico.html" target="_top" title="sisep_doc_consolidado_bachiller_pedagogico" alt="" coords="5,5,560,984">
+</map><map id="sisep_doc_consolidado_diploma_distincion" name="sisep_doc_consolidado_diploma_distincion">
+<area shape="rect" id="node1" href="tables/sisep_doc_consolidado_diploma_distincion.html" target="_top" title="sisep_doc_consolidado_diploma_distincion" alt="" coords="5,5,537,984">
+</map><map id="r_egresados" name="r_egresados">
+<area shape="rect" id="node1" href="tables/r_egresados.html" target="_top" title="r_egresados" alt="" coords="5,5,292,1013">
+</map><map id="r_egresados_ppmi" name="r_egresados_ppmi">
+<area shape="rect" id="node1" href="tables/r_egresados_ppmi.html" target="_top" title="r_egresados_ppmi" alt="" coords="5,5,320,1013">
+</map><map id="sisep_doc_consolidado_censo" name="sisep_doc_consolidado_censo">
+<area shape="rect" id="node1" href="tables/sisep_doc_consolidado_censo.html" target="_top" title="sisep_doc_consolidado_censo" alt="" coords="5,5,475,1013">
+</map><map id="sisep_doc_consolidado_certificado_universitario" name="sisep_doc_consolidado_certificado_universitario">
+<area shape="rect" id="node1" href="tables/sisep_doc_consolidado_certificado_universitario.html" target="_top" title="sisep_doc_consolidado_certificado_universitario" alt="" coords="5,5,588,1013">
+</map><map id="sisep_doc_consolidado_cursos" name="sisep_doc_consolidado_cursos">
+<area shape="rect" id="node1" href="tables/sisep_doc_consolidado_cursos.html" target="_top" title="sisep_doc_consolidado_cursos" alt="" coords="5,5,475,1013">
+</map><map id="sisep_doc_consolidado_especializacion_iser" name="sisep_doc_consolidado_especializacion_iser">
+<area shape="rect" id="node1" href="tables/sisep_doc_consolidado_especializacion_iser.html" target="_top" title="sisep_doc_consolidado_especializacion_iser" alt="" coords="5,5,548,1013">
+</map><map id="sisep_doc_consolidado_especializacion_peams" name="sisep_doc_consolidado_especializacion_peams">
+<area shape="rect" id="node1" href="tables/sisep_doc_consolidado_especializacion_peams.html" target="_top" title="sisep_doc_consolidado_especializacion_peams" alt="" coords="5,5,573,1013">
+</map><map id="sisep_doc_consolidado_ext_rev_univ" name="sisep_doc_consolidado_ext_rev_univ">
+<area shape="rect" id="node1" href="tables/sisep_doc_consolidado_ext_rev_univ.html" target="_top" title="sisep_doc_consolidado_ext_rev_univ" alt="" coords="5,5,481,1013">
+</map><map id="detalle_sisep_doc_consolidado_calificacion_anios_servicio" name="detalle_sisep_doc_consolidado_calificacion_anios_servicio">
+<area shape="rect" id="node1" href="tables/detalle_sisep_doc_consolidado_calificacion_anios_servicio.html" target="_top" title="detalle_sisep_doc_consolidado_calificacion_anios_servicio" alt="" coords="5,5,675,1043">
+</map><map id="detalle_sisep_doc_consolidado_resolucion" name="detalle_sisep_doc_consolidado_resolucion">
+<area shape="rect" id="node1" href="tables/detalle_sisep_doc_consolidado_resolucion.html" target="_top" title="detalle_sisep_doc_consolidado_resolucion" alt="" coords="5,5,533,1043">
+</map><map id="r_programa_profesor_interino" name="r_programa_profesor_interino">
+<area shape="rect" id="node1" href="tables/r_programa_profesor_interino.html" target="_top" title="r_programa_profesor_interino" alt="" coords="5,5,425,1043">
+</map><map id="sisep_doc_consolidado_documento_identificacion" name="sisep_doc_consolidado_documento_identificacion">
+<area shape="rect" id="node1" href="tables/sisep_doc_consolidado_documento_identificacion.html" target="_top" title="sisep_doc_consolidado_documento_identificacion" alt="" coords="5,5,600,1043">
+</map><map id="sisep_doc_consolidado_certificado_escolar" name="sisep_doc_consolidado_certificado_escolar">
+<area shape="rect" id="node1" href="tables/sisep_doc_consolidado_certificado_escolar.html" target="_top" title="sisep_doc_consolidado_certificado_escolar" alt="" coords="5,5,539,1072">
+</map><map id="sisep_doc_consolidado_diploma_bachiller" name="sisep_doc_consolidado_diploma_bachiller">
+<area shape="rect" id="node1" href="tables/sisep_doc_consolidado_diploma_bachiller.html" target="_top" title="sisep_doc_consolidado_diploma_bachiller" alt="" coords="5,5,528,1101">
+</map><map id="sisep_doc_consolidado_postgrado" name="sisep_doc_consolidado_postgrado">
+<area shape="rect" id="node1" href="tables/sisep_doc_consolidado_postgrado.html" target="_top" title="sisep_doc_consolidado_postgrado" alt="" coords="5,5,475,1101">
+</map><map id="sisep_doc_consolidado_certificado_normalista" name="sisep_doc_consolidado_certificado_normalista">
+<area shape="rect" id="node1" href="tables/sisep_doc_consolidado_certificado_normalista.html" target="_top" title="sisep_doc_consolidado_certificado_normalista" alt="" coords="5,5,571,1131">
+</map><map id="sisep_doc_consolidado_institutos" name="sisep_doc_consolidado_institutos">
+<area shape="rect" id="node1" href="tables/sisep_doc_consolidado_institutos.html" target="_top" title="sisep_doc_consolidado_institutos" alt="" coords="5,5,475,1131">
+</map><map id="sisep_doc_consolidado_declaracion" name="sisep_doc_consolidado_declaracion">
+<area shape="rect" id="node1" href="tables/sisep_doc_consolidado_declaracion.html" target="_top" title="sisep_doc_consolidado_declaracion" alt="" coords="5,5,475,1189">
+</map><map id="sisep_doc_consolidado_normalista_revalidado" name="sisep_doc_consolidado_normalista_revalidado">
+<area shape="rect" id="node1" href="tables/sisep_doc_consolidado_normalista_revalidado.html" target="_top" title="sisep_doc_consolidado_normalista_revalidado" alt="" coords="5,5,569,1189">
+</map><map id="sisep_doc_consolidado_universitario" name="sisep_doc_consolidado_universitario">
+<area shape="rect" id="node1" href="tables/sisep_doc_consolidado_universitario.html" target="_top" title="sisep_doc_consolidado_universitario" alt="" coords="5,5,484,1189">
+</map><map id="sisep_doc_consolidado_normalista" name="sisep_doc_consolidado_normalista">
+<area shape="rect" id="node1" href="tables/sisep_doc_consolidado_normalista.html" target="_top" title="sisep_doc_consolidado_normalista" alt="" coords="5,5,475,1307">
+</map><map id="sisep_doc_consolidado_certificado_nacimiento" name="sisep_doc_consolidado_certificado_nacimiento">
+<area shape="rect" id="node1" href="tables/sisep_doc_consolidado_certificado_nacimiento.html" target="_top" title="sisep_doc_consolidado_certificado_nacimiento" alt="" coords="5,5,573,1365">
+</map><map id="r_observados" name="r_observados">
+<area shape="rect" id="node1" href="tables/r_observados.html" target="_top" title="r_observados" alt="" coords="5,5,359,1395">
+</map><map id="r_sancion" name="r_sancion">
+<area shape="rect" id="node1" href="tables/r_sancion.html" target="_top" title="r_sancion" alt="" coords="5,5,433,1717">
+</map>
+                        </div>
+                    </div>
+                </section>
+            </div>
+            <!-- /.content-wrapper -->
+            <footer class="main-footer">
+                <div>
+                    <div class="pull-right hidden-xs">
+                        <a href="https://github.com/schemaspy/schemaspy" title="GitHub for SchemaSpy"><i class="fa fa-github-square fa-2x"></i></a>
+                        <a href="http://stackoverflow.com/questions/tagged/schemaspy" title="StackOverflow for SchemaSpy"><i class="fa fa-stack-overflow fa-2x"></i></a>
+                    </div>
+                    <strong>Generated by <a href="http://schemaspy.org/" class="logo-text"><i class="fa fa-database"></i> SchemaSpy 6.1.0</a></strong>
+                </div>
+                <!-- /.container -->
+            </footer>
+        </div>
+        <!-- ./wrapper -->
+
+        <!-- jQuery 2.2.3 -->
+        <script src="bower/admin-lte/plugins/jQuery/jquery-2.2.3.min.js"></script>
+        <script src="bower/admin-lte/plugins/jQueryUI/jquery-ui.min.js"></script>
+        <!-- Bootstrap 3.3.5 -->
+        <script src="bower/admin-lte/bootstrap/js/bootstrap.min.js"></script>
+        <!-- DataTables -->
+        <script src="bower/datatables.net/jquery.dataTables.min.js"></script>
+        <script src="bower/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
+        <script src="bower/datatables.net-buttons/dataTables.buttons.min.js"></script>
+        <script src="bower/datatables.net-buttons-bs/js/buttons.bootstrap.min.js"></script>
+        <script src="bower/datatables.net-buttons/buttons.html5.min.js"></script>
+        <script src="bower/datatables.net-buttons/buttons.print.min.js"></script>
+        <script src="bower/datatables.net-buttons/buttons.colVis.min.js"></script>
+        <!-- SheetJS -->
+        <script src="bower/js-xlsx/xlsx.full.min.js"></script>
+        <!-- pdfmake -->
+        <script src="bower/pdfmake/pdfmake.min.js"></script>
+        <script src="bower/pdfmake/vfs_fonts.js"></script>
+        <!-- SlimScroll -->
+        <script src="bower/admin-lte/plugins/slimScroll/jquery.slimscroll.min.js"></script>
+        <!-- FastClick -->
+        <script src="bower/admin-lte/plugins/fastclick/fastclick.js"></script>
+        <!-- Salvattore -->
+        <script src="bower/salvattore/salvattore.min.js"></script>
+        <!-- AnchorJS -->
+        <script src="bower/anchor-js/anchor.min.js"></script>
+        <!-- CodeMirror -->
+        <script src="bower/codemirror/codemirror.js"></script>
+        <script src="bower/codemirror/sql.js"></script>
+        <!-- AdminLTE App -->
+        <script src="bower/admin-lte/dist/js/app.min.js"></script>
+        <script src=""></script>
+        <script src="schemaSpy.js"></script>
+    </body>
+</html>

@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>bd_sisep Database</title>
+        <!-- Tell the browser to be responsive to screen width -->
+        <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+        <link rel="icon" type="image/png" sizes="16x16" href="favicon.png">
+        <!-- Bootstrap 3.3.5 -->
+        <link rel="stylesheet" href="bower/admin-lte/bootstrap/css/bootstrap.min.css">
+        <!-- Font Awesome -->
+        <link rel="stylesheet" href="bower/font-awesome/css/font-awesome.min.css">
+        <!-- Ionicons -->
+        <link rel="stylesheet" href="bower/ionicons/css/ionicons.min.css">
+        <!-- DataTables -->
+        <link rel="stylesheet" href="bower/datatables.net-bs/css/dataTables.bootstrap.min.css">
+        <link rel="stylesheet" href="bower/datatables.net-buttons-bs/css/buttons.bootstrap.min.css">
+        <!-- Code Mirror -->
+        <link rel="stylesheet" href="bower/codemirror/codemirror.css">
+        <!-- Fonts -->
+        <link href='fonts/indieflower/indie-flower.css' rel='stylesheet' type='text/css'>
+        <link href='fonts/source-sans-pro/source-sans-pro.css' rel='stylesheet' type='text/css'>
+
+        <!-- Theme style -->
+        <link rel="stylesheet" href="bower/admin-lte/dist/css/AdminLTE.min.css">
+        <!-- Salvattore -->
+        <link rel="stylesheet" href="bower/salvattore/salvattore.css">
+        <!-- AdminLTE Skins. Choose a skin from the css/skins
+           folder instead of downloading all of them to reduce the load. -->
+        <link rel="stylesheet" href="bower/admin-lte/dist/css/skins/_all-skins.min.css">
+        <!-- SchemaSpy -->
+        <link rel="stylesheet" href="schemaSpy.css">
+
+        <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+        <!--[if lt IE 9]>
+        <script src="bower/html5shiv/html5shiv.min.js"></script>
+        <script src="bower/respond/respond.min.js"></script>
+        <![endif]-->
+    </head>
+    <!-- ADD THE CLASS layout-top-nav TO REMOVE THE SIDEBAR. -->
+    <body class="hold-transition skin-blue layout-top-nav">
+        <div class="wrapper">
+            <header class="main-header">
+                <nav class="navbar navbar-static-top">
+                    <div class="container">
+                        <div class="navbar-header">
+                            <a href="index.html" class="navbar-brand"><b>bd_sisep</b> Database</a>
+                            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse"><i class="fa fa-bars"></i></button>
+                        </div>
+
+                        <!-- Collect the nav links, forms, and other content for toggling -->
+                        <div class="collapse navbar-collapse pull-left" id="navbar-collapse">
+                            <ul class="nav navbar-nav">
+                                <li><a href="index.html">Tables <span class="sr-only">(current)</span></a></li>
+                                <li><a href="columns.html" title="All of the columns in the schema">Columns</a></li>
+                                <li><a href="constraints.html" title="Useful for diagnosing error messages that just give constraint name or number">Constraints</a></li>
+                                <li><a href="relationships.html" title="Diagram of table relationships">Relationships</a></li>
+                                <li><a href="orphans.html" title="View of tables with neither parents nor children">Orphan&nbsp;Tables</a></li>
+                                <li><a href="anomalies.html" title="Things that might not be quite right">Anomalies</a></li>
+                                <li><a href="routines.html" title="Procedures and functions">Routines</a></li>
+                            </ul>
+                        </div>
+                        <!-- /.navbar-collapse -->
+                        <!-- Navbar Right Menu -->
+                    </div>
+                    <!-- /.container-fluid -->
+                </nav>
+            </header>
+            <!-- Main content -->
+            <!-- Full Width Column -->
+            <div class="content-wrapper">
+                <!-- Content Header (Page header) -->
+                <section class="content-header">
+                    <h1>All Relationships</h1>
+                </section>
+                <!-- Main content -->
+                <section class="content">
+                    <div class="box box-primary">
+                        <div class="box-header with-border">
+                            <i class="fa fa-code-fork"></i>
+                            <h3 class="box-title">Diagrams</h3>
+                        </div>
+                        <div class="box-body">
+                            <div class="nav-tabs-custom">
+                                <!-- Tabs within a box -->
+                                <h5>By default only columns that are primary keys, foreign keys or indexes are shown.</h5>
+                                <ul class="nav nav-tabs pull-left ui-sortable-handle">
+                                    <li class="active"><a href="#compactDegreeImg-chart" data-toggle="tab" aria-expanded="true">Compact</a></li>
+                                    <li class=""><a href="#largeDegreeImg-chart" data-toggle="tab" aria-expanded="true">Large</a></li>
+                                    <li class=""><a href="#compactimpliedDegreeImg-chart" data-toggle="tab" aria-expanded="true">Compact Implied</a></li>
+                                    <li class=""><a href="#largeimpliedDegreeImg-chart" data-toggle="tab" aria-expanded="true">Large Implied</a></li>
+                                </ul>
+                                <div class="tab-content no-padding">
+                                    <div class="chart tab-pane active" id="compactDegreeImg-chart" style="position: relative; overflow-x:auto;">
+                                        <map id="compactRelationshipsDiagram" name="compactRelationshipsDiagram">
+<area shape="rect" id="node1" href="tables/archivo_digital.html" target="_top" title="archivo_digital" alt="" coords="1792,2755,2000,2901">
+<area shape="rect" id="node4" href="tables/archivo_tipo.html" target="_top" title="archivo_tipo" alt="" coords="1404,2703,1572,2820">
+<area shape="rect" id="node2" href="tables/archivo_digital_consolidado.html" target="_top" title="archivo_digital_consolidado" alt="" coords="1747,2591,2045,2737">
+<area shape="rect" id="node3" href="tables/archivo_miniatura.html" target="_top" title="archivo_miniatura" alt="" coords="2179,2725,2389,2872">
+<area shape="rect" id="node5" href="tables/caso.html" target="_top" title="caso" alt="" coords="927,496,1129,643">
+<area shape="rect" id="node32" href="tables/tramite.html" target="_top" title="tramite" alt="" coords="436,525,663,672">
+<area shape="rect" id="node6" href="tables/caso_pre_registro.html" target="_top" title="caso_pre_registro" alt="" coords="1319,533,1657,797">
+<area shape="rect" id="node18" href="tables/pre_registro_persona.html" target="_top" title="pre_registro_persona" alt="" coords="811,817,1245,964">
+<area shape="rect" id="node33" href="tables/users.html" target="_top" title="users" alt="" coords="448,1296,651,1472">
+<area shape="rect" id="node7" href="tables/caso_requisito.html" target="_top" title="caso_requisito" alt="" coords="1731,664,2061,840">
+<area shape="rect" id="node22" href="tables/requisito.html" target="_top" title="requisito" alt="" coords="1367,1008,1609,1155">
+<area shape="rect" id="node8" href="tables/catalogo_categoria.html" target="_top" title="catalogo_categoria" alt="" coords="918,2375,1138,2492">
+<area shape="rect" id="node9" href="tables/categoria_rda.html" target="_top" title="categoria_rda" alt="" coords="1305,2345,1671,2521">
+<area shape="rect" id="node20" href="tables/registro_docente_administrativo.html" target="_top" title="registro_docente_administrativo" alt="" coords="857,2509,1199,2685">
+<area shape="rect" id="node10" href="tables/categoria_rp_gesttla.html" target="_top" title="categoria_rp_gesttla" alt="" coords="1366,2152,1610,2328">
+<area shape="rect" id="node21" href="tables/registro_rp_gesttla.html" target="_top" title="registro_rp_gesttla" alt="" coords="910,2181,1146,2357">
+<area shape="rect" id="node11" href="tables/estado_tramite.html" target="_top" title="estado_tramite" alt="" coords="1733,169,2059,375">
+<area shape="rect" id="node12" href="tables/organizacion.html" target="_top" title="organizacion" alt="" coords="56,1704,288,1880">
+<area shape="rect" id="node13" href="tables/permission_role.html" target="_top" title="permission_role" alt="" coords="1391,1401,1585,1577">
+<area shape="rect" id="node14" href="tables/permissions.html" target="_top" title="permissions" alt="" coords="945,2017,1111,2164">
+<area shape="rect" id="node28" href="tables/roles.html" target="_top" title="roles" alt="" coords="953,1136,1103,1312">
+<area shape="rect" id="node15" href="tables/persona.html" target="_top" title="persona" alt="" coords="332,1853,767,2117">
+<area shape="rect" id="node16" href="tables/persona_organizacion.html" target="_top" title="persona_organizacion" alt="" coords="427,1645,672,1821">
+<area shape="rect" id="node17" href="tables/persona_tmp.html" target="_top" title="persona_tmp" alt="" coords="405,1496,693,1613">
+<area shape="rect" id="node19" href="tables/registro_didep.html" target="_top" title="registro_didep" alt="" coords="910,1824,1146,2000">
+<area shape="rect" id="node23" href="tables/requisito_caso.html" target="_top" title="requisito_caso" alt="" coords="1396,333,1580,480">
+<area shape="rect" id="node24" href="tables/requisito_presentado.html" target="_top" title="requisito_presentado" alt="" coords="1776,1093,2016,1299">
+<area shape="rect" id="node25" href="tables/requisito_presentado_observacion.html" target="_top" title="requisito_presentado_observacion" alt="" coords="2105,1208,2463,1384">
+<area shape="rect" id="node26" href="tables/role_caso.html" target="_top" title="role_caso" alt="" coords="1413,815,1563,991">
+<area shape="rect" id="node27" href="tables/role_user.html" target="_top" title="role_user" alt="" coords="1406,1172,1570,1348">
+<area shape="rect" id="node29" href="tables/sisep_categoria.html" target="_top" title="sisep_categoria" alt="" coords="1801,35,1991,152">
+<area shape="rect" id="node30" href="tables/sisep_doc_consolidado_categorias.html" target="_top" title="sisep_doc_consolidado_categorias" alt="" coords="1289,2539,1687,2685">
+<area shape="rect" id="node31" href="tables/sisepdesc_categoria.html" target="_top" title="sisepdesc_categoria" alt="" coords="2145,5,2423,152">
+<area shape="rect" id="node34" href="tables/usuario_informacion.html" target="_top" title="usuario_informacion" alt="" coords="912,1631,1144,1807">
+<area shape="rect" id="node35" href="tables/usuario_informacion_tmp.html" target="_top" title="usuario_informacion_tmp" alt="" coords="890,1437,1166,1613">
+</map>
+                                        <a name='diagram'><img id="compactDegreeImg" src="diagrams/summary/relationships.real.compact.png" usemap="#compactRelationshipsDiagram" class="diagram" border="0" align="left"></a>
+                                    </div>
+                                    <div class="chart tab-pane " id="largeDegreeImg-chart" style="position: relative; overflow-x:auto;">
+                                        <map id="largeRelationshipsDiagram" name="largeRelationshipsDiagram">
+<area shape="rect" id="node1" href="tables/archivo_digital.html" target="_top" title="archivo_digital" alt="" coords="1792,5152,2000,5509">
+<area shape="rect" id="node4" href="tables/archivo_tipo.html" target="_top" title="archivo_tipo" alt="" coords="1404,4995,1572,5264">
+<area shape="rect" id="node2" href="tables/archivo_digital_consolidado.html" target="_top" title="archivo_digital_consolidado" alt="" coords="1747,4777,2044,5135">
+<area shape="rect" id="node3" href="tables/archivo_miniatura.html" target="_top" title="archivo_miniatura" alt="" coords="2178,5123,2389,5421">
+<area shape="rect" id="node5" href="tables/caso.html" target="_top" title="caso" alt="" coords="927,495,1128,881">
+<area shape="rect" id="node32" href="tables/tramite.html" target="_top" title="tramite" alt="" coords="436,524,662,764">
+<area shape="rect" id="node6" href="tables/caso_pre_registro.html" target="_top" title="caso_pre_registro" alt="" coords="1318,779,1657,1371">
+<area shape="rect" id="node18" href="tables/pre_registro_persona.html" target="_top" title="pre_registro_persona" alt="" coords="810,899,1245,1725">
+<area shape="rect" id="node33" href="tables/users.html" target="_top" title="users" alt="" coords="448,2069,650,2515">
+<area shape="rect" id="node7" href="tables/caso_requisito.html" target="_top" title="caso_requisito" alt="" coords="1730,1012,2061,1399">
+<area shape="rect" id="node22" href="tables/requisito.html" target="_top" title="requisito" alt="" coords="1367,1645,1608,1885">
+<area shape="rect" id="node8" href="tables/catalogo_categoria.html" target="_top" title="catalogo_categoria" alt="" coords="918,4796,1138,5036">
+<area shape="rect" id="node9" href="tables/categoria_rda.html" target="_top" title="categoria_rda" alt="" coords="1305,4451,1670,4720">
+<area shape="rect" id="node20" href="tables/registro_docente_administrativo.html" target="_top" title="registro_docente_administrativo" alt="" coords="857,3753,1198,4257">
+<area shape="rect" id="node10" href="tables/categoria_rp_gesttla.html" target="_top" title="categoria_rp_gesttla" alt="" coords="1366,4737,1610,4977">
+<area shape="rect" id="node21" href="tables/registro_rp_gesttla.html" target="_top" title="registro_rp_gesttla" alt="" coords="910,4275,1146,4779">
+<area shape="rect" id="node11" href="tables/estado_tramite.html" target="_top" title="estado_tramite" alt="" coords="1732,292,2059,825">
+<area shape="rect" id="node12" href="tables/organizacion.html" target="_top" title="organizacion" alt="" coords="56,3171,288,3557">
+<area shape="rect" id="node13" href="tables/permission_role.html" target="_top" title="permission_role" alt="" coords="1391,2196,1584,2407">
+<area shape="rect" id="node14" href="tables/permissions.html" target="_top" title="permissions" alt="" coords="944,3496,1111,3736">
+<area shape="rect" id="node28" href="tables/roles.html" target="_top" title="roles" alt="" coords="952,1779,1103,2107">
+<area shape="rect" id="node15" href="tables/persona.html" target="_top" title="persona" alt="" coords="332,3399,766,4284">
+<area shape="rect" id="node16" href="tables/persona_organizacion.html" target="_top" title="persona_organizacion" alt="" coords="426,3112,672,3381">
+<area shape="rect" id="node17" href="tables/persona_tmp.html" target="_top" title="persona_tmp" alt="" coords="405,2532,693,3095">
+<area shape="rect" id="node19" href="tables/registro_didep.html" target="_top" title="registro_didep" alt="" coords="910,2975,1146,3479">
+<area shape="rect" id="node23" href="tables/requisito_caso.html" target="_top" title="requisito_caso" alt="" coords="1396,456,1580,725">
+<area shape="rect" id="node24" href="tables/requisito_presentado.html" target="_top" title="requisito_presentado" alt="" coords="1776,1809,2016,2137">
+<area shape="rect" id="node25" href="tables/requisito_presentado_observacion.html" target="_top" title="requisito_presentado_observacion" alt="" coords="2105,2052,2462,2351">
+<area shape="rect" id="node26" href="tables/role_caso.html" target="_top" title="role_caso" alt="" coords="1412,1388,1563,1628">
+<area shape="rect" id="node27" href="tables/role_user.html" target="_top" title="role_user" alt="" coords="1406,1903,1570,2143">
+<area shape="rect" id="node29" href="tables/sisep_categoria.html" target="_top" title="sisep_categoria" alt="" coords="1800,35,1991,275">
+<area shape="rect" id="node30" href="tables/sisep_doc_consolidado_categorias.html" target="_top" title="sisep_doc_consolidado_categorias" alt="" coords="1289,3196,1686,4433">
+<area shape="rect" id="node31" href="tables/sisepdesc_categoria.html" target="_top" title="sisepdesc_categoria" alt="" coords="2145,5,2422,568">
+<area shape="rect" id="node34" href="tables/usuario_informacion.html" target="_top" title="usuario_informacion" alt="" coords="912,2717,1144,2957">
+<area shape="rect" id="node35" href="tables/usuario_informacion_tmp.html" target="_top" title="usuario_informacion_tmp" alt="" coords="890,2460,1166,2700">
+</map>
+                                        <a name='diagram'><img id="largeDegreeImg" src="diagrams/summary/relationships.real.large.png" usemap="#largeRelationshipsDiagram" class="diagram" border="0" align="left"></a>
+                                    </div>
+                                    <div class="chart tab-pane " id="compactimpliedDegreeImg-chart" style="position: relative; overflow-x:auto;">
+                                        <map id="compactImpliedRelationshipsDiagram" name="compactImpliedRelationshipsDiagram">
+<area shape="rect" id="node1" href="tables/archivo_digital.html" target="_top" title="archivo_digital" alt="" coords="1792,3159,2000,3305">
+<area shape="rect" id="node4" href="tables/archivo_tipo.html" target="_top" title="archivo_tipo" alt="" coords="1404,3107,1572,3224">
+<area shape="rect" id="node2" href="tables/archivo_digital_consolidado.html" target="_top" title="archivo_digital_consolidado" alt="" coords="1747,2995,2045,3141">
+<area shape="rect" id="node3" href="tables/archivo_miniatura.html" target="_top" title="archivo_miniatura" alt="" coords="2179,3129,2389,3276">
+<area shape="rect" id="node5" href="tables/caso.html" target="_top" title="caso" alt="" coords="927,900,1129,1047">
+<area shape="rect" id="node38" href="tables/tramite.html" target="_top" title="tramite" alt="" coords="436,929,663,1076">
+<area shape="rect" id="node6" href="tables/caso_pre_registro.html" target="_top" title="caso_pre_registro" alt="" coords="1319,937,1657,1201">
+<area shape="rect" id="node18" href="tables/pre_registro_persona.html" target="_top" title="pre_registro_persona" alt="" coords="811,1221,1245,1368">
+<area shape="rect" id="node39" href="tables/users.html" target="_top" title="users" alt="" coords="448,1700,651,1876">
+<area shape="rect" id="node7" href="tables/caso_requisito.html" target="_top" title="caso_requisito" alt="" coords="1731,1068,2061,1244">
+<area shape="rect" id="node28" href="tables/requisito.html" target="_top" title="requisito" alt="" coords="1367,1412,1609,1559">
+<area shape="rect" id="node8" href="tables/catalogo_categoria.html" target="_top" title="catalogo_categoria" alt="" coords="918,2779,1138,2896">
+<area shape="rect" id="node9" href="tables/categoria_rda.html" target="_top" title="categoria_rda" alt="" coords="1305,2749,1671,2925">
+<area shape="rect" id="node26" href="tables/registro_docente_administrativo.html" target="_top" title="registro_docente_administrativo" alt="" coords="857,2913,1199,3089">
+<area shape="rect" id="node10" href="tables/categoria_rp_gesttla.html" target="_top" title="categoria_rp_gesttla" alt="" coords="1366,2556,1610,2732">
+<area shape="rect" id="node27" href="tables/registro_rp_gesttla.html" target="_top" title="registro_rp_gesttla" alt="" coords="910,2585,1146,2761">
+<area shape="rect" id="node11" href="tables/estado_tramite.html" target="_top" title="estado_tramite" alt="" coords="1733,573,2059,779">
+<area shape="rect" id="node12" href="tables/organizacion.html" target="_top" title="organizacion" alt="" coords="56,2108,288,2284">
+<area shape="rect" id="node13" href="tables/permission_role.html" target="_top" title="permission_role" alt="" coords="1391,1805,1585,1981">
+<area shape="rect" id="node14" href="tables/permissions.html" target="_top" title="permissions" alt="" coords="945,2421,1111,2568">
+<area shape="rect" id="node34" href="tables/roles.html" target="_top" title="roles" alt="" coords="953,1540,1103,1716">
+<area shape="rect" id="node15" href="tables/persona.html" target="_top" title="persona" alt="" coords="332,2257,767,2521">
+<area shape="rect" id="node16" href="tables/persona_organizacion.html" target="_top" title="persona_organizacion" alt="" coords="427,2049,672,2225">
+<area shape="rect" id="node17" href="tables/persona_tmp.html" target="_top" title="persona_tmp" alt="" coords="405,1900,693,2017">
+<area shape="rect" id="node19" href="tables/r_egresados.html" target="_top" title="r_egresados" alt="" coords="2193,169,2375,287">
+<area shape="rect" id="node21" href="tables/r_entidad.html" target="_top" title="r_entidad" alt="" coords="1798,439,1994,556">
+<area shape="rect" id="node20" href="tables/r_egresados_ppmi.html" target="_top" title="r_egresados_ppmi" alt="" coords="2179,304,2389,421">
+<area shape="rect" id="node22" href="tables/r_observados.html" target="_top" title="r_observados" alt="" coords="2170,439,2398,556">
+<area shape="rect" id="node23" href="tables/r_programa_profesor_interino.html" target="_top" title="r_programa_profesor_interino" alt="" coords="2126,573,2442,691">
+<area shape="rect" id="node24" href="tables/r_sancion.html" target="_top" title="r_sancion" alt="" coords="2133,708,2435,825">
+<area shape="rect" id="node25" href="tables/registro_didep.html" target="_top" title="registro_didep" alt="" coords="910,2228,1146,2404">
+<area shape="rect" id="node29" href="tables/requisito_caso.html" target="_top" title="requisito_caso" alt="" coords="1396,737,1580,884">
+<area shape="rect" id="node30" href="tables/requisito_presentado.html" target="_top" title="requisito_presentado" alt="" coords="1776,1497,2016,1703">
+<area shape="rect" id="node31" href="tables/requisito_presentado_observacion.html" target="_top" title="requisito_presentado_observacion" alt="" coords="2105,1612,2463,1788">
+<area shape="rect" id="node32" href="tables/role_caso.html" target="_top" title="role_caso" alt="" coords="1413,1219,1563,1395">
+<area shape="rect" id="node33" href="tables/role_user.html" target="_top" title="role_user" alt="" coords="1406,1576,1570,1752">
+<area shape="rect" id="node35" href="tables/sisep_categoria.html" target="_top" title="sisep_categoria" alt="" coords="1801,35,1991,152">
+<area shape="rect" id="node36" href="tables/sisep_doc_consolidado_categorias.html" target="_top" title="sisep_doc_consolidado_categorias" alt="" coords="1289,2943,1687,3089">
+<area shape="rect" id="node37" href="tables/sisepdesc_categoria.html" target="_top" title="sisepdesc_categoria" alt="" coords="2145,5,2423,152">
+<area shape="rect" id="node40" href="tables/usuario_informacion.html" target="_top" title="usuario_informacion" alt="" coords="912,2035,1144,2211">
+<area shape="rect" id="node41" href="tables/usuario_informacion_tmp.html" target="_top" title="usuario_informacion_tmp" alt="" coords="890,1841,1166,2017">
+</map>
+                                        <a name='diagram'><img id="compactimpliedDegreeImg" src="diagrams/summary/relationships.implied.compact.png" usemap="#compactImpliedRelationshipsDiagram" class="diagram" border="0" align="left"></a>
+                                    </div>
+                                    <div class="chart tab-pane " id="largeimpliedDegreeImg-chart" style="position: relative; overflow-x:auto;">
+                                        <map id="largeImpliedRelationshipsDiagram" name="largeImpliedRelationshipsDiagram">
+<area shape="rect" id="node1" href="tables/archivo_digital.html" target="_top" title="archivo_digital" alt="" coords="1792,9899,2000,10256">
+<area shape="rect" id="node4" href="tables/archivo_tipo.html" target="_top" title="archivo_tipo" alt="" coords="1404,9741,1572,10011">
+<area shape="rect" id="node2" href="tables/archivo_digital_consolidado.html" target="_top" title="archivo_digital_consolidado" alt="" coords="1747,9524,2044,9881">
+<area shape="rect" id="node3" href="tables/archivo_miniatura.html" target="_top" title="archivo_miniatura" alt="" coords="2178,9869,2389,10168">
+<area shape="rect" id="node5" href="tables/caso.html" target="_top" title="caso" alt="" coords="927,5241,1128,5628">
+<area shape="rect" id="node38" href="tables/tramite.html" target="_top" title="tramite" alt="" coords="436,5271,662,5511">
+<area shape="rect" id="node6" href="tables/caso_pre_registro.html" target="_top" title="caso_pre_registro" alt="" coords="1318,5525,1657,6117">
+<area shape="rect" id="node18" href="tables/pre_registro_persona.html" target="_top" title="pre_registro_persona" alt="" coords="810,5645,1245,6472">
+<area shape="rect" id="node39" href="tables/users.html" target="_top" title="users" alt="" coords="448,6816,650,7261">
+<area shape="rect" id="node7" href="tables/caso_requisito.html" target="_top" title="caso_requisito" alt="" coords="1730,5759,2061,6145">
+<area shape="rect" id="node28" href="tables/requisito.html" target="_top" title="requisito" alt="" coords="1367,6392,1608,6632">
+<area shape="rect" id="node8" href="tables/catalogo_categoria.html" target="_top" title="catalogo_categoria" alt="" coords="918,9543,1138,9783">
+<area shape="rect" id="node9" href="tables/categoria_rda.html" target="_top" title="categoria_rda" alt="" coords="1305,9197,1670,9467">
+<area shape="rect" id="node26" href="tables/registro_docente_administrativo.html" target="_top" title="registro_docente_administrativo" alt="" coords="857,8500,1198,9004">
+<area shape="rect" id="node10" href="tables/categoria_rp_gesttla.html" target="_top" title="categoria_rp_gesttla" alt="" coords="1366,9484,1610,9724">
+<area shape="rect" id="node27" href="tables/registro_rp_gesttla.html" target="_top" title="registro_rp_gesttla" alt="" coords="910,9021,1146,9525">
+<area shape="rect" id="node11" href="tables/estado_tramite.html" target="_top" title="estado_tramite" alt="" coords="1732,5039,2059,5572">
+<area shape="rect" id="node12" href="tables/organizacion.html" target="_top" title="organizacion" alt="" coords="56,7917,288,8304">
+<area shape="rect" id="node13" href="tables/permission_role.html" target="_top" title="permission_role" alt="" coords="1391,6943,1584,7153">
+<area shape="rect" id="node14" href="tables/permissions.html" target="_top" title="permissions" alt="" coords="944,8243,1111,8483">
+<area shape="rect" id="node34" href="tables/roles.html" target="_top" title="roles" alt="" coords="952,6525,1103,6853">
+<area shape="rect" id="node15" href="tables/persona.html" target="_top" title="persona" alt="" coords="332,8145,766,9031">
+<area shape="rect" id="node16" href="tables/persona_organizacion.html" target="_top" title="persona_organizacion" alt="" coords="426,7859,672,8128">
+<area shape="rect" id="node17" href="tables/persona_tmp.html" target="_top" title="persona_tmp" alt="" coords="405,7279,693,7841">
+<area shape="rect" id="node19" href="tables/r_egresados.html" target="_top" title="r_egresados" alt="" coords="2192,585,2375,1588">
+<area shape="rect" id="node21" href="tables/r_entidad.html" target="_top" title="r_entidad" alt="" coords="1798,2713,1994,3305">
+<area shape="rect" id="node20" href="tables/r_egresados_ppmi.html" target="_top" title="r_egresados_ppmi" alt="" coords="2178,1605,2389,2608">
+<area shape="rect" id="node22" href="tables/r_observados.html" target="_top" title="r_observados" alt="" coords="2170,2625,2398,4009">
+<area shape="rect" id="node23" href="tables/r_programa_profesor_interino.html" target="_top" title="r_programa_profesor_interino" alt="" coords="2126,4027,2442,5059">
+<area shape="rect" id="node24" href="tables/r_sancion.html" target="_top" title="r_sancion" alt="" coords="2132,5076,2435,6783">
+<area shape="rect" id="node25" href="tables/registro_didep.html" target="_top" title="registro_didep" alt="" coords="910,7721,1146,8225">
+<area shape="rect" id="node29" href="tables/requisito_caso.html" target="_top" title="requisito_caso" alt="" coords="1396,5203,1580,5472">
+<area shape="rect" id="node30" href="tables/requisito_presentado.html" target="_top" title="requisito_presentado" alt="" coords="1776,6556,2016,6884">
+<area shape="rect" id="node31" href="tables/requisito_presentado_observacion.html" target="_top" title="requisito_presentado_observacion" alt="" coords="2105,6800,2462,7099">
+<area shape="rect" id="node32" href="tables/role_caso.html" target="_top" title="role_caso" alt="" coords="1412,6135,1563,6375">
+<area shape="rect" id="node33" href="tables/role_user.html" target="_top" title="role_user" alt="" coords="1406,6649,1570,6889">
+<area shape="rect" id="node35" href="tables/sisep_categoria.html" target="_top" title="sisep_categoria" alt="" coords="1800,35,1991,275">
+<area shape="rect" id="node36" href="tables/sisep_doc_consolidado_categorias.html" target="_top" title="sisep_doc_consolidado_categorias" alt="" coords="1289,7943,1686,9180">
+<area shape="rect" id="node37" href="tables/sisepdesc_categoria.html" target="_top" title="sisepdesc_categoria" alt="" coords="2145,5,2422,568">
+<area shape="rect" id="node40" href="tables/usuario_informacion.html" target="_top" title="usuario_informacion" alt="" coords="912,7464,1144,7704">
+<area shape="rect" id="node41" href="tables/usuario_informacion_tmp.html" target="_top" title="usuario_informacion_tmp" alt="" coords="890,7207,1166,7447">
+</map>
+                                        <a name='diagram'><img id="largeimpliedDegreeImg" src="diagrams/summary/relationships.implied.large.png" usemap="#largeImpliedRelationshipsDiagram" class="diagram" border="0" align="left"></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div><!-- /.box-body -->
+                    </div>
+                </section>
+            </div>
+            <!-- /.content-wrapper -->
+            <footer class="main-footer">
+                <div>
+                    <div class="pull-right hidden-xs">
+                        <a href="https://github.com/schemaspy/schemaspy" title="GitHub for SchemaSpy"><i class="fa fa-github-square fa-2x"></i></a>
+                        <a href="http://stackoverflow.com/questions/tagged/schemaspy" title="StackOverflow for SchemaSpy"><i class="fa fa-stack-overflow fa-2x"></i></a>
+                    </div>
+                    <strong>Generated by <a href="http://schemaspy.org/" class="logo-text"><i class="fa fa-database"></i> SchemaSpy 6.1.0</a></strong>
+                </div>
+                <!-- /.container -->
+            </footer>
+        </div>
+        <!-- ./wrapper -->
+
+        <!-- jQuery 2.2.3 -->
+        <script src="bower/admin-lte/plugins/jQuery/jquery-2.2.3.min.js"></script>
+        <script src="bower/admin-lte/plugins/jQueryUI/jquery-ui.min.js"></script>
+        <!-- Bootstrap 3.3.5 -->
+        <script src="bower/admin-lte/bootstrap/js/bootstrap.min.js"></script>
+        <!-- DataTables -->
+        <script src="bower/datatables.net/jquery.dataTables.min.js"></script>
+        <script src="bower/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
+        <script src="bower/datatables.net-buttons/dataTables.buttons.min.js"></script>
+        <script src="bower/datatables.net-buttons-bs/js/buttons.bootstrap.min.js"></script>
+        <script src="bower/datatables.net-buttons/buttons.html5.min.js"></script>
+        <script src="bower/datatables.net-buttons/buttons.print.min.js"></script>
+        <script src="bower/datatables.net-buttons/buttons.colVis.min.js"></script>
+        <!-- SheetJS -->
+        <script src="bower/js-xlsx/xlsx.full.min.js"></script>
+        <!-- pdfmake -->
+        <script src="bower/pdfmake/pdfmake.min.js"></script>
+        <script src="bower/pdfmake/vfs_fonts.js"></script>
+        <!-- SlimScroll -->
+        <script src="bower/admin-lte/plugins/slimScroll/jquery.slimscroll.min.js"></script>
+        <!-- FastClick -->
+        <script src="bower/admin-lte/plugins/fastclick/fastclick.js"></script>
+        <!-- Salvattore -->
+        <script src="bower/salvattore/salvattore.min.js"></script>
+        <!-- AnchorJS -->
+        <script src="bower/anchor-js/anchor.min.js"></script>
+        <!-- CodeMirror -->
+        <script src="bower/codemirror/codemirror.js"></script>
+        <script src="bower/codemirror/sql.js"></script>
+        <!-- AdminLTE App -->
+        <script src="bower/admin-lte/dist/js/app.min.js"></script>
+        <script src="relationships.js"></script>
+        <script src="schemaSpy.js"></script>
+    </body>
+</html>
