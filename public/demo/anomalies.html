@@ -1,0 +1,1200 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>bd_sisep Database</title>
+        <!-- Tell the browser to be responsive to screen width -->
+        <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+        <link rel="icon" type="image/png" sizes="16x16" href="favicon.png">
+        <!-- Bootstrap 3.3.5 -->
+        <link rel="stylesheet" href="bower/admin-lte/bootstrap/css/bootstrap.min.css">
+        <!-- Font Awesome -->
+        <link rel="stylesheet" href="bower/font-awesome/css/font-awesome.min.css">
+        <!-- Ionicons -->
+        <link rel="stylesheet" href="bower/ionicons/css/ionicons.min.css">
+        <!-- DataTables -->
+        <link rel="stylesheet" href="bower/datatables.net-bs/css/dataTables.bootstrap.min.css">
+        <link rel="stylesheet" href="bower/datatables.net-buttons-bs/css/buttons.bootstrap.min.css">
+        <!-- Code Mirror -->
+        <link rel="stylesheet" href="bower/codemirror/codemirror.css">
+        <!-- Fonts -->
+        <link href='fonts/indieflower/indie-flower.css' rel='stylesheet' type='text/css'>
+        <link href='fonts/source-sans-pro/source-sans-pro.css' rel='stylesheet' type='text/css'>
+
+        <!-- Theme style -->
+        <link rel="stylesheet" href="bower/admin-lte/dist/css/AdminLTE.min.css">
+        <!-- Salvattore -->
+        <link rel="stylesheet" href="bower/salvattore/salvattore.css">
+        <!-- AdminLTE Skins. Choose a skin from the css/skins
+           folder instead of downloading all of them to reduce the load. -->
+        <link rel="stylesheet" href="bower/admin-lte/dist/css/skins/_all-skins.min.css">
+        <!-- SchemaSpy -->
+        <link rel="stylesheet" href="schemaSpy.css">
+
+        <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+        <!--[if lt IE 9]>
+        <script src="bower/html5shiv/html5shiv.min.js"></script>
+        <script src="bower/respond/respond.min.js"></script>
+        <![endif]-->
+    </head>
+    <!-- ADD THE CLASS layout-top-nav TO REMOVE THE SIDEBAR. -->
+    <body class="hold-transition skin-blue layout-top-nav">
+        <div class="wrapper">
+            <header class="main-header">
+                <nav class="navbar navbar-static-top">
+                    <div class="container">
+                        <div class="navbar-header">
+                            <a href="index.html" class="navbar-brand"><b>bd_sisep</b> Database</a>
+                            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse"><i class="fa fa-bars"></i></button>
+                        </div>
+
+                        <!-- Collect the nav links, forms, and other content for toggling -->
+                        <div class="collapse navbar-collapse pull-left" id="navbar-collapse">
+                            <ul class="nav navbar-nav">
+                                <li><a href="index.html">Tables <span class="sr-only">(current)</span></a></li>
+                                <li><a href="columns.html" title="All of the columns in the schema">Columns</a></li>
+                                <li><a href="constraints.html" title="Useful for diagnosing error messages that just give constraint name or number">Constraints</a></li>
+                                <li><a href="relationships.html" title="Diagram of table relationships">Relationships</a></li>
+                                <li><a href="orphans.html" title="View of tables with neither parents nor children">Orphan&nbsp;Tables</a></li>
+                                <li><a href="anomalies.html" title="Things that might not be quite right">Anomalies</a></li>
+                                <li><a href="routines.html" title="Procedures and functions">Routines</a></li>
+                            </ul>
+                        </div>
+                        <!-- /.navbar-collapse -->
+                        <!-- Navbar Right Menu -->
+                    </div>
+                    <!-- /.container-fluid -->
+                </nav>
+            </header>
+            <!-- Main content -->
+            <!-- Full Width Column -->
+            <div class="content-wrapper">
+                <!-- Content Header (Page header) -->
+                <section class="content-header">
+                    <h1>Anomalies</h1><br />
+                    <div class="callout callout-warning">
+                        <p>Things that might not be 'quite right' about your database and schema</p>
+                    </div>
+                </section>
+                <!-- Main content -->
+                <section class="content">
+                    <div class="row">
+                        <div class="col-md-6"> <!-- Implied Relationship -->
+                            <div class="box box-success">
+                                <div class="box-header with-border">
+                                    <h3 class="box-title">Columns whose name and type imply a relationship to another table's primary key</h3>
+                                    <div class="box-tools pull-right">
+                                        <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+                                        <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+                                    </div>
+                                </div>
+                                <div class="box-body">
+                                    <table id="implied_constraint" class="table table-bordered table-striped dataTable" role="grid">
+                                        <thead align='left'>
+                                            <tr>
+                                                <th>Child Column</th>
+                                                <th>Implied Parent Column</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td colspan="3">Anomaly not detected</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6"> <!-- Tables without indexes -->
+                            <div class="box box-danger">
+                                <div class="box-header with-border">
+                                    <h3 class="box-title">Tables without indexes</h3>
+                                    <div class="box-tools pull-right">
+                                        <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+                                        <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+                                    </div>
+                                </div>
+                                <div class="box-body">
+                                    <table id="un_indexed_table" class="table table-bordered table-striped dataTable" role="grid">
+                                        <thead align='left'>
+                                            <tr>
+                                                <th>Table</th>
+                                                <th>Rows</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td><a href='tables/archivo_digital.html'>archivo_digital</a></td>
+                                                <td>585</td>
+                                            </tr>
+                                            <tr>
+                                                <td><a href='tables/archivo_digital_consolidado.html'>archivo_digital_consolidado</a></td>
+                                                <td>86</td>
+                                            </tr>
+                                            <tr>
+                                                <td><a href='tables/archivo_miniatura.html'>archivo_miniatura</a></td>
+                                                <td>0</td>
+                                            </tr>
+                                            <tr>
+                                                <td><a href='tables/archivo_tipo.html'>archivo_tipo</a></td>
+                                                <td>684</td>
+                                            </tr>
+                                            <tr>
+                                                <td><a href='tables/cargo.html'>cargo</a></td>
+                                                <td>17</td>
+                                            </tr>
+                                            <tr>
+                                                <td><a href='tables/caso.html'>caso</a></td>
+                                                <td>8</td>
+                                            </tr>
+                                            <tr>
+                                                <td><a href='tables/caso_pre_registro.html'>caso_pre_registro</a></td>
+                                                <td>22</td>
+                                            </tr>
+                                            <tr>
+                                                <td><a href='tables/caso_requisito.html'>caso_requisito</a></td>
+                                                <td>61</td>
+                                            </tr>
+                                            <tr>
+                                                <td><a href='tables/catalogo_apellidos.html'>catalogo_apellidos</a></td>
+                                                <td>5</td>
+                                            </tr>
+                                            <tr>
+                                                <td><a href='tables/catalogo_canton.html'>catalogo_canton</a></td>
+                                                <td>1607</td>
+                                            </tr>
+                                            <tr>
+                                                <td><a href='tables/catalogo_cargo_cas.html'>catalogo_cargo_cas</a></td>
+                                                <td>2</td>
+                                            </tr>
+                                            <tr>
+                                                <td><a href='tables/catalogo_carnet_discapacidad.html'>catalogo_carnet_discapacidad</a></td>
+                                                <td>2</td>
+                                            </tr>
+                                            <tr>
+                                                <td><a href='tables/catalogo_cas.html'>catalogo_cas</a></td>
+                                                <td>3</td>
+                                            </tr>
+                                            <tr>
+                                                <td><a href='tables/catalogo_cas_provincia.html'>catalogo_cas_provincia</a></td>
+                                                <td>3</td>
+                                            </tr>
+                                            <tr>
+                                                <td><a href='tables/catalogo_categoria.html'>catalogo_categoria</a></td>
+                                                <td>7</td>
+                                            </tr>
+                                            <tr>
+                                                <td><a href='tables/catalogo_categoria_grupo_categoria.html'>catalogo_categoria_grupo_categoria</a></td>
+                                                <td>2</td>
+                                            </tr>
+                                            <tr>
+                                                <td><a href='tables/catalogo_categoria_tipo_categoria.html'>catalogo_categoria_tipo_categoria</a></td>
+                                                <td>2</td>
+                                            </tr>
+                                            <tr>
+                                                <td><a href='tables/catalogo_categoria_tipo_documento.html'>catalogo_categoria_tipo_documento</a></td>
+                                                <td>1</td>
+                                            </tr>
+                                            <tr>
+                                                <td><a href='tables/catalogo_cer_unefco_tipo_documento.html'>catalogo_cer_unefco_tipo_documento</a></td>
+                                                <td>52</td>
+                                            </tr>
+                                            <tr>
+                                                <td><a href='tables/catalogo_declaracion_tipo_documento.html'>catalogo_declaracion_tipo_documento</a></td>
+                                                <td>52</td>
+                                            </tr>
+                                            <tr>
+                                                <td><a href='tables/catalogo_departamento.html'>catalogo_departamento</a></td>
+                                                <td>10</td>
+                                            </tr>
+                                            <tr>
+                                                <td><a href='tables/catalogo_departamento_bolivia.html'>catalogo_departamento_bolivia</a></td>
+                                                <td>9</td>
+                                            </tr>
+                                            <tr>
+                                                <td><a href='tables/catalogo_desde_mes.html'>catalogo_desde_mes</a></td>
+                                                <td>12</td>
+                                            </tr>
+                                            <tr>
+                                                <td><a href='tables/catalogo_dip_bach_tipo_documento.html'>catalogo_dip_bach_tipo_documento</a></td>
+                                                <td>52</td>
+                                            </tr>
+                                            <tr>
+                                                <td><a href='tables/catalogo_distrito.html'>catalogo_distrito</a></td>
+                                                <td>391</td>
+                                            </tr>
+                                            <tr>
+                                                <td><a href='tables/catalogo_entidad.html'>catalogo_entidad</a></td>
+                                                <td>566</td>
+                                            </tr>
+                                            <tr>
+                                                <td><a href='tables/catalogo_entidad_afp.html'>catalogo_entidad_afp</a></td>
+                                                <td>3</td>
+                                            </tr>
+                                            <tr>
+                                                <td><a href='tables/catalogo_entidad_emisor.html'>catalogo_entidad_emisor</a></td>
+                                                <td>3</td>
+                                            </tr>
+                                            <tr>
+                                                <td><a href='tables/catalogo_esp_iser_tipo_documento.html'>catalogo_esp_iser_tipo_documento</a></td>
+                                                <td>52</td>
+                                            </tr>
+                                            <tr>
+                                                <td><a href='tables/catalogo_esp_peams_tipo_documento.html'>catalogo_esp_peams_tipo_documento</a></td>
+                                                <td>52</td>
+                                            </tr>
+                                            <tr>
+                                                <td><a href='tables/catalogo_especialidad.html'>catalogo_especialidad</a></td>
+                                                <td>2938</td>
+                                            </tr>
+                                            <tr>
+                                                <td><a href='tables/catalogo_estado_civil.html'>catalogo_estado_civil</a></td>
+                                                <td>4</td>
+                                            </tr>
+                                            <tr>
+                                                <td><a href='tables/catalogo_ext_rev_univ_tipo_documento.html'>catalogo_ext_rev_univ_tipo_documento</a></td>
+                                                <td>52</td>
+                                            </tr>
+                                            <tr>
+                                                <td><a href='tables/catalogo_formacion_profesional.html'>catalogo_formacion_profesional</a></td>
+                                                <td>33</td>
+                                            </tr>
+                                            <tr>
+                                                <td><a href='tables/catalogo_grado_categoria.html'>catalogo_grado_categoria</a></td>
+                                                <td>9</td>
+                                            </tr>
+                                            <tr>
+                                                <td><a href='tables/catalogo_grado_discapacidad.html'>catalogo_grado_discapacidad</a></td>
+                                                <td>2</td>
+                                            </tr>
+                                            <tr>
+                                                <td><a href='tables/catalogo_grado_escolaridad.html'>catalogo_grado_escolaridad</a></td>
+                                                <td>27</td>
+                                            </tr>
+                                            <tr>
+                                                <td><a href='tables/catalogo_grado_normalista.html'>catalogo_grado_normalista</a></td>
+                                                <td>11</td>
+                                            </tr>
+                                            <tr>
+                                                <td><a href='tables/catalogo_grupo_categoria.html'>catalogo_grupo_categoria</a></td>
+                                                <td>23</td>
+                                            </tr>
+                                            <tr>
+                                                <td><a href='tables/catalogo_hasta_mes.html'>catalogo_hasta_mes</a></td>
+                                                <td>12</td>
+                                            </tr>
+                                            <tr>
+                                                <td><a href='tables/catalogo_idioma.html'>catalogo_idioma</a></td>
+                                                <td>51</td>
+                                            </tr>
+                                            <tr>
+                                                <td><a href='tables/catalogo_institutos_tipo_documento.html'>catalogo_institutos_tipo_documento</a></td>
+                                                <td>52</td>
+                                            </tr>
+                                            <tr>
+                                                <td><a href='tables/catalogo_localidad.html'>catalogo_localidad</a></td>
+                                                <td>45700</td>
+                                            </tr>
+                                            <tr>
+                                                <td><a href='tables/catalogo_modalidad.html'>catalogo_modalidad</a></td>
+                                                <td>2</td>
+                                            </tr>
+                                            <tr>
+                                                <td><a href='tables/catalogo_nacion.html'>catalogo_nacion</a></td>
+                                                <td>242</td>
+                                            </tr>
+                                            <tr>
+                                                <td><a href='tables/catalogo_nivel.html'>catalogo_nivel</a></td>
+                                                <td>28</td>
+                                            </tr>
+                                            <tr>
+                                                <td><a href='tables/catalogo_nivel_escolar.html'>catalogo_nivel_escolar</a></td>
+                                                <td>2</td>
+                                            </tr>
+                                            <tr>
+                                                <td><a href='tables/catalogo_nivel_idioma.html'>catalogo_nivel_idioma</a></td>
+                                                <td>4</td>
+                                            </tr>
+                                            <tr>
+                                                <td><a href='tables/catalogo_nombres.html'>catalogo_nombres</a></td>
+                                                <td>0</td>
+                                            </tr>
+                                            <tr>
+                                                <td><a href='tables/catalogo_normalista_entidad.html'>catalogo_normalista_entidad</a></td>
+                                                <td>537</td>
+                                            </tr>
+                                            <tr>
+                                                <td><a href='tables/catalogo_normalista_especialidad.html'>catalogo_normalista_especialidad</a></td>
+                                                <td>2676</td>
+                                            </tr>
+                                            <tr>
+                                                <td><a href='tables/catalogo_normalista_formacion_profesional.html'>catalogo_normalista_formacion_profesional</a></td>
+                                                <td>4</td>
+                                            </tr>
+                                            <tr>
+                                                <td><a href='tables/catalogo_normalista_modalidad.html'>catalogo_normalista_modalidad</a></td>
+                                                <td>2</td>
+                                            </tr>
+                                            <tr>
+                                                <td><a href='tables/catalogo_normalista_nivel.html'>catalogo_normalista_nivel</a></td>
+                                                <td>28</td>
+                                            </tr>
+                                            <tr>
+                                                <td><a href='tables/catalogo_normalista_rev_tipo_documento.html'>catalogo_normalista_rev_tipo_documento</a></td>
+                                                <td>52</td>
+                                            </tr>
+                                            <tr>
+                                                <td><a href='tables/catalogo_normalista_tipo_documento.html'>catalogo_normalista_tipo_documento</a></td>
+                                                <td>52</td>
+                                            </tr>
+                                            <tr>
+                                                <td><a href='tables/catalogo_otro_tipo_documento.html'>catalogo_otro_tipo_documento</a></td>
+                                                <td>18</td>
+                                            </tr>
+                                            <tr>
+                                                <td><a href='tables/catalogo_otro_titulo.html'>catalogo_otro_titulo</a></td>
+                                                <td>13</td>
+                                            </tr>
+                                            <tr>
+                                                <td><a href='tables/catalogo_parentesco.html'>catalogo_parentesco</a></td>
+                                                <td>2</td>
+                                            </tr>
+                                            <tr>
+                                                <td><a href='tables/catalogo_personal_administrativo.html'>catalogo_personal_administrativo</a></td>
+                                                <td>0</td>
+                                            </tr>
+                                            <tr>
+                                                <td><a href='tables/catalogo_postgrado_tipo_documento.html'>catalogo_postgrado_tipo_documento</a></td>
+                                                <td>52</td>
+                                            </tr>
+                                            <tr>
+                                                <td><a href='tables/catalogo_profesion.html'>catalogo_profesion</a></td>
+                                                <td>4</td>
+                                            </tr>
+                                            <tr>
+                                                <td><a href='tables/catalogo_provincia.html'>catalogo_provincia</a></td>
+                                                <td>123</td>
+                                            </tr>
+                                            <tr>
+                                                <td><a href='tables/catalogo_r_grado_administrativo.html'>catalogo_r_grado_administrativo</a></td>
+                                                <td>8</td>
+                                            </tr>
+                                            <tr>
+                                                <td><a href='tables/catalogo_ramo.html'>catalogo_ramo</a></td>
+                                                <td>27</td>
+                                            </tr>
+                                            <tr>
+                                                <td><a href='tables/catalogo_seccion.html'>catalogo_seccion</a></td>
+                                                <td>449</td>
+                                            </tr>
+                                            <tr>
+                                                <td><a href='tables/catalogo_tec_calificado_tipo_documento.html'>catalogo_tec_calificado_tipo_documento</a></td>
+                                                <td>52</td>
+                                            </tr>
+                                            <tr>
+                                                <td><a href='tables/catalogo_tipo_cargo_categoria.html'>catalogo_tipo_cargo_categoria</a></td>
+                                                <td>2</td>
+                                            </tr>
+                                            <tr>
+                                                <td><a href='tables/catalogo_tipo_discapacidad.html'>catalogo_tipo_discapacidad</a></td>
+                                                <td>6</td>
+                                            </tr>
+                                            <tr>
+                                                <td><a href='tables/catalogo_tipo_documento.html'>catalogo_tipo_documento</a></td>
+                                                <td>54</td>
+                                            </tr>
+                                            <tr>
+                                                <td><a href='tables/catalogo_tipo_documento_categoria.html'>catalogo_tipo_documento_categoria</a></td>
+                                                <td>4</td>
+                                            </tr>
+                                            <tr>
+                                                <td><a href='tables/catalogo_tipo_documento_identificacion.html'>catalogo_tipo_documento_identificacion</a></td>
+                                                <td>5</td>
+                                            </tr>
+                                            <tr>
+                                                <td><a href='tables/catalogo_tipo_documento_idioma.html'>catalogo_tipo_documento_idioma</a></td>
+                                                <td>2</td>
+                                            </tr>
+                                            <tr>
+                                                <td><a href='tables/catalogo_tipo_documento_libreta_militar.html'>catalogo_tipo_documento_libreta_militar</a></td>
+                                                <td>2</td>
+                                            </tr>
+                                            <tr>
+                                                <td><a href='tables/catalogo_tipo_formacion.html'>catalogo_tipo_formacion</a></td>
+                                                <td>3</td>
+                                            </tr>
+                                            <tr>
+                                                <td><a href='tables/catalogo_tipo_libreta_militar.html'>catalogo_tipo_libreta_militar</a></td>
+                                                <td>5</td>
+                                            </tr>
+                                            <tr>
+                                                <td><a href='tables/catalogo_turno.html'>catalogo_turno</a></td>
+                                                <td>3</td>
+                                            </tr>
+                                            <tr>
+                                                <td><a href='tables/catalogo_unidad_educativa.html'>catalogo_unidad_educativa</a></td>
+                                                <td>1</td>
+                                            </tr>
+                                            <tr>
+                                                <td><a href='tables/catalogo_universitario_tipo_documento.html'>catalogo_universitario_tipo_documento</a></td>
+                                                <td>52</td>
+                                            </tr>
+                                            <tr>
+                                                <td><a href='tables/categoria_rda.html'>categoria_rda</a></td>
+                                                <td>0</td>
+                                            </tr>
+                                            <tr>
+                                                <td><a href='tables/categoria_rp_gesttla.html'>categoria_rp_gesttla</a></td>
+                                                <td>0</td>
+                                            </tr>
+                                            <tr>
+                                                <td><a href='tables/changes.html'>changes</a></td>
+                                                <td>16824664</td>
+                                            </tr>
+                                            <tr>
+                                                <td><a href='tables/codigo_rda_apertura.html'>codigo_rda_apertura</a></td>
+                                                <td>171</td>
+                                            </tr>
+                                            <tr>
+                                                <td><a href='tables/detalle_sisep_doc_calificacion_anios_servicio.html'>detalle_sisep_doc_calificacion_anios_servicio</a></td>
+                                                <td>974</td>
+                                            </tr>
+                                            <tr>
+                                                <td><a href='tables/detalle_sisep_doc_consolidado_calificacion_anios_servicio.html'>detalle_sisep_doc_consolidado_calificacion_anios_servicio</a></td>
+                                                <td>1065141</td>
+                                            </tr>
+                                            <tr>
+                                                <td><a href='tables/detalle_sisep_doc_consolidado_resolucion.html'>detalle_sisep_doc_consolidado_resolucion</a></td>
+                                                <td>25938</td>
+                                            </tr>
+                                            <tr>
+                                                <td><a href='tables/detalle_sisep_doc_resolucion.html'>detalle_sisep_doc_resolucion</a></td>
+                                                <td>923</td>
+                                            </tr>
+                                            <tr>
+                                                <td><a href='tables/estado_tramite.html'>estado_tramite</a></td>
+                                                <td>74</td>
+                                            </tr>
+                                            <tr>
+                                                <td><a href='tables/lote.html'>lote</a></td>
+                                                <td>2</td>
+                                            </tr>
+                                            <tr>
+                                                <td><a href='tables/menu.html'>menu</a></td>
+                                                <td>35</td>
+                                            </tr>
+                                            <tr>
+                                                <td><a href='tables/menu_rol.html'>menu_rol</a></td>
+                                                <td>54</td>
+                                            </tr>
+                                            <tr>
+                                                <td><a href='tables/migrations.html'>migrations</a></td>
+                                                <td>54</td>
+                                            </tr>
+                                            <tr>
+                                                <td><a href='tables/oauth_access_tokens.html'>oauth_access_tokens</a></td>
+                                                <td>23409</td>
+                                            </tr>
+                                            <tr>
+                                                <td><a href='tables/oauth_auth_codes.html'>oauth_auth_codes</a></td>
+                                                <td>0</td>
+                                            </tr>
+                                            <tr>
+                                                <td><a href='tables/oauth_clients.html'>oauth_clients</a></td>
+                                                <td>1</td>
+                                            </tr>
+                                            <tr>
+                                                <td><a href='tables/oauth_personal_access_clients.html'>oauth_personal_access_clients</a></td>
+                                                <td>0</td>
+                                            </tr>
+                                            <tr>
+                                                <td><a href='tables/oauth_refresh_tokens.html'>oauth_refresh_tokens</a></td>
+                                                <td>23404</td>
+                                            </tr>
+                                            <tr>
+                                                <td><a href='tables/organizacion.html'>organizacion</a></td>
+                                                <td>388</td>
+                                            </tr>
+                                            <tr>
+                                                <td><a href='tables/password_resets.html'>password_resets</a></td>
+                                                <td>0</td>
+                                            </tr>
+                                            <tr>
+                                                <td><a href='tables/permission_role.html'>permission_role</a></td>
+                                                <td>280</td>
+                                            </tr>
+                                            <tr>
+                                                <td><a href='tables/permissions.html'>permissions</a></td>
+                                                <td>208</td>
+                                            </tr>
+                                            <tr>
+                                                <td><a href='tables/persona.html'>persona</a></td>
+                                                <td>288815</td>
+                                            </tr>
+                                            <tr>
+                                                <td><a href='tables/persona_organizacion.html'>persona_organizacion</a></td>
+                                                <td>80</td>
+                                            </tr>
+                                            <tr>
+                                                <td><a href='tables/persona_tmp.html'>persona_tmp</a></td>
+                                                <td>585</td>
+                                            </tr>
+                                            <tr>
+                                                <td><a href='tables/pre_registro_persona.html'>pre_registro_persona</a></td>
+                                                <td>22</td>
+                                            </tr>
+                                            <tr>
+                                                <td><a href='tables/proceso_rda.html'>proceso_rda</a></td>
+                                                <td>1</td>
+                                            </tr>
+                                            <tr>
+                                                <td><a href='tables/r_bachiller.html'>r_bachiller</a></td>
+                                                <td>76470</td>
+                                            </tr>
+                                            <tr>
+                                                <td><a href='tables/r_bachiller_pedagogico.html'>r_bachiller_pedagogico</a></td>
+                                                <td>3576</td>
+                                            </tr>
+                                            <tr>
+                                                <td><a href='tables/r_catges.html'>r_catges</a></td>
+                                                <td>740316</td>
+                                            </tr>
+                                            <tr>
+                                                <td><a href='tables/r_docpersonal.html'>r_docpersonal</a></td>
+                                                <td>285583</td>
+                                            </tr>
+                                            <tr>
+                                                <td><a href='tables/r_egresados.html'>r_egresados</a></td>
+                                                <td>0</td>
+                                            </tr>
+                                            <tr>
+                                                <td><a href='tables/r_egresados_ppmi.html'>r_egresados_ppmi</a></td>
+                                                <td>0</td>
+                                            </tr>
+                                            <tr>
+                                                <td><a href='tables/r_encreg.html'>r_encreg</a></td>
+                                                <td>0</td>
+                                            </tr>
+                                            <tr>
+                                                <td><a href='tables/r_entidad.html'>r_entidad</a></td>
+                                                <td>0</td>
+                                            </tr>
+                                            <tr>
+                                                <td><a href='tables/r_formrda.html'>r_formrda</a></td>
+                                                <td>0</td>
+                                            </tr>
+                                            <tr>
+                                                <td><a href='tables/r_observado_definitivo.html'>r_observado_definitivo</a></td>
+                                                <td>0</td>
+                                            </tr>
+                                            <tr>
+                                                <td><a href='tables/r_observado_preventivo.html'>r_observado_preventivo</a></td>
+                                                <td>0</td>
+                                            </tr>
+                                            <tr>
+                                                <td><a href='tables/r_observado_preventivo_mc.html'>r_observado_preventivo_mc</a></td>
+                                                <td>0</td>
+                                            </tr>
+                                            <tr>
+                                                <td><a href='tables/r_observado_sin_leyenda.html'>r_observado_sin_leyenda</a></td>
+                                                <td>0</td>
+                                            </tr>
+                                            <tr>
+                                                <td><a href='tables/r_observados.html'>r_observados</a></td>
+                                                <td>0</td>
+                                            </tr>
+                                            <tr>
+                                                <td><a href='tables/r_programa_profesor_interino.html'>r_programa_profesor_interino</a></td>
+                                                <td>0</td>
+                                            </tr>
+                                            <tr>
+                                                <td><a href='tables/r_sancion.html'>r_sancion</a></td>
+                                                <td>0</td>
+                                            </tr>
+                                            <tr>
+                                                <td><a href='tables/registro_didep.html'>registro_didep</a></td>
+                                                <td>0</td>
+                                            </tr>
+                                            <tr>
+                                                <td><a href='tables/registro_docente_administrativo.html'>registro_docente_administrativo</a></td>
+                                                <td>0</td>
+                                            </tr>
+                                            <tr>
+                                                <td><a href='tables/registro_rp_gesttla.html'>registro_rp_gesttla</a></td>
+                                                <td>0</td>
+                                            </tr>
+                                            <tr>
+                                                <td><a href='tables/relacion_form_prof_enti.html'>relacion_form_prof_enti</a></td>
+                                                <td>0</td>
+                                            </tr>
+                                            <tr>
+                                                <td><a href='tables/relacion_form_prof_espe.html'>relacion_form_prof_espe</a></td>
+                                                <td>0</td>
+                                            </tr>
+                                            <tr>
+                                                <td><a href='tables/relacion_form_prof_nivel.html'>relacion_form_prof_nivel</a></td>
+                                                <td>0</td>
+                                            </tr>
+                                            <tr>
+                                                <td><a href='tables/relacion_form_prof_tipo_docu.html'>relacion_form_prof_tipo_docu</a></td>
+                                                <td>0</td>
+                                            </tr>
+                                            <tr>
+                                                <td><a href='tables/requisito.html'>requisito</a></td>
+                                                <td>0</td>
+                                            </tr>
+                                            <tr>
+                                                <td><a href='tables/requisito_caso.html'>requisito_caso</a></td>
+                                                <td>0</td>
+                                            </tr>
+                                            <tr>
+                                                <td><a href='tables/requisito_presentado.html'>requisito_presentado</a></td>
+                                                <td>0</td>
+                                            </tr>
+                                            <tr>
+                                                <td><a href='tables/requisito_presentado_observacion.html'>requisito_presentado_observacion</a></td>
+                                                <td>0</td>
+                                            </tr>
+                                            <tr>
+                                                <td><a href='tables/role_caso.html'>role_caso</a></td>
+                                                <td>0</td>
+                                            </tr>
+                                            <tr>
+                                                <td><a href='tables/role_user.html'>role_user</a></td>
+                                                <td>0</td>
+                                            </tr>
+                                            <tr>
+                                                <td><a href='tables/roles.html'>roles</a></td>
+                                                <td>0</td>
+                                            </tr>
+                                            <tr>
+                                                <td><a href='tables/sisep_categoria.html'>sisep_categoria</a></td>
+                                                <td>0</td>
+                                            </tr>
+                                            <tr>
+                                                <td><a href='tables/sisep_doc_afp.html'>sisep_doc_afp</a></td>
+                                                <td>0</td>
+                                            </tr>
+                                            <tr>
+                                                <td><a href='tables/sisep_doc_benef_ds_exencion_anios_prov.html'>sisep_doc_benef_ds_exencion_anios_prov</a></td>
+                                                <td>0</td>
+                                            </tr>
+                                            <tr>
+                                                <td><a href='tables/sisep_doc_calificacion_anios_servicio.html'>sisep_doc_calificacion_anios_servicio</a></td>
+                                                <td>0</td>
+                                            </tr>
+                                            <tr>
+                                                <td><a href='tables/sisep_doc_calificacion_resolucion.html'>sisep_doc_calificacion_resolucion</a></td>
+                                                <td>0</td>
+                                            </tr>
+                                            <tr>
+                                                <td><a href='tables/sisep_doc_carnet_conalpedis.html'>sisep_doc_carnet_conalpedis</a></td>
+                                                <td>0</td>
+                                            </tr>
+                                            <tr>
+                                                <td><a href='tables/sisep_doc_carnet_discapacidad.html'>sisep_doc_carnet_discapacidad</a></td>
+                                                <td>0</td>
+                                            </tr>
+                                            <tr>
+                                                <td><a href='tables/sisep_doc_carnet_ibc.html'>sisep_doc_carnet_ibc</a></td>
+                                                <td>0</td>
+                                            </tr>
+                                            <tr>
+                                                <td><a href='tables/sisep_doc_categoria.html'>sisep_doc_categoria</a></td>
+                                                <td>0</td>
+                                            </tr>
+                                            <tr>
+                                                <td><a href='tables/sisep_doc_categorias.html'>sisep_doc_categorias</a></td>
+                                                <td>0</td>
+                                            </tr>
+                                            <tr>
+                                                <td><a href='tables/sisep_doc_cert_cal_edu_reg.html'>sisep_doc_cert_cal_edu_reg</a></td>
+                                                <td>0</td>
+                                            </tr>
+                                            <tr>
+                                                <td><a href='tables/sisep_doc_cert_corte_dtal_modif_datos_pers.html'>sisep_doc_cert_corte_dtal_modif_datos_pers</a></td>
+                                                <td>0</td>
+                                            </tr>
+                                            <tr>
+                                                <td><a href='tables/sisep_doc_cert_post_alfb_prov.html'>sisep_doc_cert_post_alfb_prov</a></td>
+                                                <td>0</td>
+                                            </tr>
+                                            <tr>
+                                                <td><a href='tables/sisep_doc_certificado_cursos.html'>sisep_doc_certificado_cursos</a></td>
+                                                <td>0</td>
+                                            </tr>
+                                            <tr>
+                                                <td><a href='tables/sisep_doc_certificado_escolar.html'>sisep_doc_certificado_escolar</a></td>
+                                                <td>0</td>
+                                            </tr>
+                                            <tr>
+                                                <td><a href='tables/sisep_doc_certificado_nacimiento.html'>sisep_doc_certificado_nacimiento</a></td>
+                                                <td>0</td>
+                                            </tr>
+                                            <tr>
+                                                <td><a href='tables/sisep_doc_certificado_normalista.html'>sisep_doc_certificado_normalista</a></td>
+                                                <td>0</td>
+                                            </tr>
+                                            <tr>
+                                                <td><a href='tables/sisep_doc_certificado_unefco.html'>sisep_doc_certificado_unefco</a></td>
+                                                <td>0</td>
+                                            </tr>
+                                            <tr>
+                                                <td><a href='tables/sisep_doc_certificado_universitario.html'>sisep_doc_certificado_universitario</a></td>
+                                                <td>0</td>
+                                            </tr>
+                                            <tr>
+                                                <td><a href='tables/sisep_doc_consolidado_afp.html'>sisep_doc_consolidado_afp</a></td>
+                                                <td>0</td>
+                                            </tr>
+                                            <tr>
+                                                <td><a href='tables/sisep_doc_consolidado_bachiller_pedagogico.html'>sisep_doc_consolidado_bachiller_pedagogico</a></td>
+                                                <td>0</td>
+                                            </tr>
+                                            <tr>
+                                                <td><a href='tables/sisep_doc_consolidado_benef_ds_exencion_anios_prov.html'>sisep_doc_consolidado_benef_ds_exencion_anios_prov</a></td>
+                                                <td>0</td>
+                                            </tr>
+                                            <tr>
+                                                <td><a href='tables/sisep_doc_consolidado_calificacion_anios_servicio.html'>sisep_doc_consolidado_calificacion_anios_servicio</a></td>
+                                                <td>0</td>
+                                            </tr>
+                                            <tr>
+                                                <td><a href='tables/sisep_doc_consolidado_carnet_conalpedis.html'>sisep_doc_consolidado_carnet_conalpedis</a></td>
+                                                <td>0</td>
+                                            </tr>
+                                            <tr>
+                                                <td><a href='tables/sisep_doc_consolidado_carnet_discapacidad.html'>sisep_doc_consolidado_carnet_discapacidad</a></td>
+                                                <td>0</td>
+                                            </tr>
+                                            <tr>
+                                                <td><a href='tables/sisep_doc_consolidado_carnet_ibc.html'>sisep_doc_consolidado_carnet_ibc</a></td>
+                                                <td>0</td>
+                                            </tr>
+                                            <tr>
+                                                <td><a href='tables/sisep_doc_consolidado_categoria.html'>sisep_doc_consolidado_categoria</a></td>
+                                                <td>0</td>
+                                            </tr>
+                                            <tr>
+                                                <td><a href='tables/sisep_doc_consolidado_categorias.html'>sisep_doc_consolidado_categorias</a></td>
+                                                <td>0</td>
+                                            </tr>
+                                            <tr>
+                                                <td><a href='tables/sisep_doc_consolidado_censo.html'>sisep_doc_consolidado_censo</a></td>
+                                                <td>0</td>
+                                            </tr>
+                                            <tr>
+                                                <td><a href='tables/sisep_doc_consolidado_cert_corte_dtal_modif_datos_pers.html'>sisep_doc_consolidado_cert_corte_dtal_modif_datos_pers</a></td>
+                                                <td>0</td>
+                                            </tr>
+                                            <tr>
+                                                <td><a href='tables/sisep_doc_consolidado_cert_post_alfb_prov.html'>sisep_doc_consolidado_cert_post_alfb_prov</a></td>
+                                                <td>0</td>
+                                            </tr>
+                                            <tr>
+                                                <td><a href='tables/sisep_doc_consolidado_certificado_escolar.html'>sisep_doc_consolidado_certificado_escolar</a></td>
+                                                <td>0</td>
+                                            </tr>
+                                            <tr>
+                                                <td><a href='tables/sisep_doc_consolidado_certificado_nacimiento.html'>sisep_doc_consolidado_certificado_nacimiento</a></td>
+                                                <td>0</td>
+                                            </tr>
+                                            <tr>
+                                                <td><a href='tables/sisep_doc_consolidado_certificado_normalista.html'>sisep_doc_consolidado_certificado_normalista</a></td>
+                                                <td>0</td>
+                                            </tr>
+                                            <tr>
+                                                <td><a href='tables/sisep_doc_consolidado_certificado_unefco.html'>sisep_doc_consolidado_certificado_unefco</a></td>
+                                                <td>0</td>
+                                            </tr>
+                                            <tr>
+                                                <td><a href='tables/sisep_doc_consolidado_certificado_universitario.html'>sisep_doc_consolidado_certificado_universitario</a></td>
+                                                <td>0</td>
+                                            </tr>
+                                            <tr>
+                                                <td><a href='tables/sisep_doc_consolidado_cursos.html'>sisep_doc_consolidado_cursos</a></td>
+                                                <td>0</td>
+                                            </tr>
+                                            <tr>
+                                                <td><a href='tables/sisep_doc_consolidado_declaracion.html'>sisep_doc_consolidado_declaracion</a></td>
+                                                <td>0</td>
+                                            </tr>
+                                            <tr>
+                                                <td><a href='tables/sisep_doc_consolidado_diploma_bachiller.html'>sisep_doc_consolidado_diploma_bachiller</a></td>
+                                                <td>0</td>
+                                            </tr>
+                                            <tr>
+                                                <td><a href='tables/sisep_doc_consolidado_diploma_distincion.html'>sisep_doc_consolidado_diploma_distincion</a></td>
+                                                <td>0</td>
+                                            </tr>
+                                            <tr>
+                                                <td><a href='tables/sisep_doc_consolidado_documento_identificacion.html'>sisep_doc_consolidado_documento_identificacion</a></td>
+                                                <td>0</td>
+                                            </tr>
+                                            <tr>
+                                                <td><a href='tables/sisep_doc_consolidado_especializacion_iser.html'>sisep_doc_consolidado_especializacion_iser</a></td>
+                                                <td>0</td>
+                                            </tr>
+                                            <tr>
+                                                <td><a href='tables/sisep_doc_consolidado_especializacion_peams.html'>sisep_doc_consolidado_especializacion_peams</a></td>
+                                                <td>0</td>
+                                            </tr>
+                                            <tr>
+                                                <td><a href='tables/sisep_doc_consolidado_ext_rev_univ.html'>sisep_doc_consolidado_ext_rev_univ</a></td>
+                                                <td>0</td>
+                                            </tr>
+                                            <tr>
+                                                <td><a href='tables/sisep_doc_consolidado_idioma.html'>sisep_doc_consolidado_idioma</a></td>
+                                                <td>0</td>
+                                            </tr>
+                                            <tr>
+                                                <td><a href='tables/sisep_doc_consolidado_institutos.html'>sisep_doc_consolidado_institutos</a></td>
+                                                <td>0</td>
+                                            </tr>
+                                            <tr>
+                                                <td><a href='tables/sisep_doc_consolidado_libreta_militar.html'>sisep_doc_consolidado_libreta_militar</a></td>
+                                                <td>0</td>
+                                            </tr>
+                                            <tr>
+                                                <td><a href='tables/sisep_doc_consolidado_maestria.html'>sisep_doc_consolidado_maestria</a></td>
+                                                <td>0</td>
+                                            </tr>
+                                            <tr>
+                                                <td><a href='tables/sisep_doc_consolidado_normalista.html'>sisep_doc_consolidado_normalista</a></td>
+                                                <td>0</td>
+                                            </tr>
+                                            <tr>
+                                                <td><a href='tables/sisep_doc_consolidado_normalista_revalidado.html'>sisep_doc_consolidado_normalista_revalidado</a></td>
+                                                <td>0</td>
+                                            </tr>
+                                            <tr>
+                                                <td><a href='tables/sisep_doc_consolidado_postgrado.html'>sisep_doc_consolidado_postgrado</a></td>
+                                                <td>0</td>
+                                            </tr>
+                                            <tr>
+                                                <td><a href='tables/sisep_doc_consolidado_ra_modif_datos_pers.html'>sisep_doc_consolidado_ra_modif_datos_pers</a></td>
+                                                <td>0</td>
+                                            </tr>
+                                            <tr>
+                                                <td><a href='tables/sisep_doc_consolidado_resolucion.html'>sisep_doc_consolidado_resolucion</a></td>
+                                                <td>0</td>
+                                            </tr>
+                                            <tr>
+                                                <td><a href='tables/sisep_doc_consolidado_rm_exencion_anios_provincia.html'>sisep_doc_consolidado_rm_exencion_anios_provincia</a></td>
+                                                <td>0</td>
+                                            </tr>
+                                            <tr>
+                                                <td><a href='tables/sisep_doc_consolidado_sentencia_modif_datos_pers.html'>sisep_doc_consolidado_sentencia_modif_datos_pers</a></td>
+                                                <td>0</td>
+                                            </tr>
+                                            <tr>
+                                                <td><a href='tables/sisep_doc_consolidado_tecnico_calificado.html'>sisep_doc_consolidado_tecnico_calificado</a></td>
+                                                <td>0</td>
+                                            </tr>
+                                            <tr>
+                                                <td><a href='tables/sisep_doc_consolidado_titulo_provision_nacional.html'>sisep_doc_consolidado_titulo_provision_nacional</a></td>
+                                                <td>0</td>
+                                            </tr>
+                                            <tr>
+                                                <td><a href='tables/sisep_doc_consolidado_universitario.html'>sisep_doc_consolidado_universitario</a></td>
+                                                <td>0</td>
+                                            </tr>
+                                            <tr>
+                                                <td><a href='tables/sisep_doc_copia_legalizada_libreta_militar.html'>sisep_doc_copia_legalizada_libreta_militar</a></td>
+                                                <td>0</td>
+                                            </tr>
+                                            <tr>
+                                                <td><a href='tables/sisep_doc_cursos.html'>sisep_doc_cursos</a></td>
+                                                <td>0</td>
+                                            </tr>
+                                            <tr>
+                                                <td><a href='tables/sisep_doc_declaracion.html'>sisep_doc_declaracion</a></td>
+                                                <td>0</td>
+                                            </tr>
+                                            <tr>
+                                                <td><a href='tables/sisep_doc_diploma_academico.html'>sisep_doc_diploma_academico</a></td>
+                                                <td>0</td>
+                                            </tr>
+                                            <tr>
+                                                <td><a href='tables/sisep_doc_diploma_bachiller.html'>sisep_doc_diploma_bachiller</a></td>
+                                                <td>0</td>
+                                            </tr>
+                                            <tr>
+                                                <td><a href='tables/sisep_doc_documento_identificacion.html'>sisep_doc_documento_identificacion</a></td>
+                                                <td>0</td>
+                                            </tr>
+                                            <tr>
+                                                <td><a href='tables/sisep_doc_especializacion_iser.html'>sisep_doc_especializacion_iser</a></td>
+                                                <td>0</td>
+                                            </tr>
+                                            <tr>
+                                                <td><a href='tables/sisep_doc_especializacion_peams.html'>sisep_doc_especializacion_peams</a></td>
+                                                <td>0</td>
+                                            </tr>
+                                            <tr>
+                                                <td><a href='tables/sisep_doc_ext_rev_univ.html'>sisep_doc_ext_rev_univ</a></td>
+                                                <td>0</td>
+                                            </tr>
+                                            <tr>
+                                                <td><a href='tables/sisep_doc_idioma.html'>sisep_doc_idioma</a></td>
+                                                <td>0</td>
+                                            </tr>
+                                            <tr>
+                                                <td><a href='tables/sisep_doc_institutos.html'>sisep_doc_institutos</a></td>
+                                                <td>0</td>
+                                            </tr>
+                                            <tr>
+                                                <td><a href='tables/sisep_doc_libreta_militar.html'>sisep_doc_libreta_militar</a></td>
+                                                <td>0</td>
+                                            </tr>
+                                            <tr>
+                                                <td><a href='tables/sisep_doc_normalista.html'>sisep_doc_normalista</a></td>
+                                                <td>0</td>
+                                            </tr>
+                                            <tr>
+                                                <td><a href='tables/sisep_doc_normalista_revalidado.html'>sisep_doc_normalista_revalidado</a></td>
+                                                <td>0</td>
+                                            </tr>
+                                            <tr>
+                                                <td><a href='tables/sisep_doc_postgrado.html'>sisep_doc_postgrado</a></td>
+                                                <td>0</td>
+                                            </tr>
+                                            <tr>
+                                                <td><a href='tables/sisep_doc_ra_modif_datos_pers.html'>sisep_doc_ra_modif_datos_pers</a></td>
+                                                <td>0</td>
+                                            </tr>
+                                            <tr>
+                                                <td><a href='tables/sisep_doc_resolucion.html'>sisep_doc_resolucion</a></td>
+                                                <td>0</td>
+                                            </tr>
+                                            <tr>
+                                                <td><a href='tables/sisep_doc_rm_exencion_anios_provincia.html'>sisep_doc_rm_exencion_anios_provincia</a></td>
+                                                <td>0</td>
+                                            </tr>
+                                            <tr>
+                                                <td><a href='tables/sisep_doc_sentencia_modif_datos_pers.html'>sisep_doc_sentencia_modif_datos_pers</a></td>
+                                                <td>0</td>
+                                            </tr>
+                                            <tr>
+                                                <td><a href='tables/sisep_doc_tecnico_calificado.html'>sisep_doc_tecnico_calificado</a></td>
+                                                <td>0</td>
+                                            </tr>
+                                            <tr>
+                                                <td><a href='tables/sisep_doc_universitario.html'>sisep_doc_universitario</a></td>
+                                                <td>0</td>
+                                            </tr>
+                                            <tr>
+                                                <td><a href='tables/sisepdesc_categoria.html'>sisepdesc_categoria</a></td>
+                                                <td>0</td>
+                                            </tr>
+                                            <tr>
+                                                <td><a href='tables/sisepdesc_documento.html'>sisepdesc_documento</a></td>
+                                                <td>0</td>
+                                            </tr>
+                                            <tr>
+                                                <td><a href='tables/tipo_cargo_rda.html'>tipo_cargo_rda</a></td>
+                                                <td>0</td>
+                                            </tr>
+                                            <tr>
+                                                <td><a href='tables/tramite.html'>tramite</a></td>
+                                                <td>0</td>
+                                            </tr>
+                                            <tr>
+                                                <td><a href='tables/users.html'>users</a></td>
+                                                <td>0</td>
+                                            </tr>
+                                            <tr>
+                                                <td><a href='tables/users_backup.html'>users_backup</a></td>
+                                                <td>0</td>
+                                            </tr>
+                                            <tr>
+                                                <td><a href='tables/usuario_informacion.html'>usuario_informacion</a></td>
+                                                <td>0</td>
+                                            </tr>
+                                            <tr>
+                                                <td><a href='tables/usuario_informacion_tmp.html'>usuario_informacion_tmp</a></td>
+                                                <td>0</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6"> <!-- Tables that contain a single column -->
+                            <div class="box box-info">
+                                <div class="box-header with-border">
+                                    <h3 class="box-title">Tables that contain a single column</h3>
+                                    <div class="box-tools pull-right">
+                                        <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+                                        <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+                                    </div>
+                                </div>
+                                <div class="box-body">
+                                    <table id="single_column_table" class="table table-bordered table-striped dataTable" role="grid">
+                                        <thead align='left'>
+                                            <tr>
+                                                <th>Table</th>
+                                                <th>Column</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td colspan="3">Anomaly not detected</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6"> <!-- Tables with incrementing column names, potentially indicating denormalization -->
+                            <div class="box box-danger">
+                                <div class="box-header with-border">
+                                    <h3 class="box-title">Tables with incrementing column names, potentially indicating denormalization</h3>
+                                    <div class="box-tools pull-right">
+                                        <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+                                        <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+                                    </div>
+                                </div>
+                                <div class="box-body">
+                                    <table id="inc_column_table" class="table table-bordered table-striped dataTable" role="grid">
+                                        <thead align='left'>
+                                            <tr>
+                                                <th>Table</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td><a href='tables/persona.html'>persona</a></td>
+                                            </tr>
+                                            <tr>
+                                                <td><a href='tables/persona_tmp.html'>persona_tmp</a></td>
+                                            </tr>
+                                            <tr>
+                                                <td><a href='tables/pre_registro_persona.html'>pre_registro_persona</a></td>
+                                            </tr>
+                                            <tr>
+                                                <td><a href='tables/r_bachiller.html'>r_bachiller</a></td>
+                                            </tr>
+                                            <tr>
+                                                <td><a href='tables/r_bachiller_pedagogico.html'>r_bachiller_pedagogico</a></td>
+                                            </tr>
+                                            <tr>
+                                                <td><a href='tables/r_docpersonal.html'>r_docpersonal</a></td>
+                                            </tr>
+                                            <tr>
+                                                <td><a href='tables/r_egresados.html'>r_egresados</a></td>
+                                            </tr>
+                                            <tr>
+                                                <td><a href='tables/r_egresados_ppmi.html'>r_egresados_ppmi</a></td>
+                                            </tr>
+                                            <tr>
+                                                <td><a href='tables/r_observados.html'>r_observados</a></td>
+                                            </tr>
+                                            <tr>
+                                                <td><a href='tables/r_programa_profesor_interino.html'>r_programa_profesor_interino</a></td>
+                                            </tr>
+                                            <tr>
+                                                <td><a href='tables/r_sancion.html'>r_sancion</a></td>
+                                            </tr>
+                                            <tr>
+                                                <td><a href='tables/sisep_doc_certificado_nacimiento.html'>sisep_doc_certificado_nacimiento</a></td>
+                                            </tr>
+                                            <tr>
+                                                <td><a href='tables/sisep_doc_consolidado_certificado_nacimiento.html'>sisep_doc_consolidado_certificado_nacimiento</a></td>
+                                            </tr>
+                                            <tr>
+                                                <td><a href='tables/sisep_doc_consolidado_documento_identificacion.html'>sisep_doc_consolidado_documento_identificacion</a></td>
+                                            </tr>
+                                            <tr>
+                                                <td><a href='tables/sisep_doc_documento_identificacion.html'>sisep_doc_documento_identificacion</a></td>
+                                            </tr>
+                                            <tr>
+                                                <td><a href='tables/users.html'>users</a></td>
+                                            </tr>
+                                            <tr>
+                                                <td><a href='tables/users_backup.html'>users_backup</a></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6"> <!-- Columns whose default value is the word 'NULL' or 'null', but the SQL NULL value may have been intended -->
+                            <div class="box box-primary">
+                                <div class="box-header with-border">
+                                    <h3 class="box-title" title="Columns whose default value is the word 'NULL' or 'null', but the SQL NULL value may have been intende">Columns whose default value is the word 'NULL' or 'null'</h3>
+                                    <div class="box-tools pull-right">
+                                        <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+                                        <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+                                    </div>
+                                </div>
+                                <div class="box-body">
+                                    <table id="null_string_table" class="table table-bordered table-striped dataTable" role="grid">
+                                        <thead align='left'>
+                                            <tr>
+                                                <th>Table</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td colspan="3">Anomaly not detected</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+            <!-- /.content-wrapper -->
+            <footer class="main-footer">
+                <div>
+                    <div class="pull-right hidden-xs">
+                        <a href="https://github.com/schemaspy/schemaspy" title="GitHub for SchemaSpy"><i class="fa fa-github-square fa-2x"></i></a>
+                        <a href="http://stackoverflow.com/questions/tagged/schemaspy" title="StackOverflow for SchemaSpy"><i class="fa fa-stack-overflow fa-2x"></i></a>
+                    </div>
+                    <strong>Generated by <a href="http://schemaspy.org/" class="logo-text"><i class="fa fa-database"></i> SchemaSpy 6.1.0</a></strong>
+                </div>
+                <!-- /.container -->
+            </footer>
+        </div>
+        <!-- ./wrapper -->
+
+        <!-- jQuery 2.2.3 -->
+        <script src="bower/admin-lte/plugins/jQuery/jquery-2.2.3.min.js"></script>
+        <script src="bower/admin-lte/plugins/jQueryUI/jquery-ui.min.js"></script>
+        <!-- Bootstrap 3.3.5 -->
+        <script src="bower/admin-lte/bootstrap/js/bootstrap.min.js"></script>
+        <!-- DataTables -->
+        <script src="bower/datatables.net/jquery.dataTables.min.js"></script>
+        <script src="bower/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
+        <script src="bower/datatables.net-buttons/dataTables.buttons.min.js"></script>
+        <script src="bower/datatables.net-buttons-bs/js/buttons.bootstrap.min.js"></script>
+        <script src="bower/datatables.net-buttons/buttons.html5.min.js"></script>
+        <script src="bower/datatables.net-buttons/buttons.print.min.js"></script>
+        <script src="bower/datatables.net-buttons/buttons.colVis.min.js"></script>
+        <!-- SheetJS -->
+        <script src="bower/js-xlsx/xlsx.full.min.js"></script>
+        <!-- pdfmake -->
+        <script src="bower/pdfmake/pdfmake.min.js"></script>
+        <script src="bower/pdfmake/vfs_fonts.js"></script>
+        <!-- SlimScroll -->
+        <script src="bower/admin-lte/plugins/slimScroll/jquery.slimscroll.min.js"></script>
+        <!-- FastClick -->
+        <script src="bower/admin-lte/plugins/fastclick/fastclick.js"></script>
+        <!-- Salvattore -->
+        <script src="bower/salvattore/salvattore.min.js"></script>
+        <!-- AnchorJS -->
+        <script src="bower/anchor-js/anchor.min.js"></script>
+        <!-- CodeMirror -->
+        <script src="bower/codemirror/codemirror.js"></script>
+        <script src="bower/codemirror/sql.js"></script>
+        <!-- AdminLTE App -->
+        <script src="bower/admin-lte/dist/js/app.min.js"></script>
+        <script src="anomalies.js"></script>
+        <script src="schemaSpy.js"></script>
+    </body>
+</html>
