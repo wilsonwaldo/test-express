@@ -206,7 +206,7 @@
       <sequence increment="1" name="usuario_informacion_tmp_id_seq" startValue="1"/>
    </sequences>
    <tables>
-      <table name="archivo_digital" numRows="585" remarks="" schema="public" type="TABLE">
+      <table name="archivo_digital" numRows="585" remarks="Registro de ubicación de archivos temporales en directorio ftp" schema="public" type="TABLE">
          <column autoUpdated="true" defaultValue="nextval('archivo_digital_id_seq'::regclass)" digits="0" id="0" name="id" nullable="false" remarks="" size="10" type="serial" typeCode="4">
             <child column="id_archivo_digital" foreignKey="archivo_miniatura_id_archivo_digital_foreign" implied="false" onDeleteCascade="true" schema="public" table="archivo_miniatura"/>
          </column>
@@ -232,7 +232,7 @@
             <column ascending="true" name="id_archivo_tipo"/>
          </index>
       </table>
-      <table name="archivo_digital_consolidado" numRows="86" remarks="" schema="public" type="TABLE">
+      <table name="archivo_digital_consolidado" numRows="86" remarks="Registro de ubicación de archivos consolidados en el directorio ftp" schema="public" type="TABLE">
          <column autoUpdated="true" defaultValue="nextval('archivo_digital_consolidado_id_seq'::regclass)" digits="0" id="0" name="id" nullable="false" remarks="" size="10" type="serial" typeCode="4"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="id_archivo_tipo" nullable="true" remarks="" size="10" type="int4" typeCode="4">
             <parent column="id" foreignKey="archivo_digital_consolidado_id_archivo_tipo_foreign" implied="false" onDeleteCascade="true" schema="public" table="archivo_tipo"/>
@@ -250,7 +250,7 @@
             <column ascending="true" name="id"/>
          </index>
       </table>
-      <table name="archivo_miniatura" numRows="0" remarks="" schema="public" type="TABLE">
+      <table name="archivo_miniatura" numRows="0" remarks="Miniaturas de archivos digitales del tipo imagen" schema="public" type="TABLE">
          <column autoUpdated="true" defaultValue="nextval('archivo_miniatura_id_seq'::regclass)" digits="0" id="0" name="id" nullable="false" remarks="" size="10" type="serial" typeCode="4"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="id_archivo_digital" nullable="true" remarks="" size="10" type="int4" typeCode="4">
             <parent column="id" foreignKey="archivo_miniatura_id_archivo_digital_foreign" implied="false" onDeleteCascade="true" schema="public" table="archivo_digital"/>
@@ -269,7 +269,7 @@
             <column ascending="true" name="id_archivo_digital"/>
          </index>
       </table>
-      <table name="archivo_tipo" numRows="684" remarks="" schema="public" type="TABLE">
+      <table name="archivo_tipo" numRows="684" remarks="Catálogo de tipos MIME-TYPES de archivos, para verificación con el servidor" schema="public" type="TABLE">
          <column autoUpdated="true" defaultValue="nextval('archivo_tipo_id_seq'::regclass)" digits="0" id="0" name="id" nullable="false" remarks="" size="10" type="serial" typeCode="4">
             <child column="id_archivo_tipo" foreignKey="archivo_digital_id_archivo_tipo_foreign" implied="false" onDeleteCascade="true" schema="public" table="archivo_digital"/>
             <child column="id_archivo_tipo" foreignKey="archivo_digital_consolidado_id_archivo_tipo_foreign" implied="false" onDeleteCascade="true" schema="public" table="archivo_digital_consolidado"/>
@@ -285,7 +285,7 @@
             <column ascending="true" name="id"/>
          </index>
       </table>
-      <table name="cargo" numRows="17" remarks="" schema="public" type="TABLE">
+      <table name="cargo" numRows="17" remarks="Catálogo de cargos que una persona puede tener" schema="public" type="TABLE">
          <column autoUpdated="true" defaultValue="nextval('cargo_id_seq'::regclass)" digits="0" id="0" name="id" nullable="false" remarks="" size="10" type="serial" typeCode="4"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="cargo" nullable="false" remarks="" size="191" type="varchar" typeCode="12"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="2" name="descripcion_cargo" nullable="true" remarks="" size="191" type="varchar" typeCode="12"/>
@@ -300,7 +300,7 @@
             <column ascending="true" name="cargo"/>
          </index>
       </table>
-      <table name="caso" numRows="8" remarks="" schema="public" type="TABLE">
+      <table name="caso" numRows="8" remarks="Tipos de casos de un trámite" schema="public" type="TABLE">
          <column autoUpdated="true" defaultValue="nextval('caso_id_seq'::regclass)" digits="0" id="0" name="id" nullable="false" remarks="" size="10" type="serial" typeCode="4">
             <child column="id_caso" foreignKey="caso_pre_registro_id_caso_foreign" implied="false" onDeleteCascade="true" schema="public" table="caso_pre_registro"/>
             <child column="id_caso" foreignKey="caso_requisito_id_caso_foreign" implied="false" onDeleteCascade="true" schema="public" table="caso_requisito"/>
@@ -327,7 +327,7 @@
             <column ascending="true" name="id_tramite"/>
          </index>
       </table>
-      <table name="caso_pre_registro" numRows="22" remarks="" schema="public" type="TABLE">
+      <table name="caso_pre_registro" numRows="25" remarks="Registro de trámite temporal para su evaluación y consolidación" schema="public" type="TABLE">
          <column autoUpdated="true" defaultValue="nextval('caso_pre_registro_id_seq'::regclass)" digits="0" id="0" name="id" nullable="false" remarks="" size="10" type="serial" typeCode="4">
             <child column="id_caso_pre_registro" foreignKey="estado_tramite_id_caso_pre_registro_foreign" implied="false" onDeleteCascade="true" schema="public" table="estado_tramite"/>
             <child column="id_caso_pre_registro" foreignKey="requisito_presentado_id_caso_pre_registro_foreign" implied="false" onDeleteCascade="true" schema="public" table="requisito_presentado"/>
@@ -375,7 +375,7 @@
             <column ascending="true" name="numero_tramite"/>
          </index>
       </table>
-      <table name="caso_requisito" numRows="61" remarks="" schema="public" type="TABLE">
+      <table name="caso_requisito" numRows="61" remarks="Tabla transaccional para agrupación de caso con requisito" schema="public" type="TABLE">
          <column autoUpdated="true" defaultValue="nextval('caso_requisito_id_seq'::regclass)" digits="0" id="0" name="id" nullable="false" remarks="" size="10" type="serial" typeCode="4"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="id_caso" nullable="false" remarks="" size="10" type="int4" typeCode="4">
             <parent column="id" foreignKey="caso_requisito_id_caso_foreign" implied="false" onDeleteCascade="true" schema="public" table="caso"/>
@@ -402,7 +402,7 @@
             <column ascending="true" name="id_requisito"/>
          </index>
       </table>
-      <table name="catalogo_apellidos" numRows="5" remarks="" schema="public" type="TABLE">
+      <table name="catalogo_apellidos" numRows="5" remarks="Catálogo de apellidos" schema="public" type="TABLE">
          <column autoUpdated="true" defaultValue="nextval('catalogo_apellidos_id_seq'::regclass)" digits="0" id="0" name="id" nullable="false" remarks="" size="10" type="serial" typeCode="4"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="catalogo_apellidos" nullable="false" remarks="" size="200" type="varchar" typeCode="12"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="2" name="state" nullable="false" remarks="" size="1" type="bool" typeCode="-7"/>
@@ -413,7 +413,7 @@
             <column ascending="true" name="id"/>
          </index>
       </table>
-      <table name="catalogo_canton" numRows="1607" remarks="" schema="public" type="TABLE">
+      <table name="catalogo_canton" numRows="1607" remarks="Catálogo de la divición territorial tipoo cantón" schema="public" type="TABLE">
          <column autoUpdated="true" defaultValue="nextval('catalogo_canton_id_seq'::regclass)" digits="0" id="0" name="id" nullable="false" remarks="" size="10" type="serial" typeCode="4"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="catalogo_canton" nullable="false" remarks="" size="200" type="varchar" typeCode="12"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="2" name="state" nullable="false" remarks="" size="1" type="bool" typeCode="-7"/>
@@ -429,7 +429,7 @@
             <column ascending="true" name="id"/>
          </index>
       </table>
-      <table name="catalogo_cargo_cas" numRows="2" remarks="" schema="public" type="TABLE">
+      <table name="catalogo_cargo_cas" numRows="2" remarks="Catálogo de cargos con certificación anual de servicio en planillas" schema="public" type="TABLE">
          <column autoUpdated="true" defaultValue="nextval('catalogo_cargo_cas_id_seq'::regclass)" digits="0" id="0" name="id" nullable="false" remarks="" size="10" type="serial" typeCode="4"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="catalogo_cargo_cas" nullable="false" remarks="" size="200" type="varchar" typeCode="12"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="2" name="state" nullable="false" remarks="" size="1" type="bool" typeCode="-7"/>
@@ -440,7 +440,7 @@
             <column ascending="true" name="id"/>
          </index>
       </table>
-      <table name="catalogo_carnet_discapacidad" numRows="2" remarks="" schema="public" type="TABLE">
+      <table name="catalogo_carnet_discapacidad" numRows="2" remarks="Catálogo de carnets con registro de discapacidad" schema="public" type="TABLE">
          <column autoUpdated="true" defaultValue="nextval('catalogo_carnet_discapacidad_id_seq'::regclass)" digits="0" id="0" name="id" nullable="false" remarks="" size="10" type="serial" typeCode="4"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="catalogo_carnet_discapacidad" nullable="false" remarks="" size="200" type="varchar" typeCode="12"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="2" name="state" nullable="false" remarks="" size="1" type="bool" typeCode="-7"/>
@@ -451,7 +451,7 @@
             <column ascending="true" name="id"/>
          </index>
       </table>
-      <table name="catalogo_cas" numRows="3" remarks="" schema="public" type="TABLE">
+      <table name="catalogo_cas" numRows="3" remarks="Catálogo de certificación anual de servicio en planillas" schema="public" type="TABLE">
          <column autoUpdated="true" defaultValue="nextval('catalogo_cas_id_seq'::regclass)" digits="0" id="0" name="id" nullable="false" remarks="" size="10" type="serial" typeCode="4"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="catalogo_cas" nullable="false" remarks="" size="191" type="varchar" typeCode="12"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="2" name="state" nullable="false" remarks="" size="1" type="bool" typeCode="-7"/>
@@ -462,7 +462,7 @@
             <column ascending="true" name="id"/>
          </index>
       </table>
-      <table name="catalogo_cas_provincia" numRows="3" remarks="" schema="public" type="TABLE">
+      <table name="catalogo_cas_provincia" numRows="3" remarks="Catálogo de certificación anual de servicio en planillas, registrados en provincias" schema="public" type="TABLE">
          <column autoUpdated="true" defaultValue="nextval('catalogo_cas_provincia_id_seq'::regclass)" digits="0" id="0" name="id" nullable="false" remarks="" size="10" type="serial" typeCode="4"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="catalogo_cas_provincia" nullable="false" remarks="" size="191" type="varchar" typeCode="12"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="2" name="state" nullable="false" remarks="" size="1" type="bool" typeCode="-7"/>
@@ -473,7 +473,7 @@
             <column ascending="true" name="id"/>
          </index>
       </table>
-      <table name="catalogo_categoria" numRows="7" remarks="" schema="public" type="TABLE">
+      <table name="catalogo_categoria" numRows="7" remarks="Catálogo de categorias de un docente administrativo" schema="public" type="TABLE">
          <column autoUpdated="true" defaultValue="nextval('categoria_id_seq'::regclass)" digits="0" id="0" name="id" nullable="false" remarks="" size="10" type="serial" typeCode="4">
             <child column="id_catalogo_categoria" foreignKey="categoria_rda_id_categoria_foreign" implied="false" onDeleteCascade="true" schema="public" table="categoria_rda"/>
             <child column="id_catalogo_categoria" foreignKey="categoria_registro_rp_gesttla_id_categoria_foreign" implied="false" onDeleteCascade="true" schema="public" table="categoria_rp_gesttla"/>
@@ -488,7 +488,7 @@
             <column ascending="true" name="id"/>
          </index>
       </table>
-      <table name="catalogo_categoria_grupo_categoria" numRows="2" remarks="" schema="public" type="TABLE">
+      <table name="catalogo_categoria_grupo_categoria" numRows="2" remarks="Catálogo de grupos de categorias de un docente administrativo" schema="public" type="TABLE">
          <column autoUpdated="true" defaultValue="nextval('catalogo_categoria_grupo_categoria_id_seq'::regclass)" digits="0" id="0" name="id" nullable="false" remarks="" size="10" type="serial" typeCode="4"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="catalogo_categoria_grupo_categoria" nullable="false" remarks="" size="200" type="varchar" typeCode="12"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="2" name="state" nullable="false" remarks="" size="1" type="bool" typeCode="-7"/>
@@ -499,7 +499,7 @@
             <column ascending="true" name="id"/>
          </index>
       </table>
-      <table name="catalogo_categoria_tipo_categoria" numRows="2" remarks="" schema="public" type="TABLE">
+      <table name="catalogo_categoria_tipo_categoria" numRows="2" remarks="Catálogo de tipos de categorias de un docente administrativo" schema="public" type="TABLE">
          <column autoUpdated="true" defaultValue="nextval('catalogo_categoria_tipo_categoria_id_seq'::regclass)" digits="0" id="0" name="id" nullable="false" remarks="" size="10" type="serial" typeCode="4"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="catalogo_categoria_tipo_categoria" nullable="false" remarks="" size="200" type="varchar" typeCode="12"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="2" name="state" nullable="false" remarks="" size="1" type="bool" typeCode="-7"/>
@@ -510,7 +510,7 @@
             <column ascending="true" name="id"/>
          </index>
       </table>
-      <table name="catalogo_categoria_tipo_documento" numRows="1" remarks="" schema="public" type="TABLE">
+      <table name="catalogo_categoria_tipo_documento" numRows="1" remarks="Catálogo de tipos de documentos de categorias docente administrativo" schema="public" type="TABLE">
          <column autoUpdated="true" defaultValue="nextval('catalogo_categoria_tipo_documento_id_seq'::regclass)" digits="0" id="0" name="id" nullable="false" remarks="" size="10" type="serial" typeCode="4"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="catalogo_categoria_tipo_documento" nullable="false" remarks="" size="200" type="varchar" typeCode="12"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="2" name="state" nullable="false" remarks="" size="1" type="bool" typeCode="-7"/>
@@ -521,7 +521,7 @@
             <column ascending="true" name="id"/>
          </index>
       </table>
-      <table name="catalogo_cer_unefco_tipo_documento" numRows="52" remarks="" schema="public" type="TABLE">
+      <table name="catalogo_cer_unefco_tipo_documento" numRows="52" remarks="Catálogo de tipos de documentos UNEFCO" schema="public" type="TABLE">
          <column autoUpdated="true" defaultValue="nextval('catalogo_cer_unefco_tipo_documento_id_seq'::regclass)" digits="0" id="0" name="id" nullable="false" remarks="" size="10" type="serial" typeCode="4"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="codigo_tipo_documento" nullable="true" remarks="" size="10" type="int4" typeCode="4"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="2" name="catalogo_cer_unefco_tipo_documento" nullable="false" remarks="" size="191" type="varchar" typeCode="12"/>
@@ -536,7 +536,7 @@
             <column ascending="true" name="id"/>
          </index>
       </table>
-      <table name="catalogo_declaracion_tipo_documento" numRows="52" remarks="" schema="public" type="TABLE">
+      <table name="catalogo_declaracion_tipo_documento" numRows="52" remarks="Catálogo de tipos de declaraciionies de documentos" schema="public" type="TABLE">
          <column autoUpdated="true" defaultValue="nextval('catalogo_declaracion_tipo_documento_id_seq'::regclass)" digits="0" id="0" name="id" nullable="false" remarks="" size="10" type="serial" typeCode="4"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="codigo_tipo_documento" nullable="true" remarks="" size="10" type="int4" typeCode="4"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="2" name="catalogo_declaracion_tipo_documento" nullable="false" remarks="" size="191" type="varchar" typeCode="12"/>
@@ -551,7 +551,7 @@
             <column ascending="true" name="id"/>
          </index>
       </table>
-      <table name="catalogo_departamento" numRows="10" remarks="" schema="public" type="TABLE">
+      <table name="catalogo_departamento" numRows="10" remarks="Catálogo de departamentos de Bolivia con la opción de registro nulo" schema="public" type="TABLE">
          <column autoUpdated="true" defaultValue="nextval('catalogo_departamento_id_seq'::regclass)" digits="0" id="0" name="id" nullable="false" remarks="" size="10" type="serial" typeCode="4"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="descripcion_departamento" nullable="false" remarks="" size="191" type="varchar" typeCode="12"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="2" name="catalogo_departamento" nullable="false" remarks="" size="191" type="varchar" typeCode="12"/>
@@ -565,7 +565,7 @@
             <column ascending="true" name="id"/>
          </index>
       </table>
-      <table name="catalogo_departamento_bolivia" numRows="9" remarks="" schema="public" type="TABLE">
+      <table name="catalogo_departamento_bolivia" numRows="9" remarks="Catálogo de departamentos de Bolivia" schema="public" type="TABLE">
          <column autoUpdated="true" defaultValue="nextval('catalogo_departamento_bolivia_id_seq'::regclass)" digits="0" id="0" name="id" nullable="false" remarks="" size="10" type="serial" typeCode="4"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="catalogo_departamento_bolivia" nullable="false" remarks="" size="200" type="varchar" typeCode="12"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="2" name="state" nullable="false" remarks="" size="1" type="bool" typeCode="-7"/>
@@ -576,7 +576,7 @@
             <column ascending="true" name="id"/>
          </index>
       </table>
-      <table name="catalogo_desde_mes" numRows="12" remarks="" schema="public" type="TABLE">
+      <table name="catalogo_desde_mes" numRows="12" remarks="Catálogo desde meses" schema="public" type="TABLE">
          <column autoUpdated="true" defaultValue="nextval('catalogo_catalogo_mes_id_seq'::regclass)" digits="0" id="0" name="id" nullable="false" remarks="" size="10" type="serial" typeCode="4"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="catalogo_desde_mes" nullable="false" remarks="" size="200" type="varchar" typeCode="12"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="2" name="state" nullable="false" remarks="" size="1" type="bool" typeCode="-7"/>
@@ -587,7 +587,7 @@
             <column ascending="true" name="id"/>
          </index>
       </table>
-      <table name="catalogo_dip_bach_tipo_documento" numRows="52" remarks="" schema="public" type="TABLE">
+      <table name="catalogo_dip_bach_tipo_documento" numRows="52" remarks="Catálogo de documentos tipo bach" schema="public" type="TABLE">
          <column autoUpdated="true" defaultValue="nextval('catalogo_dip_bach_tipo_documento_id_seq'::regclass)" digits="0" id="0" name="id" nullable="false" remarks="" size="10" type="serial" typeCode="4"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="codigo_tipo_documento" nullable="true" remarks="" size="10" type="int4" typeCode="4"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="2" name="catalogo_dip_bach_tipo_documento" nullable="false" remarks="" size="191" type="varchar" typeCode="12"/>
@@ -602,7 +602,7 @@
             <column ascending="true" name="id"/>
          </index>
       </table>
-      <table name="catalogo_distrito" numRows="391" remarks="" schema="public" type="TABLE">
+      <table name="catalogo_distrito" numRows="391" remarks="Catálogo de distritos" schema="public" type="TABLE">
          <column autoUpdated="true" defaultValue="nextval('catalogo_distrito_id_seq'::regclass)" digits="0" id="0" name="id" nullable="false" remarks="" size="10" type="serial" typeCode="4"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="codigo_distrito" nullable="false" remarks="" size="4" type="varchar" typeCode="12"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="2" name="codigo_provincia" nullable="false" remarks="" size="2" type="varchar" typeCode="12"/>
@@ -618,7 +618,7 @@
             <column ascending="true" name="id"/>
          </index>
       </table>
-      <table name="catalogo_entidad" numRows="566" remarks="" schema="public" type="TABLE">
+      <table name="catalogo_entidad" numRows="566" remarks="Catálogo de entidades varias" schema="public" type="TABLE">
          <column autoUpdated="true" defaultValue="nextval('catalogo_entidad_id_seq'::regclass)" digits="0" id="0" name="id" nullable="false" remarks="" size="10" type="serial" typeCode="4"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="codigo_entidad" nullable="true" remarks="" size="10" type="int4" typeCode="4"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="2" name="catalogo_entidad" nullable="true" remarks="" size="400" type="varchar" typeCode="12"/>
@@ -645,7 +645,7 @@
             <column ascending="true" name="id"/>
          </index>
       </table>
-      <table name="catalogo_entidad_afp" numRows="3" remarks="" schema="public" type="TABLE">
+      <table name="catalogo_entidad_afp" numRows="3" remarks="Catálogo de entidades de afp" schema="public" type="TABLE">
          <column autoUpdated="true" defaultValue="nextval('catalogo_entidad_afp_id_seq'::regclass)" digits="0" id="0" name="id" nullable="false" remarks="" size="10" type="serial" typeCode="4"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="catalogo_entidad_afp" nullable="false" remarks="" size="191" type="varchar" typeCode="12"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="2" name="state" nullable="false" remarks="" size="1" type="bool" typeCode="-7"/>
@@ -657,7 +657,7 @@
             <column ascending="true" name="id"/>
          </index>
       </table>
-      <table name="catalogo_entidad_emisor" numRows="3" remarks="" schema="public" type="TABLE">
+      <table name="catalogo_entidad_emisor" numRows="3" remarks="Catalogo de entidades emisoras" schema="public" type="TABLE">
          <column autoUpdated="true" defaultValue="nextval('catalogo_entidad_emisor_id_seq'::regclass)" digits="0" id="0" name="id" nullable="false" remarks="" size="10" type="serial" typeCode="4"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="catalogo_entidad_emisor" nullable="false" remarks="" size="191" type="varchar" typeCode="12"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="2" name="state" nullable="false" remarks="" size="1" type="bool" typeCode="-7"/>
@@ -669,7 +669,7 @@
             <column ascending="true" name="id"/>
          </index>
       </table>
-      <table name="catalogo_esp_iser_tipo_documento" numRows="52" remarks="" schema="public" type="TABLE">
+      <table name="catalogo_esp_iser_tipo_documento" numRows="52" remarks="Catálogo de documentos del tipo especialidad" schema="public" type="TABLE">
          <column autoUpdated="true" defaultValue="nextval('catalogo_esp_iser_tipo_documento_id_seq'::regclass)" digits="0" id="0" name="id" nullable="false" remarks="" size="10" type="serial" typeCode="4"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="codigo_tipo_documento" nullable="true" remarks="" size="10" type="int4" typeCode="4"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="2" name="catalogo_esp_iser_tipo_documento" nullable="false" remarks="" size="191" type="varchar" typeCode="12"/>
@@ -684,7 +684,7 @@
             <column ascending="true" name="id"/>
          </index>
       </table>
-      <table name="catalogo_esp_peams_tipo_documento" numRows="52" remarks="" schema="public" type="TABLE">
+      <table name="catalogo_esp_peams_tipo_documento" numRows="52" remarks="Catálogo de documentos del tipo especialidad" schema="public" type="TABLE">
          <column autoUpdated="true" defaultValue="nextval('catalogo_esp_peams_tipo_documento_id_seq'::regclass)" digits="0" id="0" name="id" nullable="false" remarks="" size="10" type="serial" typeCode="4"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="codigo_tipo_documento" nullable="true" remarks="" size="10" type="int4" typeCode="4"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="2" name="catalogo_esp_peams_tipo_documento" nullable="false" remarks="" size="191" type="varchar" typeCode="12"/>
@@ -699,7 +699,7 @@
             <column ascending="true" name="id"/>
          </index>
       </table>
-      <table name="catalogo_especialidad" numRows="2938" remarks="" schema="public" type="TABLE">
+      <table name="catalogo_especialidad" numRows="2938" remarks="Catálogo de especialidades" schema="public" type="TABLE">
          <column autoUpdated="true" defaultValue="nextval('catalogo_especialidad_id_seq'::regclass)" digits="0" id="0" name="id" nullable="false" remarks="" size="10" type="serial" typeCode="4"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="codigo_especialidad" nullable="true" remarks="" size="10" type="varchar" typeCode="12"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="2" name="catalogo_especialidad" nullable="true" remarks="" size="400" type="varchar" typeCode="12"/>
@@ -718,7 +718,7 @@
             <column ascending="true" name="id"/>
          </index>
       </table>
-      <table name="catalogo_estado_civil" numRows="4" remarks="" schema="public" type="TABLE">
+      <table name="catalogo_estado_civil" numRows="4" remarks="Catálogo de tipos de estado civil" schema="public" type="TABLE">
          <column autoUpdated="true" defaultValue="nextval('catalogo_estado_civil_id_seq'::regclass)" digits="0" id="0" name="id" nullable="false" remarks="" size="10" type="serial" typeCode="4"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="catalogo_estado_civil" nullable="false" remarks="" size="191" type="varchar" typeCode="12"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="2" name="state" nullable="false" remarks="" size="1" type="bool" typeCode="-7"/>
@@ -729,7 +729,7 @@
             <column ascending="true" name="id"/>
          </index>
       </table>
-      <table name="catalogo_ext_rev_univ_tipo_documento" numRows="52" remarks="" schema="public" type="TABLE">
+      <table name="catalogo_ext_rev_univ_tipo_documento" numRows="52" remarks="Catálogo de documentos de estenciones universitarias" schema="public" type="TABLE">
          <column autoUpdated="true" defaultValue="nextval('catalogo_ext_rev_univ_tipo_documento_id_seq'::regclass)" digits="0" id="0" name="id" nullable="false" remarks="" size="10" type="serial" typeCode="4"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="codigo_tipo_documento" nullable="true" remarks="" size="10" type="int4" typeCode="4"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="2" name="catalogo_ext_rev_univ_tipo_documento" nullable="false" remarks="" size="191" type="varchar" typeCode="12"/>
@@ -744,7 +744,7 @@
             <column ascending="true" name="id"/>
          </index>
       </table>
-      <table name="catalogo_formacion_profesional" numRows="33" remarks="" schema="public" type="TABLE">
+      <table name="catalogo_formacion_profesional" numRows="33" remarks="Catálogo de tipos de formaciones profecionales" schema="public" type="TABLE">
          <column autoUpdated="true" defaultValue="nextval('catalogo_formacion_profesional_id_seq'::regclass)" digits="0" id="0" name="id" nullable="false" remarks="" size="10" type="serial" typeCode="4"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="codigo_formacion_profesional" nullable="true" remarks="" size="4" type="varchar" typeCode="12"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="2" name="catalogo_formacion_profesional" nullable="false" remarks="" size="191" type="varchar" typeCode="12"/>
@@ -764,7 +764,7 @@
             <column ascending="true" name="id"/>
          </index>
       </table>
-      <table name="catalogo_grado_categoria" numRows="9" remarks="" schema="public" type="TABLE">
+      <table name="catalogo_grado_categoria" numRows="9" remarks="Catálogo de grados de categorias" schema="public" type="TABLE">
          <column autoUpdated="true" defaultValue="nextval('catalogo_grado_categoria_id_seq'::regclass)" digits="0" id="0" name="id" nullable="false" remarks="" size="10" type="serial" typeCode="4"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="codigo_categoria" nullable="true" remarks="" size="10" type="int4" typeCode="4"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="2" name="catalogo_grado_categoria" nullable="false" remarks="" size="191" type="varchar" typeCode="12"/>
@@ -777,7 +777,7 @@
             <column ascending="true" name="id"/>
          </index>
       </table>
-      <table name="catalogo_grado_discapacidad" numRows="2" remarks="" schema="public" type="TABLE">
+      <table name="catalogo_grado_discapacidad" numRows="2" remarks="Catálogo de grados de discapacidad" schema="public" type="TABLE">
          <column autoUpdated="true" defaultValue="nextval('catalogo_grado_discapacidad_id_seq'::regclass)" digits="0" id="0" name="id" nullable="false" remarks="" size="10" type="serial" typeCode="4"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="catalogo_grado_discapacidad" nullable="false" remarks="" size="200" type="varchar" typeCode="12"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="2" name="state" nullable="false" remarks="" size="1" type="bool" typeCode="-7"/>
@@ -788,7 +788,7 @@
             <column ascending="true" name="id"/>
          </index>
       </table>
-      <table name="catalogo_grado_escolaridad" numRows="27" remarks="" schema="public" type="TABLE">
+      <table name="catalogo_grado_escolaridad" numRows="27" remarks="Catálogo de grados de escolaridad" schema="public" type="TABLE">
          <column autoUpdated="true" defaultValue="nextval('catalogo_grado_escolaridad_id_seq'::regclass)" digits="0" id="0" name="id" nullable="false" remarks="" size="10" type="serial" typeCode="4"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="codigo_grado_escolaridad" nullable="true" remarks="" size="10" type="int4" typeCode="4"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="2" name="catalogo_grado_escolaridad" nullable="false" remarks="" size="191" type="varchar" typeCode="12"/>
@@ -800,7 +800,7 @@
             <column ascending="true" name="id"/>
          </index>
       </table>
-      <table name="catalogo_grado_normalista" numRows="11" remarks="" schema="public" type="TABLE">
+      <table name="catalogo_grado_normalista" numRows="11" remarks="Catálogo de grados normalistas" schema="public" type="TABLE">
          <column autoUpdated="true" defaultValue="nextval('catalogo_grado_normalista_id_seq'::regclass)" digits="0" id="0" name="id" nullable="false" remarks="" size="10" type="serial" typeCode="4"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="codigo_grado_normalista" nullable="true" remarks="" size="10" type="varchar" typeCode="12"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="2" name="catalogo_grado_normalista" nullable="true" remarks="" size="400" type="varchar" typeCode="12"/>
@@ -812,7 +812,7 @@
             <column ascending="true" name="id"/>
          </index>
       </table>
-      <table name="catalogo_grupo_categoria" numRows="23" remarks="" schema="public" type="TABLE">
+      <table name="catalogo_grupo_categoria" numRows="23" remarks="Catálogo de tipos de grupos en categorias" schema="public" type="TABLE">
          <column autoUpdated="true" defaultValue="nextval('catalogo_grupo_categoria_id_seq'::regclass)" digits="0" id="0" name="id" nullable="false" remarks="" size="10" type="serial" typeCode="4"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="codigo_grupo_categoria" nullable="true" remarks="" size="10" type="int4" typeCode="4"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="2" name="catalogo_grupo_categoria" nullable="true" remarks="" size="191" type="varchar" typeCode="12"/>
@@ -827,7 +827,7 @@
             <column ascending="true" name="id"/>
          </index>
       </table>
-      <table name="catalogo_hasta_mes" numRows="12" remarks="" schema="public" type="TABLE">
+      <table name="catalogo_hasta_mes" numRows="12" remarks="Catálogo de meses" schema="public" type="TABLE">
          <column autoUpdated="true" defaultValue="nextval('catalogo_catalogo_mes_id_seq'::regclass)" digits="0" id="0" name="id" nullable="false" remarks="" size="10" type="serial" typeCode="4"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="catalogo_hasta_mes" nullable="false" remarks="" size="200" type="varchar" typeCode="12"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="2" name="state" nullable="false" remarks="" size="1" type="bool" typeCode="-7"/>
@@ -838,7 +838,7 @@
             <column ascending="true" name="id"/>
          </index>
       </table>
-      <table name="catalogo_idioma" numRows="51" remarks="" schema="public" type="TABLE">
+      <table name="catalogo_idioma" numRows="51" remarks="Catálogo de tipos de idiomas" schema="public" type="TABLE">
          <column autoUpdated="true" defaultValue="nextval('catalogo_idioma_id_seq'::regclass)" digits="0" id="0" name="id" nullable="false" remarks="" size="10" type="serial" typeCode="4"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="catalogo_idioma" nullable="false" remarks="" size="200" type="varchar" typeCode="12"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="2" name="state" nullable="false" remarks="" size="1" type="bool" typeCode="-7"/>
@@ -849,7 +849,7 @@
             <column ascending="true" name="id"/>
          </index>
       </table>
-      <table name="catalogo_institutos_tipo_documento" numRows="52" remarks="" schema="public" type="TABLE">
+      <table name="catalogo_institutos_tipo_documento" numRows="52" remarks="Catálogo de tipos de documentos de institutos" schema="public" type="TABLE">
          <column autoUpdated="true" defaultValue="nextval('catalogo_institutos_tipo_documento_id_seq'::regclass)" digits="0" id="0" name="id" nullable="false" remarks="" size="10" type="serial" typeCode="4"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="codigo_tipo_documento" nullable="true" remarks="" size="10" type="int4" typeCode="4"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="2" name="catalogo_institutos_tipo_documento" nullable="false" remarks="" size="191" type="varchar" typeCode="12"/>
@@ -864,7 +864,7 @@
             <column ascending="true" name="id"/>
          </index>
       </table>
-      <table name="catalogo_localidad" numRows="45700" remarks="" schema="public" type="TABLE">
+      <table name="catalogo_localidad" numRows="45700" remarks="Catálogo de localidades" schema="public" type="TABLE">
          <column autoUpdated="true" defaultValue="nextval('catalogo_localidad_id_seq'::regclass)" digits="0" id="0" name="id" nullable="false" remarks="" size="10" type="serial" typeCode="4"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="codigo_localidad" nullable="false" remarks="" size="10" type="varchar" typeCode="12"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="2" name="codigo_canton" nullable="false" remarks="" size="10" type="varchar" typeCode="12"/>
@@ -881,7 +881,7 @@
             <column ascending="true" name="id"/>
          </index>
       </table>
-      <table name="catalogo_modalidad" numRows="2" remarks="" schema="public" type="TABLE">
+      <table name="catalogo_modalidad" numRows="2" remarks="Catálogo de modalidades" schema="public" type="TABLE">
          <column autoUpdated="true" defaultValue="nextval('catalogo_modalidad_id_seq'::regclass)" digits="0" id="0" name="id" nullable="false" remarks="" size="10" type="serial" typeCode="4"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="codigo_modalidad" nullable="true" remarks="" size="10" type="varchar" typeCode="12"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="2" name="catalogo_modalidad" nullable="true" remarks="" size="400" type="varchar" typeCode="12"/>
@@ -893,7 +893,7 @@
             <column ascending="true" name="id"/>
          </index>
       </table>
-      <table name="catalogo_nacion" numRows="242" remarks="" schema="public" type="TABLE">
+      <table name="catalogo_nacion" numRows="242" remarks="Catálogo de naciones" schema="public" type="TABLE">
          <column autoUpdated="true" defaultValue="nextval('pais_id_seq'::regclass)" digits="0" id="0" name="id" nullable="false" remarks="" size="10" type="serial" typeCode="4"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="catalogo_nacion" nullable="false" remarks="" size="191" type="varchar" typeCode="12"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="2" name="state" nullable="false" remarks="" size="1" type="bool" typeCode="-7"/>
@@ -906,7 +906,7 @@
             <column ascending="true" name="id"/>
          </index>
       </table>
-      <table name="catalogo_nivel" numRows="28" remarks="" schema="public" type="TABLE">
+      <table name="catalogo_nivel" numRows="28" remarks="Catálogo de niveles" schema="public" type="TABLE">
          <column autoUpdated="true" defaultValue="nextval('catalogo_nivel_id_seq'::regclass)" digits="0" id="0" name="id" nullable="false" remarks="" size="10" type="serial" typeCode="4"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="codigo_nivel" nullable="true" remarks="" size="10" type="varchar" typeCode="12"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="2" name="catalogo_nivel" nullable="true" remarks="" size="400" type="varchar" typeCode="12"/>
@@ -918,7 +918,7 @@
             <column ascending="true" name="id"/>
          </index>
       </table>
-      <table name="catalogo_nivel_escolar" numRows="2" remarks="" schema="public" type="TABLE">
+      <table name="catalogo_nivel_escolar" numRows="2" remarks="Catálogo de niveles escolares" schema="public" type="TABLE">
          <column autoUpdated="true" defaultValue="nextval('catalogo_nivel_escolar_id_seq'::regclass)" digits="0" id="0" name="id" nullable="false" remarks="" size="10" type="serial" typeCode="4"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="catalogo_nivel_escolar" nullable="false" remarks="" size="200" type="varchar" typeCode="12"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="2" name="state" nullable="false" remarks="" size="1" type="bool" typeCode="-7"/>
@@ -929,7 +929,7 @@
             <column ascending="true" name="id"/>
          </index>
       </table>
-      <table name="catalogo_nivel_idioma" numRows="4" remarks="" schema="public" type="TABLE">
+      <table name="catalogo_nivel_idioma" numRows="4" remarks="Catálogo de niveles de idiomas" schema="public" type="TABLE">
          <column autoUpdated="true" defaultValue="nextval('catalogo_nivel_idioma_id_seq'::regclass)" digits="0" id="0" name="id" nullable="false" remarks="" size="10" type="serial" typeCode="4"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="codigo_nivel_idioma" nullable="true" remarks="" size="10" type="int4" typeCode="4"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="2" name="catalogo_nivel_idioma" nullable="false" remarks="" size="200" type="varchar" typeCode="12"/>
@@ -941,7 +941,7 @@
             <column ascending="true" name="id"/>
          </index>
       </table>
-      <table name="catalogo_nombres" numRows="0" remarks="" schema="public" type="TABLE">
+      <table name="catalogo_nombres" numRows="0" remarks="Catálogo de nombres" schema="public" type="TABLE">
          <column autoUpdated="true" defaultValue="nextval('catalogo_nombres_id_seq'::regclass)" digits="0" id="0" name="id" nullable="false" remarks="" size="10" type="serial" typeCode="4"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="catalogo_nombres" nullable="false" remarks="" size="200" type="varchar" typeCode="12"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="2" name="state" nullable="false" remarks="" size="1" type="bool" typeCode="-7"/>
@@ -952,7 +952,7 @@
             <column ascending="true" name="id"/>
          </index>
       </table>
-      <table name="catalogo_normalista_entidad" numRows="537" remarks="" schema="public" type="TABLE">
+      <table name="catalogo_normalista_entidad" numRows="537" remarks="Catálogo de entidades normalistas" schema="public" type="TABLE">
          <column autoUpdated="true" defaultValue="nextval('catalogo_normalista_entidad_id_seq'::regclass)" digits="0" id="0" name="id" nullable="false" remarks="" size="10" type="serial" typeCode="4"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="codigo_entidad" nullable="true" remarks="" size="10" type="varchar" typeCode="12"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="2" name="catalogo_normalista_entidad" nullable="true" remarks="" size="400" type="varchar" typeCode="12"/>
@@ -978,7 +978,7 @@
             <column ascending="true" name="id"/>
          </index>
       </table>
-      <table name="catalogo_normalista_especialidad" numRows="2676" remarks="" schema="public" type="TABLE">
+      <table name="catalogo_normalista_especialidad" numRows="2676" remarks="Catálogo de especialidades normalistas" schema="public" type="TABLE">
          <column autoUpdated="true" defaultValue="nextval('catalogo_normalista_especialidad_id_seq'::regclass)" digits="0" id="0" name="id" nullable="false" remarks="" size="10" type="serial" typeCode="4"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="codigo_especialidad" nullable="true" remarks="" size="10" type="varchar" typeCode="12"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="2" name="catalogo_normalista_especialidad" nullable="true" remarks="" size="400" type="varchar" typeCode="12"/>
@@ -997,7 +997,7 @@
             <column ascending="true" name="id"/>
          </index>
       </table>
-      <table name="catalogo_normalista_formacion_profesional" numRows="4" remarks="" schema="public" type="TABLE">
+      <table name="catalogo_normalista_formacion_profesional" numRows="4" remarks="Catálogo de formacion profesional de normalistas" schema="public" type="TABLE">
          <column autoUpdated="true" defaultValue="nextval('catalogo_normalista_formacion_profesional_id_seq'::regclass)" digits="0" id="0" name="id" nullable="false" remarks="" size="10" type="serial" typeCode="4"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="codigo_formacion_profesional" nullable="true" remarks="" size="4" type="varchar" typeCode="12"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="2" name="catalogo_normalista_formacion_profesional" nullable="false" remarks="" size="191" type="varchar" typeCode="12"/>
@@ -1016,7 +1016,7 @@
             <column ascending="true" name="id"/>
          </index>
       </table>
-      <table name="catalogo_normalista_modalidad" numRows="2" remarks="" schema="public" type="TABLE">
+      <table name="catalogo_normalista_modalidad" numRows="2" remarks="Catálogo de modalidades de normalistas" schema="public" type="TABLE">
          <column autoUpdated="true" defaultValue="nextval('catalogo_normalista_modalidad_id_seq'::regclass)" digits="0" id="0" name="id" nullable="false" remarks="" size="10" type="serial" typeCode="4"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="codigo_modalidad" nullable="true" remarks="" size="10" type="int4" typeCode="4"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="2" name="catalogo_normalista_modalidad" nullable="true" remarks="" size="400" type="varchar" typeCode="12"/>
@@ -1029,7 +1029,7 @@
             <column ascending="true" name="id"/>
          </index>
       </table>
-      <table name="catalogo_normalista_nivel" numRows="28" remarks="" schema="public" type="TABLE">
+      <table name="catalogo_normalista_nivel" numRows="28" remarks="Catálogo de niveles de normalistas" schema="public" type="TABLE">
          <column autoUpdated="true" defaultValue="nextval('catalogo_normalista_nivel_id_seq'::regclass)" digits="0" id="0" name="id" nullable="false" remarks="" size="10" type="serial" typeCode="4"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="codigo_nivel" nullable="true" remarks="" size="10" type="varchar" typeCode="12"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="2" name="catalogo_normalista_nivel" nullable="true" remarks="" size="400" type="varchar" typeCode="12"/>
@@ -1041,7 +1041,7 @@
             <column ascending="true" name="id"/>
          </index>
       </table>
-      <table name="catalogo_normalista_rev_tipo_documento" numRows="52" remarks="" schema="public" type="TABLE">
+      <table name="catalogo_normalista_rev_tipo_documento" numRows="52" remarks="Catálogo de tipo de documentos normalistas rev" schema="public" type="TABLE">
          <column autoUpdated="true" defaultValue="nextval('catalogo_normalista_rev_tipo_documento_id_seq'::regclass)" digits="0" id="0" name="id" nullable="false" remarks="" size="10" type="serial" typeCode="4"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="codigo_tipo_documento" nullable="true" remarks="" size="10" type="int4" typeCode="4"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="2" name="catalogo_normalista_tipo_documento" nullable="false" remarks="" size="191" type="varchar" typeCode="12"/>
@@ -1056,7 +1056,7 @@
             <column ascending="true" name="id"/>
          </index>
       </table>
-      <table name="catalogo_normalista_tipo_documento" numRows="52" remarks="" schema="public" type="TABLE">
+      <table name="catalogo_normalista_tipo_documento" numRows="52" remarks="Catálogo de tipo de documentos normalistas" schema="public" type="TABLE">
          <column autoUpdated="true" defaultValue="nextval('catalogo_normalista_tipo_documento_id_seq'::regclass)" digits="0" id="0" name="id" nullable="false" remarks="" size="10" type="serial" typeCode="4"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="codigo_tipo_documento" nullable="true" remarks="" size="10" type="int4" typeCode="4"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="2" name="catalogo_normalista_tipo_documento" nullable="false" remarks="" size="191" type="varchar" typeCode="12"/>
@@ -1071,7 +1071,7 @@
             <column ascending="true" name="id"/>
          </index>
       </table>
-      <table name="catalogo_otro_tipo_documento" numRows="18" remarks="" schema="public" type="TABLE">
+      <table name="catalogo_otro_tipo_documento" numRows="18" remarks="Catálogo de otros tipos de documentos" schema="public" type="TABLE">
          <column autoUpdated="true" defaultValue="nextval('catalogo_otro_tipo_documento_id_seq'::regclass)" digits="0" id="0" name="id" nullable="false" remarks="" size="10" type="serial" typeCode="4"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="catalogo_otro_tipo_documento" nullable="false" remarks="" size="200" type="varchar" typeCode="12"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="2" name="grupo_tipo_documento" nullable="true" remarks="" size="10" type="int4" typeCode="4"/>
@@ -1084,7 +1084,7 @@
             <column ascending="true" name="id"/>
          </index>
       </table>
-      <table name="catalogo_otro_titulo" numRows="13" remarks="" schema="public" type="TABLE">
+      <table name="catalogo_otro_titulo" numRows="13" remarks="Catálogo de otros tipos de titulos" schema="public" type="TABLE">
          <column autoUpdated="true" defaultValue="nextval('catalogo_otro_titulo_id_seq'::regclass)" digits="0" id="0" name="id" nullable="false" remarks="" size="10" type="serial" typeCode="4"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="codigo_otro_titulo" nullable="true" remarks="" size="10" type="varchar" typeCode="12"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="2" name="catalogo_otro_titulo" nullable="true" remarks="" size="400" type="varchar" typeCode="12"/>
@@ -1097,7 +1097,7 @@
             <column ascending="true" name="id"/>
          </index>
       </table>
-      <table name="catalogo_parentesco" numRows="2" remarks="" schema="public" type="TABLE">
+      <table name="catalogo_parentesco" numRows="2" remarks="Catálogo de tipos de parentesco" schema="public" type="TABLE">
          <column autoUpdated="true" defaultValue="nextval('catalogo_parentesco_id_seq'::regclass)" digits="0" id="0" name="id" nullable="false" remarks="" size="10" type="serial" typeCode="4"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="catalogo_parentesco" nullable="false" remarks="" size="200" type="varchar" typeCode="12"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="2" name="state" nullable="false" remarks="" size="1" type="bool" typeCode="-7"/>
@@ -1108,7 +1108,7 @@
             <column ascending="true" name="id"/>
          </index>
       </table>
-      <table name="catalogo_personal_administrativo" numRows="0" remarks="" schema="public" type="TABLE">
+      <table name="catalogo_personal_administrativo" numRows="0" remarks="Catálogo de tipos de personal administrativo" schema="public" type="TABLE">
          <column autoUpdated="true" defaultValue="nextval('catalogo_personal_administrativo_id_seq'::regclass)" digits="0" id="0" name="id" nullable="false" remarks="" size="10" type="serial" typeCode="4"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="catalogo_personal_administrativo" nullable="false" remarks="" size="200" type="varchar" typeCode="12"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="2" name="state" nullable="false" remarks="" size="1" type="bool" typeCode="-7"/>
@@ -1119,7 +1119,7 @@
             <column ascending="true" name="id"/>
          </index>
       </table>
-      <table name="catalogo_postgrado_tipo_documento" numRows="52" remarks="" schema="public" type="TABLE">
+      <table name="catalogo_postgrado_tipo_documento" numRows="52" remarks="Catálogo de tipos de documentos de postgrado" schema="public" type="TABLE">
          <column autoUpdated="true" defaultValue="nextval('catalogo_postgrado_tipo_documento_id_seq'::regclass)" digits="0" id="0" name="id" nullable="false" remarks="" size="10" type="serial" typeCode="4"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="codigo_tipo_documento" nullable="true" remarks="" size="10" type="int4" typeCode="4"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="2" name="catalogo_postgrado_tipo_documento" nullable="false" remarks="" size="191" type="varchar" typeCode="12"/>
@@ -1134,7 +1134,7 @@
             <column ascending="true" name="id"/>
          </index>
       </table>
-      <table name="catalogo_profesion" numRows="4" remarks="" schema="public" type="TABLE">
+      <table name="catalogo_profesion" numRows="4" remarks="Catálogo de tipos de profesiones" schema="public" type="TABLE">
          <column autoUpdated="true" defaultValue="nextval('catalogo_profesion_id_seq'::regclass)" digits="0" id="0" name="id" nullable="false" remarks="" size="10" type="serial" typeCode="4"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="catalogo_profesion" nullable="false" remarks="" size="191" type="varchar" typeCode="12"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="2" name="state" nullable="false" remarks="" size="1" type="bool" typeCode="-7"/>
@@ -1145,7 +1145,7 @@
             <column ascending="true" name="id"/>
          </index>
       </table>
-      <table name="catalogo_provincia" numRows="123" remarks="" schema="public" type="TABLE">
+      <table name="catalogo_provincia" numRows="123" remarks="Catálogo de provincias" schema="public" type="TABLE">
          <column autoUpdated="true" defaultValue="nextval('catalogo_provincia_id_seq'::regclass)" digits="0" id="0" name="id" nullable="false" remarks="" size="10" type="serial" typeCode="4"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="codigo_provincia" nullable="false" remarks="" size="4" type="varchar" typeCode="12"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="2" name="codigo_departamento" nullable="false" remarks="" size="2" type="varchar" typeCode="12"/>
@@ -1159,7 +1159,7 @@
             <column ascending="true" name="id"/>
          </index>
       </table>
-      <table name="catalogo_r_grado_administrativo" numRows="8" remarks="" schema="public" type="TABLE">
+      <table name="catalogo_r_grado_administrativo" numRows="8" remarks="Catálogo de tipos de grado de administrativos" schema="public" type="TABLE">
          <column autoUpdated="true" defaultValue="nextval('catalogo_r_grado_administrativo_id_seq'::regclass)" digits="0" id="0" name="id" nullable="false" remarks="" size="10" type="serial" typeCode="4"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="codigo_r_grado_administrativo" nullable="true" remarks="" size="10" type="int4" typeCode="4"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="2" name="catalogo_r_grado_administrativo" nullable="false" remarks="" size="191" type="varchar" typeCode="12"/>
@@ -1171,7 +1171,7 @@
             <column ascending="true" name="id"/>
          </index>
       </table>
-      <table name="catalogo_ramo" numRows="27" remarks="" schema="public" type="TABLE">
+      <table name="catalogo_ramo" numRows="27" remarks="Catálogo de tipos de ramo" schema="public" type="TABLE">
          <column autoUpdated="true" defaultValue="nextval('catalogo_ramo_id_seq'::regclass)" digits="0" id="0" name="id" nullable="false" remarks="" size="10" type="serial" typeCode="4"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="codigo_ramo" nullable="true" remarks="" size="10" type="int4" typeCode="4"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="2" name="catalogo_ramo" nullable="false" remarks="" size="200" type="varchar" typeCode="12"/>
@@ -1185,7 +1185,7 @@
             <column ascending="true" name="id"/>
          </index>
       </table>
-      <table name="catalogo_seccion" numRows="449" remarks="" schema="public" type="TABLE">
+      <table name="catalogo_seccion" numRows="449" remarks="Catálogo de tipos de secciones" schema="public" type="TABLE">
          <column autoUpdated="true" defaultValue="nextval('catalogo_seccion_id_seq'::regclass)" digits="0" id="0" name="id" nullable="false" remarks="" size="10" type="serial" typeCode="4"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="codigo_seccion" nullable="false" remarks="" size="4" type="varchar" typeCode="12"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="2" name="codigo_provincia" nullable="false" remarks="" size="4" type="varchar" typeCode="12"/>
@@ -1200,7 +1200,7 @@
             <column ascending="true" name="id"/>
          </index>
       </table>
-      <table name="catalogo_tec_calificado_tipo_documento" numRows="52" remarks="" schema="public" type="TABLE">
+      <table name="catalogo_tec_calificado_tipo_documento" numRows="52" remarks="Catálogo de tipos de documentos de calificación técnico" schema="public" type="TABLE">
          <column autoUpdated="true" defaultValue="nextval('catalogo_tec_calificado_tipo_documento_id_seq'::regclass)" digits="0" id="0" name="id" nullable="false" remarks="" size="10" type="serial" typeCode="4"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="codigo_tipo_documento" nullable="true" remarks="" size="10" type="int4" typeCode="4"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="2" name="catalogo_tec_calificado_tipo_documento" nullable="false" remarks="" size="191" type="varchar" typeCode="12"/>
@@ -1215,7 +1215,7 @@
             <column ascending="true" name="id"/>
          </index>
       </table>
-      <table name="catalogo_tipo_cargo_categoria" numRows="2" remarks="" schema="public" type="TABLE">
+      <table name="catalogo_tipo_cargo_categoria" numRows="2" remarks="Catálogo de tipos de cargo de categoria" schema="public" type="TABLE">
          <column autoUpdated="true" defaultValue="nextval('catalogo_tipo_cargo_categoria_id_seq'::regclass)" digits="0" id="0" name="id" nullable="false" remarks="" size="10" type="serial" typeCode="4"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="catalogo_tipo_cargo_categoria" nullable="false" remarks="" size="191" type="varchar" typeCode="12"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="2" name="state" nullable="false" remarks="" size="1" type="bool" typeCode="-7"/>
@@ -1226,7 +1226,7 @@
             <column ascending="true" name="id"/>
          </index>
       </table>
-      <table name="catalogo_tipo_discapacidad" numRows="6" remarks="" schema="public" type="TABLE">
+      <table name="catalogo_tipo_discapacidad" numRows="6" remarks="Catálogo de tipos de discapacidades" schema="public" type="TABLE">
          <column autoUpdated="true" defaultValue="nextval('catalogo_tipo_discapacidad_id_seq'::regclass)" digits="0" id="0" name="id" nullable="false" remarks="" size="10" type="serial" typeCode="4"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="catalogo_tipo_discapacidad" nullable="false" remarks="" size="200" type="varchar" typeCode="12"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="2" name="state" nullable="false" remarks="" size="1" type="bool" typeCode="-7"/>
@@ -1237,7 +1237,7 @@
             <column ascending="true" name="id"/>
          </index>
       </table>
-      <table name="catalogo_tipo_documento" numRows="54" remarks="" schema="public" type="TABLE">
+      <table name="catalogo_tipo_documento" numRows="54" remarks="Catálogo de tipos de documentos" schema="public" type="TABLE">
          <column autoUpdated="true" defaultValue="nextval('catalogo_tipo_documento_id_seq'::regclass)" digits="0" id="0" name="id" nullable="false" remarks="" size="10" type="serial" typeCode="4"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="codigo_tipo_documento" nullable="true" remarks="" size="10" type="int4" typeCode="4"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="2" name="catalogo_tipo_documento" nullable="false" remarks="" size="191" type="varchar" typeCode="12"/>
@@ -1253,7 +1253,7 @@
             <column ascending="true" name="id"/>
          </index>
       </table>
-      <table name="catalogo_tipo_documento_categoria" numRows="4" remarks="" schema="public" type="TABLE">
+      <table name="catalogo_tipo_documento_categoria" numRows="4" remarks="Catálogo de tipos de documentos de categoria" schema="public" type="TABLE">
          <column autoUpdated="true" defaultValue="nextval('catalogo_tipo_documento_categoria_id_seq'::regclass)" digits="0" id="0" name="id" nullable="false" remarks="" size="10" type="serial" typeCode="4"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="codigo_tipo_documento_categoria" nullable="true" remarks="" size="10" type="int4" typeCode="4"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="2" name="catalogo_tipo_documento_categoria" nullable="false" remarks="" size="200" type="varchar" typeCode="12"/>
@@ -1265,7 +1265,7 @@
             <column ascending="true" name="id"/>
          </index>
       </table>
-      <table name="catalogo_tipo_documento_identificacion" numRows="5" remarks="" schema="public" type="TABLE">
+      <table name="catalogo_tipo_documento_identificacion" numRows="5" remarks="Catálogo de tipos de documentos de identificación" schema="public" type="TABLE">
          <column autoUpdated="true" defaultValue="nextval('catalogo_tipo_documento_identificacion_id_seq'::regclass)" digits="0" id="0" name="id" nullable="false" remarks="" size="10" type="serial" typeCode="4"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="catalogo_tipo_documento_identificacion" nullable="false" remarks="" size="200" type="varchar" typeCode="12"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="2" name="state" nullable="false" remarks="" size="1" type="bool" typeCode="-7"/>
@@ -1276,7 +1276,7 @@
             <column ascending="true" name="id"/>
          </index>
       </table>
-      <table name="catalogo_tipo_documento_idioma" numRows="2" remarks="" schema="public" type="TABLE">
+      <table name="catalogo_tipo_documento_idioma" numRows="2" remarks="Catálogo de tipos de documentos de idioma" schema="public" type="TABLE">
          <column autoUpdated="true" defaultValue="nextval('catalogo_tipo_documento_idioma_id_seq'::regclass)" digits="0" id="0" name="id" nullable="false" remarks="" size="10" type="serial" typeCode="4"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="catalogo_tipo_documento_idioma" nullable="false" remarks="" size="200" type="varchar" typeCode="12"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="2" name="state" nullable="false" remarks="" size="1" type="bool" typeCode="-7"/>
@@ -1287,7 +1287,7 @@
             <column ascending="true" name="id"/>
          </index>
       </table>
-      <table name="catalogo_tipo_documento_libreta_militar" numRows="2" remarks="" schema="public" type="TABLE">
+      <table name="catalogo_tipo_documento_libreta_militar" numRows="2" remarks="Catálogo de tipos de documentos de libreta militar" schema="public" type="TABLE">
          <column autoUpdated="true" defaultValue="nextval('catalogo_tipo_documento_libreta_militar_id_seq'::regclass)" digits="0" id="0" name="id" nullable="false" remarks="" size="10" type="serial" typeCode="4"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="catalogo_tipo_documento_libreta_militar" nullable="false" remarks="" size="200" type="varchar" typeCode="12"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="2" name="state" nullable="false" remarks="" size="1" type="bool" typeCode="-7"/>
@@ -1298,7 +1298,7 @@
             <column ascending="true" name="id"/>
          </index>
       </table>
-      <table name="catalogo_tipo_formacion" numRows="3" remarks="" schema="public" type="TABLE">
+      <table name="catalogo_tipo_formacion" numRows="3" remarks="Catálogo de tipos de formación académica" schema="public" type="TABLE">
          <column autoUpdated="true" defaultValue="nextval('catalogo_tipo_formacion_id_seq'::regclass)" digits="0" id="0" name="id" nullable="false" remarks="" size="10" type="serial" typeCode="4"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="catalogo_tipo_formacion" nullable="false" remarks="" size="200" type="varchar" typeCode="12"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="2" name="state" nullable="false" remarks="" size="1" type="bool" typeCode="-7"/>
@@ -1309,7 +1309,7 @@
             <column ascending="true" name="id"/>
          </index>
       </table>
-      <table name="catalogo_tipo_libreta_militar" numRows="5" remarks="" schema="public" type="TABLE">
+      <table name="catalogo_tipo_libreta_militar" numRows="5" remarks="Catálogo de tipos de libreta militar" schema="public" type="TABLE">
          <column autoUpdated="true" defaultValue="nextval('catalogo_tipo_libreta_militar_id_seq'::regclass)" digits="0" id="0" name="id" nullable="false" remarks="" size="10" type="serial" typeCode="4"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="catalogo_tipo_libreta_militar" nullable="false" remarks="" size="300" type="varchar" typeCode="12"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="2" name="state" nullable="false" remarks="" size="1" type="bool" typeCode="-7"/>
@@ -1320,7 +1320,7 @@
             <column ascending="true" name="id"/>
          </index>
       </table>
-      <table name="catalogo_turno" numRows="3" remarks="" schema="public" type="TABLE">
+      <table name="catalogo_turno" numRows="3" remarks="Catálogo de tipos de turno" schema="public" type="TABLE">
          <column autoUpdated="true" defaultValue="nextval('catalogo_turno_id_seq'::regclass)" digits="0" id="0" name="id" nullable="false" remarks="" size="10" type="serial" typeCode="4"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="catalogo_turno" nullable="false" remarks="" size="200" type="varchar" typeCode="12"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="2" name="state" nullable="false" remarks="" size="1" type="bool" typeCode="-7"/>
@@ -1331,7 +1331,7 @@
             <column ascending="true" name="id"/>
          </index>
       </table>
-      <table name="catalogo_unidad_educativa" numRows="1" remarks="" schema="public" type="TABLE">
+      <table name="catalogo_unidad_educativa" numRows="1" remarks="Catálogo de unidades educativas" schema="public" type="TABLE">
          <column autoUpdated="true" defaultValue="nextval('catalogo_unidad_educativa_id_seq'::regclass)" digits="0" id="0" name="id" nullable="false" remarks="" size="10" type="serial" typeCode="4"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="catalogo_unidad_educativa" nullable="false" remarks="" size="200" type="varchar" typeCode="12"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="2" name="state" nullable="false" remarks="" size="1" type="bool" typeCode="-7"/>
@@ -1342,7 +1342,7 @@
             <column ascending="true" name="id"/>
          </index>
       </table>
-      <table name="catalogo_universitario_tipo_documento" numRows="52" remarks="" schema="public" type="TABLE">
+      <table name="catalogo_universitario_tipo_documento" numRows="52" remarks="Catálogo de tipos de documentos universitarios" schema="public" type="TABLE">
          <column autoUpdated="true" defaultValue="nextval('catalogo_universitario_tipo_documento_id_seq'::regclass)" digits="0" id="0" name="id" nullable="false" remarks="" size="10" type="serial" typeCode="4"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="codigo_tipo_documento" nullable="true" remarks="" size="10" type="int4" typeCode="4"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="2" name="catalogo_universitario_tipo_documento" nullable="false" remarks="" size="191" type="varchar" typeCode="12"/>
@@ -1357,7 +1357,7 @@
             <column ascending="true" name="id"/>
          </index>
       </table>
-      <table name="categoria_rda" numRows="0" remarks="" schema="public" type="TABLE">
+      <table name="categoria_rda" numRows="0" remarks="Registro de categorias RDA" schema="public" type="TABLE">
          <column autoUpdated="true" defaultValue="nextval('categoria_rda_id_seq'::regclass)" digits="0" id="0" name="id" nullable="false" remarks="" size="10" type="serial" typeCode="4"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="id_registro_docente_administrativo" nullable="false" remarks="" size="10" type="int4" typeCode="4">
             <parent column="id" foreignKey="categoria_rda_id_registro_docente_administrativo_foreign" implied="false" onDeleteCascade="true" schema="public" table="registro_docente_administrativo"/>
@@ -1380,7 +1380,7 @@
             <column ascending="true" name="id_registro_docente_administrativo"/>
          </index>
       </table>
-      <table name="categoria_rp_gesttla" numRows="0" remarks="" schema="public" type="TABLE">
+      <table name="categoria_rp_gesttla" numRows="0" remarks="Registro de categorias RP GESTTLA" schema="public" type="TABLE">
          <column autoUpdated="true" defaultValue="nextval('categoria_rp_gesttla_id_seq'::regclass)" digits="0" id="0" name="id" nullable="false" remarks="" size="10" type="serial" typeCode="4"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="id_registro_rp_gesttla" nullable="false" remarks="" size="10" type="int4" typeCode="4">
             <parent column="id" foreignKey="categoria_registro_rp_gesttla_id_rp_gesttla_foreign" implied="false" onDeleteCascade="true" schema="public" table="registro_rp_gesttla"/>
@@ -1402,7 +1402,7 @@
             <column ascending="true" name="id_registro_rp_gesttla"/>
          </index>
       </table>
-      <table name="changes" numRows="16824664" remarks="" schema="public" type="TABLE">
+      <table name="changes" numRows="16825338" remarks="Registro de cambios manuales" schema="public" type="TABLE">
          <column autoUpdated="true" defaultValue="nextval('changes_id_seq'::regclass)" digits="0" id="0" name="id" nullable="false" remarks="" size="10" type="serial" typeCode="4"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="action" nullable="true" remarks="" size="191" type="varchar" typeCode="12"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="2" name="table" nullable="true" remarks="" size="191" type="varchar" typeCode="12"/>
@@ -1415,7 +1415,7 @@
             <column ascending="true" name="id"/>
          </index>
       </table>
-      <table name="codigo_rda_apertura" numRows="171" remarks="" schema="public" type="TABLE">
+      <table name="codigo_rda_apertura" numRows="171" remarks="Tabla transaccional de codigo de apertura rda" schema="public" type="TABLE">
          <column autoUpdated="true" defaultValue="nextval('codigo_rda_apertura_id_seq'::regclass)" digits="0" id="0" name="id" nullable="false" remarks="" size="10" type="serial" typeCode="4"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="created_at" nullable="true" remarks="" size="22" type="timestamp" typeCode="93"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="2" name="updated_at" nullable="true" remarks="" size="22" type="timestamp" typeCode="93"/>
@@ -1424,7 +1424,7 @@
             <column ascending="true" name="id"/>
          </index>
       </table>
-      <table name="detalle_sisep_doc_calificacion_anios_servicio" numRows="974" remarks="" schema="public" type="TABLE">
+      <table name="detalle_sisep_doc_calificacion_anios_servicio" numRows="974" remarks="Detalle del documento de calificacion de años de servicio" schema="public" type="TABLE">
          <column autoUpdated="true" defaultValue="nextval('detalle_sisep_doc_calificacion_anios_servicio_id_seq'::regclass)" digits="0" id="0" name="id" nullable="false" remarks="" size="10" type="serial" typeCode="4"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="id_sisep_doc_calificacion_anios_servicio" nullable="true" remarks="" size="10" type="int4" typeCode="4"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="2" name="id_documento_actualizacion" nullable="true" remarks="" size="10" type="int4" typeCode="4"/>
@@ -1445,7 +1445,7 @@
             <column ascending="true" name="id"/>
          </index>
       </table>
-      <table name="detalle_sisep_doc_consolidado_calificacion_anios_servicio" numRows="1065141" remarks="" schema="public" type="TABLE">
+      <table name="detalle_sisep_doc_consolidado_calificacion_anios_servicio" numRows="1065141" remarks="Detalle del documento consolidado de años de servicio" schema="public" type="TABLE">
          <column autoUpdated="true" defaultValue="nextval('detalle_sisep_doc_consolidado_calificacion_anios_servici_id_seq'::regclass)" digits="0" id="0" name="id" nullable="false" remarks="" size="10" type="serial" typeCode="4"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="id_sisep_doc_consolidado_calificacion_anios_servicio" nullable="true" remarks="" size="10" type="int4" typeCode="4"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="2" name="numero_lote" nullable="true" remarks="" size="10" type="int4" typeCode="4"/>
@@ -1484,7 +1484,7 @@
             <column ascending="true" name="id"/>
          </index>
       </table>
-      <table name="detalle_sisep_doc_consolidado_resolucion" numRows="25938" remarks="" schema="public" type="TABLE">
+      <table name="detalle_sisep_doc_consolidado_resolucion" numRows="25938" remarks="Detalle del documento de resolucion consolidada" schema="public" type="TABLE">
          <column autoUpdated="true" defaultValue="nextval('detalle_sisep_doc_consolidado_resolucion_id_seq'::regclass)" digits="0" id="0" name="id" nullable="false" remarks="" size="10" type="serial" typeCode="4"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="id_sisep_doc_consolidado_resolucion" nullable="true" remarks="" size="10" type="int4" typeCode="4"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="2" name="numero_lote" nullable="true" remarks="" size="10" type="int4" typeCode="4"/>
@@ -1523,7 +1523,7 @@
             <column ascending="true" name="id"/>
          </index>
       </table>
-      <table name="detalle_sisep_doc_resolucion" numRows="923" remarks="" schema="public" type="TABLE">
+      <table name="detalle_sisep_doc_resolucion" numRows="923" remarks="Detalle del documento de resolucion" schema="public" type="TABLE">
          <column autoUpdated="true" defaultValue="nextval('detalle_sisep_doc_resolucion_id_seq'::regclass)" digits="0" id="0" name="id" nullable="false" remarks="" size="10" type="serial" typeCode="4"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="id_sisep_doc_resolucion" nullable="true" remarks="" size="10" type="int4" typeCode="4"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="2" name="id_documento_actualizacion" nullable="true" remarks="" size="10" type="int4" typeCode="4"/>
@@ -1544,7 +1544,7 @@
             <column ascending="true" name="id"/>
          </index>
       </table>
-      <table name="estado_tramite" numRows="74" remarks="" schema="public" type="TABLE">
+      <table name="estado_tramite" numRows="77" remarks="Registro de los estados de un trámite de un usuario, según pre registro y organización" schema="public" type="TABLE">
          <column autoUpdated="true" defaultValue="nextval('estado_tramite_id_seq'::regclass)" digits="0" id="0" name="id" nullable="false" remarks="" size="10" type="serial" typeCode="4"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="id_caso_pre_registro" nullable="false" remarks="" size="10" type="int4" typeCode="4">
             <parent column="id" foreignKey="estado_tramite_id_caso_pre_registro_foreign" implied="false" onDeleteCascade="true" schema="public" table="caso_pre_registro"/>
@@ -1582,7 +1582,7 @@
          </index>
          <checkConstraint constraint="(((estado_tramite)::text = ANY (ARRAY[('sin iniciar'::character varying)::text, ('recepcionado'::character varying)::text, ('derivado'::character varying)::text, ('revisado'::character varying)::text, ('para despachar'::character varying)::text, ('despachado'::character varying)::text, ('concluido'::character varying)::text, ('para devolver'::character varying)::text, ('devuelto'::character varying)::text, ('devuelto recepcionado'::character varying)::text, ('para concluir'::character varying)::text, ('observados'::character varying)::text])))" name="estado_tramite_estado_tramite_check"/>
       </table>
-      <table name="lote" numRows="2" remarks="" schema="public" type="TABLE">
+      <table name="lote" numRows="2" remarks="Registro de loteado de grupos de trámites" schema="public" type="TABLE">
          <column autoUpdated="true" defaultValue="nextval('lote_id_seq'::regclass)" digits="0" id="0" name="id" nullable="false" remarks="" size="10" type="serial" typeCode="4"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="id_organizacion" nullable="false" remarks="" size="10" type="int4" typeCode="4"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="2" name="codigo_organizacion" nullable="false" remarks="" size="10" type="int4" typeCode="4"/>
@@ -1598,7 +1598,7 @@
             <column ascending="true" name="id"/>
          </index>
       </table>
-      <table name="menu" numRows="35" remarks="" schema="public" type="TABLE">
+      <table name="menu" numRows="35" remarks="Registro sobre restricciones del menu en la interfaz del usuario" schema="public" type="TABLE">
          <column autoUpdated="true" defaultValue="nextval('menu_id_seq'::regclass)" digits="0" id="0" name="id" nullable="false" remarks="" size="10" type="serial" typeCode="4"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="title" nullable="true" remarks="" size="191" type="varchar" typeCode="12"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="2" name="id_menu" nullable="true" remarks="" size="191" type="varchar" typeCode="12"/>
@@ -1612,7 +1612,7 @@
             <column ascending="true" name="id"/>
          </index>
       </table>
-      <table name="menu_rol" numRows="54" remarks="" schema="public" type="TABLE">
+      <table name="menu_rol" numRows="54" remarks="Registro sobre reestriciones del menu según el rol de usuario" schema="public" type="TABLE">
          <column autoUpdated="true" defaultValue="nextval('menu_rol_id_seq'::regclass)" digits="0" id="0" name="id" nullable="false" remarks="" size="10" type="serial" typeCode="4"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="id_menu" nullable="false" remarks="" size="10" type="int4" typeCode="4"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="2" name="id_rol" nullable="false" remarks="" size="10" type="int4" typeCode="4"/>
@@ -1625,7 +1625,7 @@
             <column ascending="true" name="id"/>
          </index>
       </table>
-      <table name="migrations" numRows="54" remarks="" schema="public" type="TABLE">
+      <table name="migrations" numRows="54" remarks="Historial de migraciones a nivel aplicación, administrado por el framework de php Laravel" schema="public" type="TABLE">
          <column autoUpdated="true" defaultValue="nextval('migrations_id_seq'::regclass)" digits="0" id="0" name="id" nullable="false" remarks="" size="10" type="serial" typeCode="4"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="migration" nullable="false" remarks="" size="191" type="varchar" typeCode="12"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="2" name="batch" nullable="false" remarks="" size="10" type="int4" typeCode="4"/>
@@ -1634,7 +1634,7 @@
             <column ascending="true" name="id"/>
          </index>
       </table>
-      <table name="oauth_access_tokens" numRows="23409" remarks="" schema="public" type="TABLE">
+      <table name="oauth_access_tokens" numRows="23415" remarks="Lista de tokens de acceso" schema="public" type="TABLE">
          <column autoUpdated="false" defaultValue="null" digits="0" id="0" name="id" nullable="false" remarks="" size="100" type="varchar" typeCode="12"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="user_id" nullable="true" remarks="" size="10" type="int4" typeCode="4"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="2" name="client_id" nullable="false" remarks="" size="10" type="int4" typeCode="4"/>
@@ -1652,7 +1652,7 @@
             <column ascending="true" name="user_id"/>
          </index>
       </table>
-      <table name="oauth_auth_codes" numRows="0" remarks="" schema="public" type="TABLE">
+      <table name="oauth_auth_codes" numRows="0" remarks="Codigos de aplicaciones registradas para acceso a los tokens" schema="public" type="TABLE">
          <column autoUpdated="false" defaultValue="null" digits="0" id="0" name="id" nullable="false" remarks="" size="100" type="varchar" typeCode="12"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="user_id" nullable="false" remarks="" size="10" type="int4" typeCode="4"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="2" name="client_id" nullable="false" remarks="" size="10" type="int4" typeCode="4"/>
@@ -1664,7 +1664,7 @@
             <column ascending="true" name="id"/>
          </index>
       </table>
-      <table name="oauth_clients" numRows="1" remarks="" schema="public" type="TABLE">
+      <table name="oauth_clients" numRows="1" remarks="Lista de clientes para administración de tokens" schema="public" type="TABLE">
          <column autoUpdated="true" defaultValue="nextval('oauth_clients_id_seq'::regclass)" digits="0" id="0" name="id" nullable="false" remarks="" size="10" type="serial" typeCode="4"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="user_id" nullable="true" remarks="" size="10" type="int4" typeCode="4"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="2" name="name" nullable="false" remarks="" size="191" type="varchar" typeCode="12"/>
@@ -1683,7 +1683,7 @@
             <column ascending="true" name="user_id"/>
          </index>
       </table>
-      <table name="oauth_personal_access_clients" numRows="0" remarks="" schema="public" type="TABLE">
+      <table name="oauth_personal_access_clients" numRows="0" remarks="Lista de tokens de acceso continuo personalizado" schema="public" type="TABLE">
          <column autoUpdated="true" defaultValue="nextval('oauth_personal_access_clients_id_seq'::regclass)" digits="0" id="0" name="id" nullable="false" remarks="" size="10" type="serial" typeCode="4"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="client_id" nullable="false" remarks="" size="10" type="int4" typeCode="4"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="2" name="created_at" nullable="true" remarks="" size="22" type="timestamp" typeCode="93"/>
@@ -1696,7 +1696,7 @@
             <column ascending="true" name="client_id"/>
          </index>
       </table>
-      <table name="oauth_refresh_tokens" numRows="23404" remarks="" schema="public" type="TABLE">
+      <table name="oauth_refresh_tokens" numRows="23410" remarks="Lista tokens de actualización de sesión" schema="public" type="TABLE">
          <column autoUpdated="false" defaultValue="null" digits="0" id="0" name="id" nullable="false" remarks="" size="100" type="varchar" typeCode="12"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="access_token_id" nullable="false" remarks="" size="100" type="varchar" typeCode="12"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="2" name="revoked" nullable="false" remarks="" size="1" type="bool" typeCode="-7"/>
@@ -1709,7 +1709,7 @@
             <column ascending="true" name="access_token_id"/>
          </index>
       </table>
-      <table name="organizacion" numRows="388" remarks="" schema="public" type="TABLE">
+      <table name="organizacion" numRows="388" remarks="Listado de organizaciones" schema="public" type="TABLE">
          <column autoUpdated="true" defaultValue="nextval('organizacion_id_seq'::regclass)" digits="0" id="0" name="id" nullable="false" remarks="" size="10" type="serial" typeCode="4">
             <child column="id_organizacion" foreignKey="estado_tramite_id_organizacion_foreign" implied="false" onDeleteCascade="true" schema="public" table="estado_tramite"/>
             <child column="id_organizacion" foreignKey="organizacion_id_organizacion_foreign" implied="false" onDeleteCascade="true" schema="public" table="organizacion"/>
@@ -1739,7 +1739,7 @@
             <column ascending="true" name="id_organizacion"/>
          </index>
       </table>
-      <table name="password_resets" numRows="0" remarks="" schema="public" type="TABLE">
+      <table name="password_resets" numRows="0" remarks="Indice de correos para reestablecimiento de contraseña" schema="public" type="TABLE">
          <column autoUpdated="false" defaultValue="null" digits="0" id="0" name="email" nullable="false" remarks="" size="191" type="varchar" typeCode="12"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="token" nullable="false" remarks="" size="191" type="varchar" typeCode="12"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="2" name="state" nullable="false" remarks="" size="1" type="bool" typeCode="-7"/>
@@ -1748,7 +1748,7 @@
             <column ascending="true" name="email"/>
          </index>
       </table>
-      <table name="permission_role" numRows="280" remarks="" schema="public" type="TABLE">
+      <table name="permission_role" numRows="280" remarks="Permisos según rol" schema="public" type="TABLE">
          <column autoUpdated="true" defaultValue="nextval('permission_role_id_seq'::regclass)" digits="0" id="0" name="id" nullable="false" remarks="" size="10" type="serial" typeCode="4"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="permission_id" nullable="false" remarks="" size="10" type="int4" typeCode="4">
             <parent column="id" foreignKey="permission_role_permission_id_foreign" implied="false" onDeleteCascade="true" schema="public" table="permissions"/>
@@ -1769,7 +1769,7 @@
             <column ascending="true" name="role_id"/>
          </index>
       </table>
-      <table name="permissions" numRows="208" remarks="" schema="public" type="TABLE">
+      <table name="permissions" numRows="208" remarks="Lista de permisos para acceso a la aplicación" schema="public" type="TABLE">
          <column autoUpdated="true" defaultValue="nextval('permissions_id_seq'::regclass)" digits="0" id="0" name="id" nullable="false" remarks="" size="10" type="serial" typeCode="4">
             <child column="permission_id" foreignKey="permission_role_permission_id_foreign" implied="false" onDeleteCascade="true" schema="public" table="permission_role"/>
          </column>
@@ -1786,7 +1786,7 @@
             <column ascending="true" name="slug"/>
          </index>
       </table>
-      <table name="persona" numRows="288815" remarks="" schema="public" type="TABLE">
+      <table name="persona" numRows="288815" remarks="Registro de datos de una persona" schema="public" type="TABLE">
          <column autoUpdated="true" defaultValue="nextval('persona_id_seq'::regclass)" digits="0" id="0" name="id" nullable="false" remarks="" size="10" type="serial" typeCode="4">
             <child column="id_persona" foreignKey="registro_dideo_id_persona_foreign" implied="false" onDeleteCascade="true" schema="public" table="registro_didep"/>
             <child column="id_persona" foreignKey="registro_docente_administrativo_id_persona_foreign" implied="false" onDeleteCascade="true" schema="public" table="registro_docente_administrativo"/>
@@ -1842,7 +1842,7 @@
             <column ascending="true" name="id_organizacion"/>
          </index>
       </table>
-      <table name="persona_organizacion" numRows="80" remarks="" schema="public" type="TABLE">
+      <table name="persona_organizacion" numRows="80" remarks="Tabla transaccional de una persona asociada a una o varias organizaciones" schema="public" type="TABLE">
          <column autoUpdated="true" defaultValue="nextval('persona_organizacion_id_seq'::regclass)" digits="0" id="0" name="id" nullable="false" remarks="" size="10" type="serial" typeCode="4"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="id_persona" nullable="true" remarks="" size="10" type="int4" typeCode="4"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="2" name="id_organizacion" nullable="false" remarks="" size="10" type="int4" typeCode="4">
@@ -1863,7 +1863,7 @@
             <column ascending="true" name="id_persona"/>
          </index>
       </table>
-      <table name="persona_tmp" numRows="585" remarks="" schema="public" type="TABLE">
+      <table name="persona_tmp" numRows="585" remarks="Registro de datos personales de un usuario temporal" schema="public" type="TABLE">
          <column autoUpdated="true" defaultValue="nextval('persona_temporal_id_seq'::regclass)" digits="0" id="0" name="id" nullable="false" remarks="" size="10" type="serial" typeCode="4">
             <child column="id_persona_tmp" foreignKey="usuario_informacion_tmp_id_persona_tmp_foreign" implied="false" onDeleteCascade="true" schema="public" table="usuario_informacion_tmp"/>
          </column>
@@ -1888,7 +1888,7 @@
             <column ascending="true" name="id"/>
          </index>
       </table>
-      <table name="pre_registro_persona" numRows="22" remarks="" schema="public" type="TABLE">
+      <table name="pre_registro_persona" numRows="25" remarks="Preregistro de una persona al sistema" schema="public" type="TABLE">
          <column autoUpdated="true" defaultValue="nextval('pre_registro_persona_id_seq'::regclass)" digits="0" id="0" name="id" nullable="false" remarks="" size="10" type="serial" typeCode="4">
             <child column="id_pre_registro_persona" foreignKey="caso_pre_registro_id_pre_registro_persona_foreign" implied="false" onDeleteCascade="true" schema="public" table="caso_pre_registro"/>
          </column>
@@ -1927,7 +1927,7 @@
             <column ascending="true" name="id_user"/>
          </index>
       </table>
-      <table name="proceso_rda" numRows="1" remarks="" schema="public" type="TABLE">
+      <table name="proceso_rda" numRows="1" remarks="Registro de procesos RDA" schema="public" type="TABLE">
          <column autoUpdated="true" defaultValue="nextval('proceso_rda_id_seq'::regclass)" digits="0" id="0" name="id" nullable="false" remarks="" size="10" type="serial" typeCode="4"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="numero_proceso" nullable="true" remarks="" size="10" type="int4" typeCode="4"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="2" name="gestion" nullable="true" remarks="" size="10" type="int4" typeCode="4"/>
@@ -1940,7 +1940,7 @@
             <column ascending="true" name="id"/>
          </index>
       </table>
-      <table name="r_bachiller" numRows="76470" remarks="" schema="public" type="TABLE">
+      <table name="r_bachiller" numRows="76470" remarks="Registro de bachilleres" schema="public" type="TABLE">
          <column autoUpdated="false" defaultValue="null" digits="0" id="0" name="cod_rda" nullable="true" remarks="" size="10" type="int4" typeCode="4"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="num_ced" nullable="true" remarks="" size="15" type="bpchar" typeCode="1"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="2" name="cod_doci" nullable="true" remarks="" size="10" type="int4" typeCode="4"/>
@@ -1963,7 +1963,7 @@
          <column autoUpdated="false" defaultValue="null" digits="0" id="19" name="login_modif" nullable="true" remarks="" size="25" type="bpchar" typeCode="1"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="20" name="estado" nullable="true" remarks="" size="3" type="bpchar" typeCode="1"/>
       </table>
-      <table name="r_bachiller_pedagogico" numRows="3576" remarks="" schema="public" type="TABLE">
+      <table name="r_bachiller_pedagogico" numRows="3576" remarks="Registro de bachilleres pedagogico" schema="public" type="TABLE">
          <column autoUpdated="false" defaultValue="null" digits="0" id="0" name="nro" nullable="true" remarks="" size="10" type="int4" typeCode="4"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="cod_ue" nullable="true" remarks="" size="10" type="int4" typeCode="4"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="2" name="ap_paterno" nullable="true" remarks="" size="30" type="bpchar" typeCode="1"/>
@@ -1995,7 +1995,7 @@
          <column autoUpdated="false" defaultValue="null" digits="0" id="28" name="nro_diplom" nullable="true" remarks="" size="20" type="bpchar" typeCode="1"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="29" name="area" nullable="true" remarks="" size="40" type="bpchar" typeCode="1"/>
       </table>
-      <table name="r_catges" numRows="740316" remarks="" schema="public" type="TABLE">
+      <table name="r_catges" numRows="740316" remarks="Registro de categoria por gestion" schema="public" type="TABLE">
          <column autoUpdated="false" defaultValue="null" digits="0" id="0" name="codigo_rda" nullable="true" remarks="" size="10" type="int4" typeCode="4"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="gestion" nullable="true" remarks="" size="10" type="int4" typeCode="4"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="2" name="cod_cat" nullable="true" remarks="" size="10" type="int4" typeCode="4"/>
@@ -2020,7 +2020,7 @@
          <column autoUpdated="false" defaultValue="null" digits="0" id="21" name="habilitado" nullable="true" remarks="" size="10" type="int4" typeCode="4"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="22" name="deshabilitado" nullable="true" remarks="" size="700" type="varchar" typeCode="12"/>
       </table>
-      <table name="r_docpersonal" numRows="285583" remarks="" schema="public" type="TABLE">
+      <table name="r_docpersonal" numRows="285583" remarks="Registro de documentos personales" schema="public" type="TABLE">
          <column autoUpdated="false" defaultValue="null" digits="0" id="0" name="cod_rda" nullable="true" remarks="" size="10" type="int4" typeCode="4"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="cod_afp" nullable="true" remarks="" size="10" type="int4" typeCode="4"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="2" name="cod_dpto" nullable="true" remarks="" size="10" type="int4" typeCode="4"/>
@@ -2042,7 +2042,7 @@
          <column autoUpdated="false" defaultValue="null" digits="0" id="18" name="login" nullable="true" remarks="" size="191" type="varchar" typeCode="12"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="19" name="fecha_reg" nullable="true" remarks="" size="191" type="varchar" typeCode="12"/>
       </table>
-      <table name="r_egresados" numRows="178948" remarks="" schema="public" type="TABLE">
+      <table name="r_egresados" numRows="178948" remarks="Registro de egresados" schema="public" type="TABLE">
          <column autoUpdated="false" defaultValue="null" digits="0" id="0" name="cod_proceso" nullable="true" remarks="" size="10" type="int4" typeCode="4"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="cod_pers" nullable="true" remarks="" size="16" type="bpchar" typeCode="1"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="2" name="cod_rda" nullable="true" remarks="" size="10" type="int4" typeCode="4"/>
@@ -2078,7 +2078,7 @@
          <column autoUpdated="false" defaultValue="null" digits="0" id="30" name="login_modif" nullable="true" remarks="" size="20" type="bpchar" typeCode="1"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="31" name="fecha_modif" nullable="true" remarks="" size="22" type="timestamp" typeCode="93"/>
       </table>
-      <table name="r_egresados_ppmi" numRows="13222" remarks="" schema="public" type="TABLE">
+      <table name="r_egresados_ppmi" numRows="13222" remarks="Registro de egresados por ppmi" schema="public" type="TABLE">
          <column autoUpdated="false" defaultValue="null" digits="0" id="0" name="cod_proceso" nullable="true" remarks="" size="10" type="int4" typeCode="4"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="cod_pers" nullable="true" remarks="" size="16" type="bpchar" typeCode="1"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="2" name="cod_rda" nullable="true" remarks="" size="10" type="int4" typeCode="4"/>
@@ -2129,7 +2129,7 @@
          <column autoUpdated="false" defaultValue="null" digits="0" id="11" name="login" nullable="true" remarks="" size="191" type="varchar" typeCode="12"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="12" name="fecha_reg" nullable="true" remarks="" size="191" type="varchar" typeCode="12"/>
       </table>
-      <table name="r_entidad" numRows="505" remarks="" schema="public" type="TABLE">
+      <table name="r_entidad" numRows="505" remarks="Registro de entidades" schema="public" type="TABLE">
          <column autoUpdated="false" defaultValue="null" digits="0" id="0" name="cod_entidad" nullable="false" remarks="" size="10" type="int4" typeCode="4">
             <child column="cod_entidad" foreignKey="Implied Constraint" implied="true" onDeleteCascade="false" schema="public" table="r_egresados"/>
             <child column="cod_entidad" foreignKey="Implied Constraint" implied="true" onDeleteCascade="false" schema="public" table="r_egresados_ppmi"/>
@@ -2159,7 +2159,7 @@
             <column ascending="true" name="cod_entidad"/>
          </index>
       </table>
-      <table name="r_formrda" numRows="285587" remarks="" schema="public" type="TABLE">
+      <table name="r_formrda" numRows="285587" remarks="Registro de formularios RDA" schema="public" type="TABLE">
          <column autoUpdated="false" defaultValue="null" digits="0" id="0" name="cod_rda" nullable="true" remarks="" size="10" type="int4" typeCode="4"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="cod_tiporda" nullable="true" remarks="" size="10" type="int4" typeCode="4"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="2" name="cod_grdesc" nullable="true" remarks="" size="10" type="int4" typeCode="4"/>
@@ -2177,7 +2177,7 @@
          <column autoUpdated="false" defaultValue="null" digits="0" id="14" name="login" nullable="true" remarks="" size="191" type="varchar" typeCode="12"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="15" name="fecha_reg" nullable="true" remarks="" size="191" type="varchar" typeCode="12"/>
       </table>
-      <table name="r_observado_definitivo" numRows="30" remarks="" schema="public" type="TABLE">
+      <table name="r_observado_definitivo" numRows="30" remarks="Registro de observados definitivos" schema="public" type="TABLE">
          <column autoUpdated="false" defaultValue="null" digits="0" id="0" name="cod_rda" nullable="true" remarks="" size="10" type="int4" typeCode="4"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="folio" nullable="true" remarks="" size="10" type="int4" typeCode="4"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="2" name="nota" nullable="true" remarks="" size="50" type="bpchar" typeCode="1"/>
@@ -2191,7 +2191,7 @@
          <column autoUpdated="false" defaultValue="null" digits="0" id="10" name="fecha_modif" nullable="true" remarks="" size="22" type="timestamp" typeCode="93"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="11" name="tipo_registro" nullable="true" remarks="" size="191" type="varchar" typeCode="12"/>
       </table>
-      <table name="r_observado_preventivo" numRows="159" remarks="" schema="public" type="TABLE">
+      <table name="r_observado_preventivo" numRows="159" remarks="Registro de observados preventivos" schema="public" type="TABLE">
          <column autoUpdated="false" defaultValue="null" digits="0" id="0" name="cod_rda" nullable="true" remarks="" size="10" type="int4" typeCode="4"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="folio" nullable="true" remarks="" size="10" type="int4" typeCode="4"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="2" name="nota" nullable="true" remarks="" size="100" type="bpchar" typeCode="1"/>
@@ -2205,7 +2205,7 @@
          <column autoUpdated="false" defaultValue="null" digits="0" id="10" name="fecha_modif" nullable="true" remarks="" size="22" type="timestamp" typeCode="93"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="11" name="tipo_registro" nullable="true" remarks="" size="191" type="varchar" typeCode="12"/>
       </table>
-      <table name="r_observado_preventivo_mc" numRows="161" remarks="" schema="public" type="TABLE">
+      <table name="r_observado_preventivo_mc" numRows="161" remarks="Registro de observados MC" schema="public" type="TABLE">
          <column autoUpdated="false" defaultValue="null" digits="0" id="0" name="cod_rda" nullable="true" remarks="" size="10" type="int4" typeCode="4"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="folio" nullable="true" remarks="" size="10" type="int4" typeCode="4"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="2" name="nota" nullable="true" remarks="" size="50" type="bpchar" typeCode="1"/>
@@ -2219,7 +2219,7 @@
          <column autoUpdated="false" defaultValue="null" digits="0" id="10" name="fecha_modif" nullable="true" remarks="" size="22" type="timestamp" typeCode="93"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="11" name="tipo_registro" nullable="true" remarks="" size="191" type="varchar" typeCode="12"/>
       </table>
-      <table name="r_observado_sin_leyenda" numRows="35" remarks="" schema="public" type="TABLE">
+      <table name="r_observado_sin_leyenda" numRows="35" remarks="Registro de observados sin leyenda" schema="public" type="TABLE">
          <column autoUpdated="false" defaultValue="null" digits="0" id="0" name="cod_rda" nullable="true" remarks="" size="10" type="int4" typeCode="4"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="folio" nullable="true" remarks="" size="10" type="int4" typeCode="4"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="2" name="nota" nullable="true" remarks="" size="100" type="bpchar" typeCode="1"/>
@@ -2234,7 +2234,7 @@
          <column autoUpdated="false" defaultValue="null" digits="0" id="11" name="leyenda_adicional" nullable="true" remarks="" size="100" type="bpchar" typeCode="1"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="12" name="tipo_registro" nullable="true" remarks="" size="191" type="varchar" typeCode="12"/>
       </table>
-      <table name="r_observados" numRows="415" remarks="" schema="public" type="TABLE">
+      <table name="r_observados" numRows="415" remarks="Registro de observados" schema="public" type="TABLE">
          <column autoUpdated="false" defaultValue="null" digits="0" id="0" name="nro" nullable="true" remarks="" size="10" type="int4" typeCode="4"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="cod_rda" nullable="true" remarks="" size="10" type="int4" typeCode="4"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="2" name="num_ced" nullable="true" remarks="" size="15" type="bpchar" typeCode="1"/>
@@ -2283,7 +2283,7 @@
          <column autoUpdated="false" defaultValue="null" digits="0" id="43" name="observacio" nullable="true" remarks="" size="100" type="bpchar" typeCode="1"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="44" name="tipo_registro" nullable="true" remarks="" size="191" type="varchar" typeCode="12"/>
       </table>
-      <table name="r_programa_profesor_interino" numRows="17066" remarks="" schema="public" type="TABLE">
+      <table name="r_programa_profesor_interino" numRows="17066" remarks="Registro de programa de profesores interinos" schema="public" type="TABLE">
          <column autoUpdated="false" defaultValue="null" digits="0" id="0" name="codigo_prof" nullable="true" remarks="" size="10" type="int4" typeCode="4"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="cod_rda" nullable="true" remarks="" size="10" type="int4" typeCode="4"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="2" name="num_ced" nullable="true" remarks="" size="15" type="bpchar" typeCode="1"/>
@@ -2320,7 +2320,7 @@
          <column autoUpdated="false" defaultValue="null" digits="0" id="31" name="login_modif" nullable="true" remarks="" size="20" type="bpchar" typeCode="1"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="32" name="fecha_modif" nullable="true" remarks="" size="22" type="timestamp" typeCode="93"/>
       </table>
-      <table name="r_sancion" numRows="392" remarks="" schema="public" type="TABLE">
+      <table name="r_sancion" numRows="392" remarks="Registro de sanciones" schema="public" type="TABLE">
          <column autoUpdated="false" defaultValue="null" digits="0" id="0" name="nro" nullable="true" remarks="" size="10" type="int4" typeCode="4"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="tribdptal" nullable="true" remarks="" size="2" type="bpchar" typeCode="1"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="2" name="grupo_sanc" nullable="true" remarks="" size="1" type="bpchar" typeCode="1"/>
@@ -2380,7 +2380,7 @@
          <column autoUpdated="false" defaultValue="null" digits="0" id="54" name="observacio" nullable="true" remarks="" size="100" type="bpchar" typeCode="1"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="55" name="tipo_registro" nullable="true" remarks="" size="191" type="varchar" typeCode="12"/>
       </table>
-      <table name="registro_didep" numRows="1488" remarks="" schema="public" type="TABLE">
+      <table name="registro_didep" numRows="1488" remarks="Registro de personas asociadas a didep" schema="public" type="TABLE">
          <column autoUpdated="true" defaultValue="nextval('registro_didep_id_seq'::regclass)" digits="0" id="0" name="id" nullable="false" remarks="" size="10" type="serial" typeCode="4"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="id_persona" nullable="false" remarks="" size="10" type="int4" typeCode="4">
             <parent column="id" foreignKey="registro_dideo_id_persona_foreign" implied="false" onDeleteCascade="true" schema="public" table="persona"/>
@@ -2409,7 +2409,7 @@
             <column ascending="true" name="id_persona"/>
          </index>
       </table>
-      <table name="registro_docente_administrativo" numRows="287138" remarks="" schema="public" type="TABLE">
+      <table name="registro_docente_administrativo" numRows="287138" remarks="Registro de docentes o administrativos" schema="public" type="TABLE">
          <column autoUpdated="true" defaultValue="nextval('registro_docente_administrativo_id_seq'::regclass)" digits="0" id="0" name="id" nullable="false" remarks="" size="10" type="serial" typeCode="4">
             <child column="id_registro_docente_administrativo" foreignKey="categoria_rda_id_registro_docente_administrativo_foreign" implied="false" onDeleteCascade="true" schema="public" table="categoria_rda"/>
             <child column="id_registro_docente_administrativo" foreignKey="sisep_doc_consolidado_categorias_id_rda_foreign" implied="false" onDeleteCascade="false" schema="public" table="sisep_doc_consolidado_categorias"/>
@@ -2441,7 +2441,7 @@
             <column ascending="true" name="id_persona"/>
          </index>
       </table>
-      <table name="registro_rp_gesttla" numRows="4088" remarks="" schema="public" type="TABLE">
+      <table name="registro_rp_gesttla" numRows="4088" remarks="Registro de personas asociadas a RP GESTTLA" schema="public" type="TABLE">
          <column autoUpdated="true" defaultValue="nextval('registro_rp_gesttla_id_seq'::regclass)" digits="0" id="0" name="id" nullable="false" remarks="" size="10" type="serial" typeCode="4">
             <child column="id_registro_rp_gesttla" foreignKey="categoria_registro_rp_gesttla_id_rp_gesttla_foreign" implied="false" onDeleteCascade="true" schema="public" table="categoria_rp_gesttla"/>
          </column>
@@ -2537,7 +2537,7 @@
             <column ascending="true" name="id"/>
          </index>
       </table>
-      <table name="requisito" numRows="59" remarks="" schema="public" type="TABLE">
+      <table name="requisito" numRows="59" remarks="Registro de requisitos para su relacionamiento con trámites" schema="public" type="TABLE">
          <column autoUpdated="true" defaultValue="nextval('requisito_id_seq'::regclass)" digits="0" id="0" name="id" nullable="false" remarks="" size="10" type="serial" typeCode="4">
             <child column="id_requisito" foreignKey="caso_requisito_id_requisito_foreign" implied="false" onDeleteCascade="true" schema="public" table="caso_requisito"/>
             <child column="id_requisito" foreignKey="requisito_presentado_id_requisito_foreign" implied="false" onDeleteCascade="true" schema="public" table="requisito_presentado"/>
@@ -2555,7 +2555,7 @@
             <column ascending="true" name="requisito"/>
          </index>
       </table>
-      <table name="requisito_caso" numRows="12" remarks="" schema="public" type="TABLE">
+      <table name="requisito_caso" numRows="12" remarks="Registro de requisitos según caso para su relacionamiento con trámites" schema="public" type="TABLE">
          <column autoUpdated="true" defaultValue="nextval('requisito_caso_id_seq'::regclass)" digits="0" id="0" name="id" nullable="false" remarks="" size="10" type="serial" typeCode="4"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="id_caso" nullable="false" remarks="" size="10" type="int4" typeCode="4">
             <parent column="id" foreignKey="requisito_caso_id_caso_foreign" implied="false" onDeleteCascade="true" schema="public" table="caso"/>
@@ -2573,7 +2573,7 @@
             <column ascending="true" name="id_caso"/>
          </index>
       </table>
-      <table name="requisito_presentado" numRows="0" remarks="" schema="public" type="TABLE">
+      <table name="requisito_presentado" numRows="0" remarks="Registro de requisitos presentados por una persona para un trámite" schema="public" type="TABLE">
          <column autoUpdated="true" defaultValue="nextval('requisito_presentado_id_seq'::regclass)" digits="0" id="0" name="id" nullable="false" remarks="" size="10" type="serial" typeCode="4">
             <child column="id_requisito_presentado" foreignKey="requisito_presentado_observacion_id_requisito_presentado_foreig" implied="false" onDeleteCascade="true" schema="public" table="requisito_presentado_observacion"/>
          </column>
@@ -2605,7 +2605,7 @@
             <column ascending="true" name="id_user"/>
          </index>
       </table>
-      <table name="requisito_presentado_observacion" numRows="0" remarks="" schema="public" type="TABLE">
+      <table name="requisito_presentado_observacion" numRows="0" remarks="Registro de requisitos observados presentados por una persona para un trámite" schema="public" type="TABLE">
          <column autoUpdated="true" defaultValue="nextval('requisito_presentado_observacion_id_seq'::regclass)" digits="0" id="0" name="id" nullable="false" remarks="" size="10" type="serial" typeCode="4"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="id_requisito_presentado" nullable="true" remarks="" size="10" type="int4" typeCode="4">
             <parent column="id" foreignKey="requisito_presentado_observacion_id_requisito_presentado_foreig" implied="false" onDeleteCascade="true" schema="public" table="requisito_presentado"/>
@@ -2630,7 +2630,7 @@
          </index>
          <checkConstraint constraint="(((tipo_observacion)::text = ANY (ARRAY[('negativa'::character varying)::text, ('positiva'::character varying)::text])))" name="requisito_presentado_observacion_tipo_observacion_check"/>
       </table>
-      <table name="role_caso" numRows="0" remarks="" schema="public" type="TABLE">
+      <table name="role_caso" numRows="0" remarks="Tabla transaccional sobre una o varias relaciones de un rol sobre un caso" schema="public" type="TABLE">
          <column autoUpdated="true" defaultValue="nextval('role_caso_id_seq'::regclass)" digits="0" id="0" name="id" nullable="false" remarks="" size="10" type="serial" typeCode="4"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="id_role" nullable="false" remarks="" size="10" type="int4" typeCode="4">
             <parent column="id" foreignKey="role_caso_id_role_foreign" implied="false" onDeleteCascade="true" schema="public" table="roles"/>
@@ -2652,7 +2652,7 @@
             <column ascending="true" name="id_role"/>
          </index>
       </table>
-      <table name="role_user" numRows="289809" remarks="" schema="public" type="TABLE">
+      <table name="role_user" numRows="289809" remarks="Tabla transaccional sobre una o varias relaciones de un rol sobre un usuario" schema="public" type="TABLE">
          <column autoUpdated="true" defaultValue="nextval('role_user_id_seq'::regclass)" digits="0" id="0" name="id" nullable="false" remarks="" size="10" type="serial" typeCode="4"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="role_id" nullable="false" remarks="" size="10" type="int4" typeCode="4">
             <parent column="id" foreignKey="role_user_role_id_foreign" implied="false" onDeleteCascade="true" schema="public" table="roles"/>
@@ -2674,7 +2674,7 @@
             <column ascending="true" name="user_id"/>
          </index>
       </table>
-      <table name="roles" numRows="13" remarks="" schema="public" type="TABLE">
+      <table name="roles" numRows="13" remarks="Lista de roles" schema="public" type="TABLE">
          <column autoUpdated="true" defaultValue="nextval('roles_id_seq'::regclass)" digits="0" id="0" name="id" nullable="false" remarks="" size="10" type="serial" typeCode="4">
             <child column="role_id" foreignKey="permission_role_role_id_foreign" implied="false" onDeleteCascade="true" schema="public" table="permission_role"/>
             <child column="id_role" foreignKey="role_caso_id_role_foreign" implied="false" onDeleteCascade="true" schema="public" table="role_caso"/>
@@ -2714,7 +2714,7 @@
             <column ascending="true" name="id"/>
          </index>
       </table>
-      <table name="sisep_doc_afp" numRows="2700" remarks="" schema="public" type="TABLE">
+      <table name="sisep_doc_afp" numRows="2701" remarks="" schema="public" type="TABLE">
          <column autoUpdated="true" defaultValue="nextval('sisep_doc_afp_id_seq'::regclass)" digits="0" id="0" name="id" nullable="false" remarks="" size="10" type="serial" typeCode="4"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="id_pre_registro_persona" nullable="true" remarks="" size="10" type="int4" typeCode="4"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="2" name="ids_archivos" nullable="true" remarks="" size="191" type="varchar" typeCode="12"/>
@@ -4586,7 +4586,7 @@
             <column ascending="true" name="id"/>
          </index>
       </table>
-      <table name="sisep_doc_documento_identificacion" numRows="270" remarks="" schema="public" type="TABLE">
+      <table name="sisep_doc_documento_identificacion" numRows="271" remarks="" schema="public" type="TABLE">
          <column autoUpdated="true" defaultValue="nextval('sisep_doc_documento_identificacion_id_seq'::regclass)" digits="0" id="0" name="id" nullable="false" remarks="" size="10" type="serial" typeCode="4"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="id_pre_registro_persona" nullable="true" remarks="" size="10" type="int4" typeCode="4"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="2" name="ids_archivos" nullable="true" remarks="" size="191" type="varchar" typeCode="12"/>
@@ -4799,7 +4799,7 @@
             <column ascending="true" name="id"/>
          </index>
       </table>
-      <table name="sisep_doc_postgrado" numRows="7091" remarks="" schema="public" type="TABLE">
+      <table name="sisep_doc_postgrado" numRows="7092" remarks="" schema="public" type="TABLE">
          <column autoUpdated="true" defaultValue="nextval('sisep_doc_postgrado_id_seq'::regclass)" digits="0" id="0" name="id" nullable="false" remarks="" size="10" type="serial" typeCode="4"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="id_pre_registro_persona" nullable="true" remarks="" size="10" type="int4" typeCode="4"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="2" name="ids_archivos" nullable="true" remarks="" size="191" type="varchar" typeCode="12"/>
@@ -5181,7 +5181,7 @@
             <column ascending="true" name="id"/>
          </index>
       </table>
-      <table name="tipo_cargo_rda" numRows="6" remarks="" schema="public" type="TABLE">
+      <table name="tipo_cargo_rda" numRows="6" remarks="Tipos de cargos RDA" schema="public" type="TABLE">
          <column autoUpdated="false" defaultValue="null" digits="0" id="0" name="id" nullable="false" remarks="" size="10" type="int4" typeCode="4"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="descripcion" nullable="false" remarks="" size="191" type="varchar" typeCode="12"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="2" name="state" nullable="false" remarks="" size="1" type="bool" typeCode="-7"/>
@@ -5196,7 +5196,7 @@
          <column autoUpdated="false" defaultValue="null" digits="0" id="0" name="id" nullable="true" remarks="" size="10" type="int4" typeCode="4"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="cantidad" nullable="true" remarks="" size="19" type="int8" typeCode="-5"/>
       </table>
-      <table name="tramite" numRows="6" remarks="" schema="public" type="TABLE">
+      <table name="tramite" numRows="6" remarks="Lista de tramites" schema="public" type="TABLE">
          <column autoUpdated="true" defaultValue="nextval('tramite_id_seq'::regclass)" digits="0" id="0" name="id" nullable="false" remarks="" size="10" type="serial" typeCode="4">
             <child column="id_tramite" foreignKey="caso_id_tramite_foreign" implied="false" onDeleteCascade="true" schema="public" table="caso"/>
          </column>
@@ -5229,7 +5229,7 @@
          <column autoUpdated="false" defaultValue="null" digits="0" id="2" name="estado_tramite" nullable="true" remarks="" size="255" type="varchar" typeCode="12"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="3" name="id_organizacion_destino" nullable="true" remarks="" size="10" type="int4" typeCode="4"/>
       </table>
-      <table name="users" numRows="288960" remarks="" schema="public" type="TABLE">
+      <table name="users" numRows="288960" remarks="Lista de usuarios" schema="public" type="TABLE">
          <column autoUpdated="true" defaultValue="nextval('users_id_seq'::regclass)" digits="0" id="0" name="id" nullable="false" remarks="" size="10" type="serial" typeCode="4">
             <child column="id_user" foreignKey="caso_pre_registro_id_user_foreign" implied="false" onDeleteCascade="true" schema="public" table="caso_pre_registro"/>
             <child column="id_user" foreignKey="estado_tramite_id_user_foreign" implied="false" onDeleteCascade="true" schema="public" table="estado_tramite"/>
@@ -5278,7 +5278,7 @@
          <column autoUpdated="false" defaultValue="null" digits="0" id="11" name="codigo_rpdgestla" nullable="true" remarks="" size="10" type="int4" typeCode="4"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="12" name="id_organizacion" nullable="true" remarks="" size="10" type="int4" typeCode="4"/>
       </table>
-      <table name="usuario_informacion" numRows="288783" remarks="" schema="public" type="TABLE">
+      <table name="usuario_informacion" numRows="288783" remarks="información de un usuario" schema="public" type="TABLE">
          <column autoUpdated="true" defaultValue="nextval('usuario_informacion_id_seq'::regclass)" digits="0" id="0" name="id" nullable="false" remarks="" size="10" type="serial" typeCode="4"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="id_users" nullable="false" remarks="" size="10" type="int4" typeCode="4">
             <parent column="id" foreignKey="usuario_informacion_id_users_foreign" implied="false" onDeleteCascade="true" schema="public" table="users"/>
@@ -5312,7 +5312,7 @@
             <column ascending="true" name="id_users"/>
          </index>
       </table>
-      <table name="usuario_informacion_tmp" numRows="54" remarks="" schema="public" type="TABLE">
+      <table name="usuario_informacion_tmp" numRows="54" remarks="información de un usuario temporal" schema="public" type="TABLE">
          <column autoUpdated="true" defaultValue="nextval('usuario_informacion_tmp_id_seq'::regclass)" digits="0" id="0" name="id" nullable="false" remarks="" size="10" type="serial" typeCode="4"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="id_users" nullable="false" remarks="" size="10" type="int4" typeCode="4">
             <parent column="id" foreignKey="usuario_informacion_tmp_id_users_foreign" implied="false" onDeleteCascade="true" schema="public" table="users"/>
